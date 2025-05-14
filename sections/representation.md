@@ -5,7 +5,7 @@
 ## Request {#representation-request}
 
 To request that a representation of the resource be sent along with events notifications, a client:
-+ MUST use the Events Query Data Model in an appropriate media-type when issuing a subscription request using the `QUERY` method.
++ MUST use the Events Query Data Model ({{data-model}}) in an appropriate media-type when issuing a subscription request using the `QUERY` method ({{HTTP-QUERY, Section 3}}).
 + MUST specify the +state+ property ({{data-model-property-state}}) in the body of the subscription query.
 + MAY specify any header field under the +state+ property in the body of the subscription query.
 

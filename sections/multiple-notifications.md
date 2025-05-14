@@ -5,7 +5,7 @@ Instead of long-polling for event notifications, {{&protocol}} can also be used 
 ## Request {#multiple-notifications-request}
 
 To request a stream of event notifications from a resource, a client:
-+ MUST use the Events Query Data Model in an appropriate media-type when issuing a subscription request using the `QUERY` method.
++ MUST use the Events Query Data Model ({{data-model}}) in an appropriate media-type when issuing a subscription request using the `QUERY` method ({{HTTP-QUERY, Section 3}}).
 + MUST specify the +events+ property ({{data-model-property-events}}) in the body of the subscription query.
 + MAY specify any header field under the +events+ property in the body of the subscription query.
 

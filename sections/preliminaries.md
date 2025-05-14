@@ -1,17 +1,17 @@
 # Preliminaries {#preliminaries}
 
-## `Events` Header Field {#events-header}
+## `Events` Header Field {#events-field}
 
-{: #events-header-request}
+{: #events-field-request}
 The =Events= header field MAY be used by a client in request to communicate preferences for the {{&protocol}} response. The =Events= header field is not meant for content negotiation.
 
-{: #events-header-response}
+{: #events-field-response}
 The =Events= header field MUST be used by a server to communicate the properties of a {{&protocol}} response.
 
-{: #events-header-type}
+{: #events-field-type}
 =Events= is a Dictionary structured header field ({{HTTP-SF}}, Section 3.2). The order of keys is insignificant.
 
-*[=Events=]: #events-header (((events (header field) ))) `Events`
+*[=Events=]: #events-field (((events (header field) ))) `Events`
 
 ### The `duration` key {#duration-key}
 
