@@ -1201,7 +1201,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-events-header-field" class="internal xref"><code>Events</code> Header Field</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1.2.1">
-                    <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-the-duration-property" class="internal xref">The <code>duration</code> property</a></p>
+                    <p id="section-toc.1-1.5.2.1.2.1.1"><a href="#section-5.1.1" class="auto internal xref">5.1.1</a>.  <a href="#name-duration-property" class="internal xref"><code>duration</code> Property</a></p>
 </li>
                 </ul>
 </li>
@@ -1324,24 +1324,26 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <figure id="figure-1">
         <div class="lang-js sourcecode" id="section-1-6.1">
 <pre>
-const response = fetch('http://example.com', {
-  method: 'QUERY',
+const response = fetch("http://example.com/foo", {
+  method: "QUERY",
   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/http'
+    "Content-Type": "application/json",
+    Accept: "application/http"
   },
   body: JSON.stringify({
-    state: { Accept: 'text/plain' },
-    events: { Accept: 'example/event-request' }
+    state: { Accept: "text/plain" },
+    events: { Accept: "example/event-request" }
   })
 });
 
 const splitResponse = splitHTTPResponseStream(response);
 // splits the response into an iterable of representation and notifications
 
-const representation = await splitResponse.next();
-// Isolate the representation
-// API identical to fetch Response
+const {done, value: representation} = await splitResponse.next();
+if (!done) {
+  // do something with the representation
+  // API identical to fetch Response
+}
 
 for await (const notification of splitResponse) {
   // do something with a notification
@@ -1354,7 +1356,7 @@ for await (const notification of splitResponse) {
         </figcaption></figure>
 </div>
 <div id="intro-content-negotiation">
-<p id="section-1-7">Unlike other HTTP based <span id="iref-notification-11" class="iref"></span><span id="iref-event-notification-12" class="iref"></span><a href="#notification" class="internal xref">event notification</a> mechanisms, Events Query supports content negotiation for notifications, just like representations. Thus, the Events Query protocol preserves the flexibility of interaction afforded by HTTP and extends it to notifications.<a href="#section-1-7" class="pilcrow">¶</a></p>
+<p id="section-1-7">Unlike other HTTP based <span id="iref-notification-11" class="iref"></span><span id="iref-event-notification-12" class="iref"></span><a href="#notification" class="internal xref">event notification</a> mechanisms, Events Query supports content negotiation for notifications, just like representations. Thus, the Events Query Protocol preserves the flexibility of interaction afforded by HTTP and extends it to notifications.<a href="#section-1-7" class="pilcrow">¶</a></p>
 </div>
 <div id="intro-sync">
 <p id="section-1-8">When combined with suitable synchronization mechanisms like Conflict Free Replicated Data Types (CRDT) or Operational Transforms (OT), such <span id="iref-notification-13" class="iref"></span><span id="iref-event-notification-14" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> can be used create representations that are "live" for user agents. This has the potential to immensely simplify the task of programming multi-author distributed real-time applications.<a href="#section-1-8" class="pilcrow">¶</a></p>
@@ -1602,8 +1604,8 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
 </div>
 <div id="duration-property">
 <section id="section-5.1.1">
-          <h4 id="name-the-duration-property">
-<a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-the-duration-property" class="section-name selfRef">The <code>duration</code> property</a>
+          <h4 id="name-duration-property">
+<a href="#section-5.1.1" class="section-number selfRef">5.1.1. </a><a href="#name-duration-property" class="section-name selfRef"><code>duration</code> Property</a>
           </h4>
 <span id="iref-duration-property-79" class="iref"></span>
           <div id="duration-property-request">
@@ -1624,7 +1626,7 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
         <h3 id="name-incremental-header-field">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-incremental-header-field" class="section-name selfRef"><code>Incremental</code> Header Field</a>
         </h3>
-<p id="section-5.2-1">A server providing <span id="iref-notification-80" class="iref"></span><span id="iref-event-notification-81" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> using the Events Query <span class="bcp14">MUST</span> include in the response the <code>Incremental</code> header field (<span>[<a href="#INCREMENTAL-HTTP-MESSAGES" class="cite xref">INCREMENTAL-HTTP-MESSAGES</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-incremental-00#section-3" class="relref">Section 3</a></span>) with its value set to <code>?0</code>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">A server providing <span id="iref-notification-80" class="iref"></span><span id="iref-event-notification-81" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> using the Events Query Protocol <span class="bcp14">MUST</span> include in the response the <code>Incremental</code> header field (<span>[<a href="#INCREMENTAL-HTTP-MESSAGES" class="cite xref">INCREMENTAL-HTTP-MESSAGES</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-incremental-00#section-3" class="relref">Section 3</a></span>) with its value set to <code>?0</code>.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="data-model">
@@ -1777,14 +1779,22 @@ Type: Update
         <h3 id="name-request-2">
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-request-2" class="section-name selfRef">Request</a>
         </h3>
-<p id="section-8.1-1">To request a stream of <span id="iref-notification-99" class="iref"></span><span id="iref-event-notification-100" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> from a resource, a client:
-+ <span class="bcp14">MUST</span> use the <span id="iref-events-query-data-model-101" class="iref"></span><a href="#data-model" class="internal xref">Events Query Data Model</a> (<a href="#data-model" class="auto internal xref">Section 5.3</a>) in an appropriate media-type when issuing a <span id="iref-subscription-102" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request using the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-10#section-3" class="relref">Section 3</a></span>).
-+ <span class="bcp14">MUST</span> specify the <span id="iref-events-property-103" class="iref"></span><a href="#data-model-property-events" class="internal xref"><code>events</code></a> property (<a href="#data-model-property-events" class="auto internal xref">Section 5.3, Paragraph 3</a>) in the body of the <span id="iref-subscription-104" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.
-+ <span class="bcp14">MAY</span> specify any header field under the <span id="iref-events-property-105" class="iref"></span><a href="#data-model-property-events" class="internal xref"><code>events</code></a> property in the body of the <span id="iref-subscription-106" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">A client can also negotiate the form of the representation that encapsulates the <span id="iref-notification-107" class="iref"></span><span id="iref-event-notification-108" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> using header fields. Since the response carries an encapsulating representation, header fields can no longer be used to negotiate the form of an <span id="iref-notification-109" class="iref"></span><span id="iref-event-notification-110" class="iref"></span><a href="#notification" class="internal xref">event notification</a> itself like in the case of a <a href="#single-notification-request" class="auto internal xref">Section 7.1</a>.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">To request a stream of <span id="iref-notification-99" class="iref"></span><span id="iref-event-notification-100" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> from a resource, a client:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8.1-2.1">
+            <p id="section-8.1-2.1.1"><span class="bcp14">MUST</span> use the <span id="iref-events-query-data-model-101" class="iref"></span><a href="#data-model" class="internal xref">Events Query Data Model</a> (<a href="#data-model" class="auto internal xref">Section 5.3</a>) in an appropriate media-type when issuing a <span id="iref-subscription-102" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request using the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-10#section-3" class="relref">Section 3</a></span>).<a href="#section-8.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.1-2.2">
+            <p id="section-8.1-2.2.1"><span class="bcp14">MUST</span> specify the <span id="iref-events-property-103" class="iref"></span><a href="#data-model-property-events" class="internal xref"><code>events</code></a> property (<a href="#data-model-property-events" class="auto internal xref">Section 5.3, Paragraph 3</a>) in the body of the <span id="iref-subscription-104" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.<a href="#section-8.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-8.1-2.3">
+            <p id="section-8.1-2.3.1"><span class="bcp14">MAY</span> specify any header field under the <span id="iref-events-property-105" class="iref"></span><a href="#data-model-property-events" class="internal xref"><code>events</code></a> property in the body of the <span id="iref-subscription-106" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.<a href="#section-8.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.1-3">A client can also negotiate the form of the representation that encapsulates the <span id="iref-notification-107" class="iref"></span><span id="iref-event-notification-108" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> using header fields. Since the response carries an encapsulating representation, header fields can no longer be used to negotiate the form of an <span id="iref-notification-109" class="iref"></span><span id="iref-event-notification-110" class="iref"></span><a href="#notification" class="internal xref">event notification</a> itself like in the case of a <a href="#single-notification-request" class="auto internal xref">Section 7.1</a>.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
 <span id="name-multiple-notifications-requ"></span><div id="multiple-notifications-request-example">
 <figure id="figure-7">
-          <div class="lang-http-message sourcecode" id="section-8.1-3.1">
+          <div class="lang-http-message sourcecode" id="section-8.1-4.1">
 <pre>
 QUERY /foo HTTP/1.1
 Host: example.org
@@ -1860,14 +1870,22 @@ Type: Delete
         <h3 id="name-request-3">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-request-3" class="section-name selfRef">Request</a>
         </h3>
-<p id="section-9.1-1">To request that a representation of the resource be sent along with events notifications, a client:
-+ <span class="bcp14">MUST</span> use the <span id="iref-events-query-data-model-119" class="iref"></span><a href="#data-model" class="internal xref">Events Query Data Model</a> (<a href="#data-model" class="auto internal xref">Section 5.3</a>) in an appropriate media-type when issuing a <span id="iref-subscription-120" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request using the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-10#section-3" class="relref">Section 3</a></span>).
-+ <span class="bcp14">MUST</span> specify the <span id="iref-state-property-121" class="iref"></span><a href="#data-model-property-state" class="internal xref"><code>state</code></a> property (<a href="#data-model-property-state" class="auto internal xref">Section 5.3, Paragraph 4</a>) in the body of the <span id="iref-subscription-122" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.
-+ <span class="bcp14">MAY</span> specify any header field under the <span id="iref-state-property-123" class="iref"></span><a href="#data-model-property-state" class="internal xref"><code>state</code></a> property in the body of the <span id="iref-subscription-124" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
-<p id="section-9.1-2">Otherwise, the request is identical to a <span><a href="#multiple-notifications-request" class="internal xref">Multiple Notifications Request</a> (<a href="#multiple-notifications-request" class="auto internal xref">Section 8.1</a>)</span>:<a href="#section-9.1-2" class="pilcrow">¶</a></p>
+<p id="section-9.1-1">To request that a representation of the resource be sent along with events notifications, a client:<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-9.1-2.1">
+            <p id="section-9.1-2.1.1"><span class="bcp14">MUST</span> use the <span id="iref-events-query-data-model-119" class="iref"></span><a href="#data-model" class="internal xref">Events Query Data Model</a> (<a href="#data-model" class="auto internal xref">Section 5.3</a>) in an appropriate media-type when issuing a <span id="iref-subscription-120" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request using the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-10#section-3" class="relref">Section 3</a></span>).<a href="#section-9.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-9.1-2.2">
+            <p id="section-9.1-2.2.1"><span class="bcp14">MUST</span> specify the <span id="iref-state-property-121" class="iref"></span><a href="#data-model-property-state" class="internal xref"><code>state</code></a> property (<a href="#data-model-property-state" class="auto internal xref">Section 5.3, Paragraph 4</a>) in the body of the <span id="iref-subscription-122" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.<a href="#section-9.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-9.1-2.3">
+            <p id="section-9.1-2.3.1"><span class="bcp14">MAY</span> specify any header field under the <span id="iref-state-property-123" class="iref"></span><a href="#data-model-property-state" class="internal xref"><code>state</code></a> property in the body of the <span id="iref-subscription-124" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> query.<a href="#section-9.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-9.1-3">Otherwise, the request is identical to a <span><a href="#multiple-notifications-request" class="internal xref">Multiple Notifications Request</a> (<a href="#multiple-notifications-request" class="auto internal xref">Section 8.1</a>)</span>:<a href="#section-9.1-3" class="pilcrow">¶</a></p>
 <span id="name-representation-and-notifica"></span><div id="representation-request-example">
 <figure id="figure-9">
-          <div class="lang-http-message sourcecode" id="section-9.1-3.1">
+          <div class="lang-http-message sourcecode" id="section-9.1-4.1">
 <pre>
 QUERY /foo HTTP/1.1
 Host: example.org
@@ -1944,9 +1962,13 @@ Type: Update
         <h3 id="name-http-field-registration">
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-http-field-registration" class="section-name selfRef">HTTP Field Registration</a>
         </h3>
-<p id="section-11.1-1">IANA is requested to add the following entry in the "<a href="https://www.iana.org/assignments/http-fields/">Hypertext Transfer Protocol (HTTP) Field Name Registry</a>" defined by <span>[<a href="#HTTP" class="cite xref">HTTP</a>]</span>:<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.1-1">IANA is requested to add the following entry in the "<a href="https://www.iana.org/assignments/http-fields/">Hypertext Transfer Protocol (HTTP) Field Name Registry</a>" (See <span><a href="https://rfc-editor.org/rfc/rfc9110#section-16.1.1" class="relref">Section 16.1.1</a> of [<a href="#HTTP" class="cite xref">HTTP</a>]</span>):<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+<span id="name-list-of-http-field-name-reg"></span><div id="field-registration-list">
 <table class="center" id="table-1">
-          <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
+          <caption>
+<a href="#table-1" class="selfRef">Table 1</a>:
+<a href="#name-list-of-http-field-name-reg" class="selfRef">List of HTTP Field Name registrations</a>
+          </caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Header Field Names</th>
@@ -1968,6 +1990,7 @@ Type: Update
             </tr>
           </tbody>
         </table>
+</div>
 </section>
 </div>
 <div id="events-field-registry">
@@ -1993,13 +2016,10 @@ Type: Update
               <p id="section-11.2.1-2.3.1">Optional Parameters: An enumeration of optional parameters, and their values, associated with the entry.<a href="#section-11.2.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-2.4">
-              <p id="section-11.2.1-2.4.1">Description:<a href="#section-11.2.1-2.4.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-2.4.1">Reference:<a href="#section-11.2.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-2.5">
-              <p id="section-11.2.1-2.5.1">Reference:<a href="#section-11.2.1-2.5.1" class="pilcrow">¶</a></p>
-</li>
-            <li class="normal" id="section-11.2.1-2.6">
-              <p id="section-11.2.1-2.6.1">Notes: (optional)<a href="#section-11.2.1-2.6.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-2.5.1">Comments: (optional)<a href="#section-11.2.1-2.5.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2010,13 +2030,17 @@ Type: Update
 <a href="#section-11.2.2" class="section-number selfRef">11.2.2. </a><a href="#name-initial-registry-contents" class="section-name selfRef">Initial Registry Contents</a>
           </h4>
 <p id="section-11.2.2-1">The initial contents of the HTTP Events Field Registry are:<a href="#section-11.2.2-1" class="pilcrow">¶</a></p>
+<span id="name-list-of-http-events-field-p"></span><div id="events-property-registration-list">
 <table class="center" id="table-2">
-            <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
+            <caption>
+<a href="#table-2" class="selfRef">Table 2</a>:
+<a href="#name-list-of-http-events-field-p" class="selfRef">List of HTTP Events Field property name registrations</a>
+            </caption>
 <thead>
               <tr>
                 <th class="text-left" rowspan="1" colspan="1">Property Name</th>
                 <th class="text-left" rowspan="1" colspan="1">Structured-Type</th>
-                <th class="text-left" rowspan="1" colspan="1">Description</th>
+                <th class="text-left" rowspan="1" colspan="1">Optional Parameters</th>
                 <th class="text-left" rowspan="1" colspan="1">Reference</th>
               </tr>
             </thead>
@@ -2026,14 +2050,14 @@ Type: Update
                   <span id="iref-duration-property-128" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a>
 </td>
                 <td class="text-left" rowspan="1" colspan="1">Integer Item</td>
-                <td class="text-left" rowspan="1" colspan="1">See <a href="#duration-property" class="auto internal xref">Section 5.1.1</a>
-</td>
+                <td class="text-left" rowspan="1" colspan="1">-</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#duration-property" class="auto internal xref">Section 5.1.1</a>
 </td>
               </tr>
             </tbody>
           </table>
+</div>
 </section>
 </div>
 </section>
@@ -2164,7 +2188,7 @@ Type: Update
                   <p id="appendix-B-2.1.2.1.1.2.1">
                     <strong><em><a href="#duration-property" class="auto internal xref">Section 5.1.1</a></em></strong>; 
 <a href="#section-8.2.1-1" class="auto internal xref">Section 8.2.1, Paragraph 1</a>; 
-<a href="#table-2" class="auto internal xref">Table 2</a><a href="#appendix-B-2.1.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#events-property-registration-list" class="auto internal xref">Table 2</a><a href="#appendix-B-2.1.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
@@ -2221,7 +2245,7 @@ Type: Update
 <a href="#section-7.2-3.2" class="auto internal xref">Section 7.2, Paragraph 3.2</a>; 
 <a href="#section-8-1" class="auto internal xref">Section 8, Paragraph 1</a>; 
 <a href="#section-8.1-1" class="auto internal xref">Section 8.1, Paragraph 1</a>; 
-<a href="#section-8.1-2" class="auto internal xref">Section 8.1, Paragraph 2</a>; 
+<a href="#section-8.1-3" class="auto internal xref">Section 8.1, Paragraph 3</a>; 
 <a href="#section-8.2-1" class="auto internal xref">Section 8.2, Paragraph 1</a>; 
 <a href="#section-9-1" class="auto internal xref">Section 9, Paragraph 1</a><a href="#appendix-B-2.2.2.1.1.4.1" class="pilcrow">¶</a></p>
 </dd>
@@ -2231,7 +2255,7 @@ Type: Update
                   <p id="appendix-B-2.2.2.1.1.6.1">
                     <strong><em><a href="#events-field" class="auto internal xref">Section 5.1</a></em></strong>; 
 <a href="#section-8.2.1-1" class="auto internal xref">Section 8.2.1, Paragraph 1</a>; 
-<a href="#table-1" class="auto internal xref">Table 1</a>; 
+<a href="#field-registration-list" class="auto internal xref">Table 1</a>; 
 <a href="#section-11.2-1" class="auto internal xref">Section 11.2, Paragraph 1</a>; 
 <a href="#section-11.2.1-2.1.1" class="auto internal xref">Section 11.2.1, Paragraph 2.1.1</a><a href="#appendix-B-2.2.2.1.1.6.1" class="pilcrow">¶</a></p>
 </dd>
@@ -2239,15 +2263,16 @@ Type: Update
 <dt id="appendix-B-2.2.2.1.1.7">events (property)</dt>
                 <dd style="margin-left: 1.5em" id="appendix-B-2.2.2.1.1.8">
                   <p id="appendix-B-2.2.2.1.1.8.1">
-                    <a href="#section-8.1-1" class="auto internal xref">Section 8.1, Paragraph 1</a><a href="#appendix-B-2.2.2.1.1.8.1" class="pilcrow">¶</a></p>
+                    <a href="#section-8.1-2.2.1" class="auto internal xref">Section 8.1, Paragraph 2.2.1</a>; 
+<a href="#section-8.1-2.3.1" class="auto internal xref">Section 8.1, Paragraph 2.3.1</a><a href="#appendix-B-2.2.2.1.1.8.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
 <dt id="appendix-B-2.2.2.1.1.9">Events Query Data Model</dt>
                 <dd style="margin-left: 1.5em" id="appendix-B-2.2.2.1.1.10">
                   <p id="appendix-B-2.2.2.1.1.10.1">
                     <strong><em><a href="#data-model" class="auto internal xref">Section 5.3</a></em></strong>; 
-<a href="#section-8.1-1" class="auto internal xref">Section 8.1, Paragraph 1</a>; 
-<a href="#section-9.1-1" class="auto internal xref">Section 9.1, Paragraph 1</a><a href="#appendix-B-2.2.2.1.1.10.1" class="pilcrow">¶</a></p>
+<a href="#section-8.1-2.1.1" class="auto internal xref">Section 8.1, Paragraph 2.1.1</a>; 
+<a href="#section-9.1-2.1.1" class="auto internal xref">Section 9.1, Paragraph 2.1.1</a><a href="#appendix-B-2.2.2.1.1.10.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
@@ -2313,7 +2338,7 @@ Type: Update
 <a href="#section-7.2-3.2" class="auto internal xref">Section 7.2, Paragraph 3.2</a>; 
 <a href="#section-8-1" class="auto internal xref">Section 8, Paragraph 1</a>; 
 <a href="#section-8.1-1" class="auto internal xref">Section 8.1, Paragraph 1</a>; 
-<a href="#section-8.1-2" class="auto internal xref">Section 8.1, Paragraph 2</a>; 
+<a href="#section-8.1-3" class="auto internal xref">Section 8.1, Paragraph 3</a>; 
 <a href="#section-8.2-1" class="auto internal xref">Section 8.2, Paragraph 1</a>; 
 <a href="#section-9-1" class="auto internal xref">Section 9, Paragraph 1</a><a href="#appendix-B-2.4.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
@@ -2360,7 +2385,8 @@ Type: Update
                 <dt id="appendix-B-2.6.2.1.1.1">state (property)</dt>
                 <dd style="margin-left: 1.5em" id="appendix-B-2.6.2.1.1.2">
                   <p id="appendix-B-2.6.2.1.1.2.1">
-                    <a href="#section-9.1-1" class="auto internal xref">Section 9.1, Paragraph 1</a><a href="#appendix-B-2.6.2.1.1.2.1" class="pilcrow">¶</a></p>
+                    <a href="#section-9.1-2.2.1" class="auto internal xref">Section 9.1, Paragraph 2.2.1</a>; 
+<a href="#section-9.1-2.3.1" class="auto internal xref">Section 9.1, Paragraph 2.3.1</a><a href="#appendix-B-2.6.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
 <dt id="appendix-B-2.6.2.1.1.3">subscriber</dt>
@@ -2375,8 +2401,12 @@ Type: Update
                   <p id="appendix-B-2.6.2.1.1.6.1">
                     <a href="#section-4.3-3" class="auto internal xref">Section 4.3, Paragraph 3</a>; 
 <strong><em><a href="#subscription" class="auto internal xref">Section 4.4</a></em></strong>; 
-<a href="#section-8.1-1" class="auto internal xref">Section 8.1, Paragraph 1</a>; 
-<a href="#section-9.1-1" class="auto internal xref">Section 9.1, Paragraph 1</a><a href="#appendix-B-2.6.2.1.1.6.1" class="pilcrow">¶</a></p>
+<a href="#section-8.1-2.1.1" class="auto internal xref">Section 8.1, Paragraph 2.1.1</a>; 
+<a href="#section-8.1-2.2.1" class="auto internal xref">Section 8.1, Paragraph 2.2.1</a>; 
+<a href="#section-8.1-2.3.1" class="auto internal xref">Section 8.1, Paragraph 2.3.1</a>; 
+<a href="#section-9.1-2.1.1" class="auto internal xref">Section 9.1, Paragraph 2.1.1</a>; 
+<a href="#section-9.1-2.2.1" class="auto internal xref">Section 9.1, Paragraph 2.2.1</a>; 
+<a href="#section-9.1-2.3.1" class="auto internal xref">Section 9.1, Paragraph 2.3.1</a><a href="#appendix-B-2.6.2.1.1.6.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>

@@ -85,7 +85,7 @@ Table of Contents
      4.4.  Subscription
    5.  Preliminaries
      5.1.  Events Header Field
-       5.1.1.  The duration property
+       5.1.1.  duration Property
      5.2.  Incremental Header Field
      5.3.  Events Query Data Model
    6.  Discovery
@@ -146,24 +146,26 @@ Table of Contents
    responses can be consumed with just a few lines of code, as
    illustrated in the JavaScript example below:
 
-   const response = fetch('http://example.com', {
-     method: 'QUERY',
+   const response = fetch("http://example.com/foo", {
+     method: "QUERY",
      headers: {
-       'Content-Type': 'application/json',
-       Accept: 'application/http'
+       "Content-Type": "application/json",
+       Accept: "application/http"
      },
      body: JSON.stringify({
-       state: { Accept: 'text/plain' },
-       events: { Accept: 'example/event-request' }
+       state: { Accept: "text/plain" },
+       events: { Accept: "example/event-request" }
      })
    });
 
    const splitResponse = splitHTTPResponseStream(response);
    // splits the response into an iterable of representation and notifications
 
-   const representation = await splitResponse.next();
-   // Isolate the representation
-   // API identical to fetch Response
+   const {done, value: representation} = await splitResponse.next();
+   if (!done) {
+     // do something with the representation
+     // API identical to fetch Response
+   }
 
    for await (const notification of splitResponse) {
      // do something with a notification
@@ -174,7 +176,7 @@ Table of Contents
 
    Unlike other HTTP based event notification mechanisms, Events Query
    supports content negotiation for notifications, just like
-   representations.  Thus, the Events Query protocol preserves the
+   representations.  Thus, the Events Query Protocol preserves the
    flexibility of interaction afforded by HTTP and extends it to
    notifications.
 
@@ -400,7 +402,7 @@ Table of Contents
    NOT generate keys not registered with the HTTP Event Field Registry.
    Recipients MAY ignore keys that they are unaware of.
 
-5.1.1.  The duration property
+5.1.1.  duration Property
 
    The duration property MAY be used by a client in a request to specify
    the duration for which they prefer the response stream to remain
@@ -420,8 +422,8 @@ Table of Contents
 
 5.2.  Incremental Header Field
 
-   A server providing event notifications using the Events Query MUST
-   include in the response the Incremental header field
+   A server providing event notifications using the Events Query
+   Protocol MUST include in the response the Incremental header field
    ([INCREMENTAL-HTTP-MESSAGES], Section 3) with its value set to ?0.
 
 5.3.  Events Query Data Model
@@ -530,12 +532,16 @@ Table of Contents
 8.1.  Request
 
    To request a stream of event notifications from a resource, a client:
-   + MUST use the Events Query Data Model (Section 5.3) in an
-   appropriate media-type when issuing a subscription request using the
-   QUERY method ([HTTP-QUERY], Section 3). + MUST specify the events
-   property (Section 5.3, Paragraph 3) in the body of the subscription
-   query. + MAY specify any header field under the events property in
-   the body of the subscription query.
+
+   *  MUST use the Events Query Data Model (Section 5.3) in an
+      appropriate media-type when issuing a subscription request using
+      the QUERY method ([HTTP-QUERY], Section 3).
+
+   *  MUST specify the events property (Section 5.3, Paragraph 3) in the
+      body of the subscription query.
+
+   *  MAY specify any header field under the events property in the body
+      of the subscription query.
 
    A client can also negotiate the form of the representation that
    encapsulates the event notifications using header fields.  Since the
@@ -600,12 +606,17 @@ Table of Contents
 9.1.  Request
 
    To request that a representation of the resource be sent along with
-   events notifications, a client: + MUST use the Events Query Data
-   Model (Section 5.3) in an appropriate media-type when issuing a
-   subscription request using the QUERY method ([HTTP-QUERY],
-   Section 3). + MUST specify the state property (Section 5.3, Paragraph
-   4) in the body of the subscription query. + MAY specify any header
-   field under the state property in the body of the subscription query.
+   events notifications, a client:
+
+   *  MUST use the Events Query Data Model (Section 5.3) in an
+      appropriate media-type when issuing a subscription request using
+      the QUERY method ([HTTP-QUERY], Section 3).
+
+   *  MUST specify the state property (Section 5.3, Paragraph 4) in the
+      body of the subscription query.
+
+   *  MAY specify any header field under the state property in the body
+      of the subscription query.
 
    Otherwise, the request is identical to a Multiple Notifications
    Request (Section 8.1):
@@ -678,7 +689,8 @@ Table of Contents
 
    IANA is requested to add the following entry in the "Hypertext
    Transfer Protocol (HTTP) Field Name Registry
-   (https://www.iana.org/assignments/http-fields/)" defined by [HTTP]:
+   (https://www.iana.org/assignments/http-fields/)" (See Section 16.1.1
+   of [HTTP]):
 
     +====================+===========+=================+=============+
     | Header Field Names | Status    | Structured-Type | Reference   |
@@ -686,7 +698,7 @@ Table of Contents
     | Events             | Permanent | Dictionary      | Section 5.1 |
     +--------------------+-----------+-----------------+-------------+
 
-                                 Table 1
+              Table 1: List of HTTP Field Name registrations
 
 11.2.  The HTTP Events Field Registry
 
@@ -711,24 +723,23 @@ Table of Contents
    *  Optional Parameters: An enumeration of optional parameters, and
       their values, associated with the entry.
 
-   *  Description:
-
    *  Reference:
 
-   *  Notes: (optional)
+   *  Comments: (optional)
 
 11.2.2.  Initial Registry Contents
 
    The initial contents of the HTTP Events Field Registry are:
 
-    +===============+=================+===================+===========+
-    | Property Name | Structured-Type | Description       | Reference |
-    +===============+=================+===================+===========+
-    | duration      | Integer Item    | See Section 5.1.1 | Section   |
-    |               |                 |                   | 5.1.1     |
-    +---------------+-----------------+-------------------+-----------+
+   +===============+=================+=====================+===========+
+   | Property Name | Structured-Type | Optional            | Reference |
+   |               |                 | Parameters          |           |
+   +===============+=================+=====================+===========+
+   | duration      | Integer Item    | -                   | Section   |
+   |               |                 |                     | 5.1.1     |
+   +---------------+-----------------+---------------------+-----------+
 
-                                  Table 2
+       Table 2: List of HTTP Events Field property name registrations
 
 12.  References
 
@@ -847,14 +858,15 @@ Index
             Section 7.1, Paragraph 1; Section 7.1, Paragraph 2;
             Section 7.2, Paragraph 1; Section 7.2, Paragraph 3.2;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
-            Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
+            Section 8.1, Paragraph 3; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1
          events (header field)  *_Section 5.1_*; Section 8.2.1,
             Paragraph 1; Table 1; Section 11.2, Paragraph 1;
             Section 11.2.1, Paragraph 2.1.1
-         events (property)  Section 8.1, Paragraph 1
+         events (property)  Section 8.1, Paragraph 2.2.1; Section 8.1,
+            Paragraph 2.3.1
          Events Query Data Model  *_Section 5.3_*; Section 8.1,
-            Paragraph 1; Section 9.1, Paragraph 1
+            Paragraph 2.1.1; Section 9.1, Paragraph 2.1.1
 
       I
 
@@ -876,7 +888,7 @@ Index
             Section 5.2, Paragraph 1; Section 7.1, Paragraph 1;
             Section 7.1, Paragraph 2; Section 7.2, Paragraph 1;
             Section 7.2, Paragraph 3.2; Section 8, Paragraph 1;
-            Section 8.1, Paragraph 1; Section 8.1, Paragraph 2;
+            Section 8.1, Paragraph 1; Section 8.1, Paragraph 3;
             Section 8.2, Paragraph 1; Section 9, Paragraph 1
 
       O
@@ -887,11 +899,14 @@ Index
 
       S
 
-         state (property)  Section 9.1, Paragraph 1
+         state (property)  Section 9.1, Paragraph 2.2.1; Section 9.1,
+            Paragraph 2.3.1
          subscriber  Section 4.3, Paragraph 2; *_Section 4.4, Paragraph
             1_*
          subscription  Section 4.3, Paragraph 3; *_Section 4.4_*;
-            Section 8.1, Paragraph 1; Section 9.1, Paragraph 1
+            Section 8.1, Paragraph 2.1.1; Section 8.1, Paragraph 2.2.1;
+            Section 8.1, Paragraph 2.3.1; Section 9.1, Paragraph 2.1.1;
+            Section 9.1, Paragraph 2.2.1; Section 9.1, Paragraph 2.3.1
 
 Author's Address
 
