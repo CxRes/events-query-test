@@ -4,7 +4,7 @@
 
 Building Blocks for HTTP APIs                                   R. Gupta
 Internet-Draft                                               14 May 2025
-Intended status: Informational                                          
+Intended status: Standards Track                                        
 Expires: 15 November 2025
 
 
@@ -170,7 +170,7 @@ Table of Contents
      // API identical to fetch Response
    }
 
-                    Figure 1: Events Query Fetch Example
+                    Figure 1: Events Query fetch example
 
    Unlike other HTTP based event notification mechanisms, Events Query
    supports content negotiation for notifications, just like
@@ -205,10 +205,10 @@ Table of Contents
 
    The goals of the Events Query are:
 
-   1.  to provide notifications only using the HTTP protocol [HTTP]
-       [HTTP] so that the clients fetching resources using HTTP are not
-       required to switch to another protocol for receiving event
-       notifications.
+   1.  to provide notifications only using the Hypertext Transfer
+       Protocol [HTTP], so that the clients fetching resources using
+       HTTP are not required to switch to another protocol for receiving
+       event notifications.
 
    2.  to provide updates directly from a resource of interest,
        obviating the need to create another endpoint for event
@@ -458,11 +458,14 @@ Table of Contents
    resource by examining the Accept-Query header field ([HTTP-QUERY],
    Section 3) in a response for an appropriate media-type.
 
-   {::include examples/discovery/request.http}
+   HEAD /foo HTTP/1.1
+   Host: example.org
 
                         Figure 3: Discovery Request
 
-   {::include examples/discovery/response.http}
+   HTTP/1.1 200 OK
+   Accept: text/html
+   Accept-Query: "example/events-request"
 
                         Figure 4: Discovery Response
 
@@ -481,7 +484,11 @@ Table of Contents
    A client can further negotiate the form of the event notification
    using header fields.
 
-   {::include examples/single-notification/request.http}
+   QUERY /foo HTTP/1.1
+   Host: example.org
+   Content-Type: example/event-request
+   Accept: example/event-response
+   Events: duration=0
 
                 Figure 5: Single Event Notification Request
 
@@ -492,7 +499,15 @@ Table of Contents
    close the connection immediately after transmitting the event
    notification.
 
-   {::include examples/single-notification/response.http}
+   HTTP/1.1 200 OK
+   Host: example.org
+   Accept-Query: example/event-request
+   Content-Type: example/event-response
+   Incremental: ?0
+   Events: duration=120
+
+   Event-ID: 456
+   Type: Update
 
                 Figure 6: Single Event Notification Response
 
@@ -528,7 +543,13 @@ Table of Contents
    no longer be used to negotiate the form of an event notification
    itself like in the case of a Section 7.1.
 
-   {::include examples/multiple-notifications/request.http}
+   QUERY /foo HTTP/1.1
+   Host: example.org
+   Content-Type: example/event-request
+   Events: duration=0
+
+   events:
+     Accept: example/event-response
 
                   Figure 7: Multiple Notifications Request
 
@@ -539,7 +560,26 @@ Table of Contents
    be using application/http media-type ([HTTP/1.1], Section 10.2) for
    the purpose of illustration.
 
-   {::include examples/multiple-notifications/response.http}
+   HTTP/1.1 200 OK
+   Host: example.org
+   Accept-Query: example/event-request
+   Content-Type: application/http
+   Incremental: ?0
+   Events: duration=600
+
+   HTTP/1.1 200 OK
+   Content-Type: example/event-response
+   Content-Length: 31
+
+   Event-ID: 456
+   Type: Update
+
+   HTTP/1.1 200 OK
+   Content-Type: example/event-response
+   Content-Length: 31
+
+   Event-ID: 789
+   Type: Delete
 
                  Figure 8: Multiple Notifications Response
 
@@ -570,7 +610,14 @@ Table of Contents
    Otherwise, the request is identical to a Multiple Notifications
    Request (Section 8.1):
 
-   {::include examples/representation/request.http}
+   QUERY /foo HTTP/1.1
+   Host: example.org
+   Content-Type: example/event-request
+
+   state:
+     Accept: text/html
+   events:
+     Accept: example/event-response
 
              Figure 9: Representation and Notifications Request
 
@@ -582,7 +629,25 @@ Table of Contents
    application/http media-type ([HTTP/1.1], Section 10.2) for the
    purpose of illustration.
 
-   {::include examples/representation/response.http}
+   HTTP/1.1 200 OK
+   Host: example.org
+   Accept-Query: example/event-request
+   Content-Type: application/http
+   Incremental: ?0
+   Events: duration=600
+
+   HTTP/1.1 200 OK
+   Content-Type: text/plain
+   Content-Length: 14
+
+   Hello World!
+
+   HTTP/1.1 200 OK
+   Content-Type: example/event-response
+   Content-Length: 31
+
+   Event-ID: 789
+   Type: Update
 
             Figure 10: Representation and Notifications Response
 
@@ -726,10 +791,12 @@ Table of Contents
               Ed., "HTTP/1.1", STD 99, RFC 9112, DOI 10.17487/RFC9112,
               June 2022, <https://www.rfc-editor.org/rfc/rfc9112>.
 
-   [REST]     Fielding, R., "Architectural Styles and the Design of
-              Network-based Software Architectures", Doctoral
-              Dissertation, University of California, Irvine,
-              <https://roy.gbiv.com/pubs/dissertation/top.htm>.
+   [REST]     Fielding, R. T., "Representational State Transfer (REST)",
+              Chapter 5, Architectural Styles and the Design of Network-
+              based Software Architectures, Doctoral Dissertation,
+              University of California, Irvine ,
+              <https://roy.gbiv.com/pubs/dissertation/
+              rest_arch_style.htm>.
 
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
