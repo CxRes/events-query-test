@@ -12,15 +12,15 @@ IANA is requested to add the following entry in the "[Hypertext Transfer Protoco
 
 ## The HTTP Events Field Registry {#events-field-registry}
 
-IANA is requested to create a new registry, "HTTP Events Field Registry", under the [Hypertext Transfer Protocol (HTTP) Parameters](https://www.iana.org/assignments/http-parameters/) registry. New registrations will use the Specification Required policy ({{RFC8126, Section 4.6}}).
+IANA is requested to create a new registry, "HTTP Events Field Registry", under the [Hypertext Transfer Protocol (HTTP) Parameters](https://www.iana.org/assignments/http-parameters/) registry to register properties for use in the =Events= header field. New registrations will use the Specification Required policy ({{RFC8126, Section 4.6}}).
 
 ### Template {#events-field-registry-template}
 
 The registration template for the "HTTP Events Field Registry" is:
 
-+ Name: A Dictionary ({{[HTTP-SF], Section 3.2}}) key to be used in the =Events= header field.
++ Property Name: A Dictionary ({{HTTP-SF, Section 3.2}}) key to be used in the =Events= header field.
 
-+ Structured Type: The Structured Data Type of the value associated with the key, according to requirements in {{Section 3.2 of [HTTP-SF]}}.
++ Structured Type: The Structured Data Type of the value associated with the key, according to requirements in {{Section 3.2 of HTTP-SF}}.
 
 + Optional Parameters: An enumeration of optional parameters, and their values, associated with the entry.
 
@@ -28,15 +28,15 @@ The registration template for the "HTTP Events Field Registry" is:
 
 + Reference:
 
-+ Notes: [optional]
++ Notes: (optional)
 
 ### Initial Registry Contents {#events-field-registry-initial-content}
 
 The initial contents of the HTTP Events Field Registry are:
 
-| Name        | Structured-Type  | Description           | Reference        |
+| Property Name  | Structured-Type  | Description                | Reference             |
 |-
-| =duration=  | Integer          | See {{duration-key}}  | {{duration-key}} |
+| =duration=     | Integer Item     | See {{duration-property}}  | {{duration-property}} |
 
 <!--
 ## HTTP Status Code Registration {#status-code-registration}

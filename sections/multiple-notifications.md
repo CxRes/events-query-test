@@ -27,4 +27,4 @@ The response stream encapsulates multiple event notifications (typically, but no
 
 ### Termination {#multiple-notifications-response-termination}
 
-Apart from the connection exceeding time period set in the =duration= key of the =Events= header field, a server MUST end the response immediately after the resource has been deleted.
+Apart from the connection exceeding time period set in the =duration= property of the =Events= header field, a server MUST end the response immediately after the resource has been deleted.

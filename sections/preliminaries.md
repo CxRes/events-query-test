@@ -6,25 +6,25 @@
 The =Events= header field MAY be used by a client in request to communicate preferences for the {{&protocol}} response. The =Events= header field is not meant for content negotiation.
 
 {: #events-field-response}
-The =Events= header field MUST be used by a server to communicate the properties of a {{&protocol}} response.
+The =Events= header field MUST be used by a server to communicate the properties of a response carrying event notifications.
 
-{: #events-field-type}
-=Events= is a Dictionary structured header field ({{HTTP-SF}}, Section 3.2). The order of keys is insignificant.
+{: #events-field-stipulations}
+=Events= is a Dictionary structured header field ({{HTTP-SF, Section 3.2}}). The order of keys is insignificant. Senders SHOULD NOT generate keys not registered with the HTTP Event Field Registry. Recipients MAY ignore keys that they are unaware of.
 
 *[=Events=]: #events-field (((events (header field) ))) `Events`
 
-### The `duration` key {#duration-key}
+### The `duration` property {#duration-property}
 
-{: #duration-key-request}
-The =duration= key MAY be used by a client in a request to specify the duration for which they prefer the response stream to remain open. A server is completely free to ignore this key.
+{: #duration-property-request}
+The =duration= property MAY be used by a client in a request to specify the duration for which they prefer the response stream to remain open. A server is completely free to ignore this property.
 
-{: #duration-key-response}
-The =duration= key MUST be used by a server in a response to indicate the minimum duration for which a server intends to keep the response stream open. This key is merely advisory, and a server might still close the response stream before this duration.
+{: #duration-property-response}
+The =duration= property MUST be used by a server in a response to indicate the minimum duration for which a server intends to keep the response stream open. This property is merely advisory, and a server might still close the response stream before this duration.
 
-{: #duration-key-type}
-The =duration= key is of the type Integer ({{HTTP-SF}}, Section 3.3.1) and is used to indicate duration in seconds. Only positive integer values are valid. A value of `0` indicates an indefinite duration.
+{: #duration-property-stipulations}
+The =duration= property is a key specified in the =Events= header field of the type Integer ({{HTTP-SF, Section 3.3.1}}). It is used to indicate duration in seconds. Only positive integer values are valid. A value of `0` indicates an indefinite duration. If the value of the =duration= property fails to conform to these stipulations, the key MUST be ignored.
 
-*[=duration=]: #duration-key (((duration (key) ))) `duration`
+*[=duration=]: #duration-property (((duration (property) ))) `duration`
 
 ## `Incremental` Header Field {#incremental-header}
 

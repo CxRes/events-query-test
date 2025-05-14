@@ -18,7 +18,7 @@ A client can further negotiate the form of the event notification using header f
 
 Sometimes, a server needs to close the connection before an event occurs. To allow servers to signal the intentional closure of the stream, we define the `555 (Connection Timeout)` status code.
 
-If the server needs to close the connection, such as, on account of exceeding the time limit specified in the =duration= key of the =Events= header field, it MUST send a `555 (Connection Timeout)` status code in the response.
+If the server needs to close the connection, such as, on account of exceeding the time limit specified in the =duration= property of the =Events= header field, it MUST send a `555 (Connection Timeout)` status code in the response.
 
 // Trailer fields to close connection
 -->
