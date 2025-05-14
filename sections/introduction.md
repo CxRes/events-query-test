@@ -40,7 +40,7 @@ for await (const notification of splitResponse) {
   // API identical to fetch Response
 }
 ~~~
-{: #events-query-fetch-example sourcecode-name="events-query-fetch-example.js" title="Events Query Fetch Example"}
+{: #events-query-fetch-example sourcecode-name="events-query-fetch-example.js" title="Events Query fetch example"}
 
 {: #intro-content-negotiation}
 Unlike other HTTP based event notification mechanisms, {{&protocol}} supports content negotiation for notifications, just like representations. Thus, the {{&protocol}} protocol preserves the flexibility of interaction afforded by HTTP and extends it to notifications.

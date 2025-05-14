@@ -1,6 +1,6 @@
 ---
 title: "HTTP Events Query"
-category: info
+category: std
 
 docname: draft-gupta-httpapi-events-query-latest
 submissiontype: IETF
@@ -42,19 +42,20 @@ informative:
   DESIGN-FRAMEWORK: DOI.10.1145/267896.267920
   HTTP-CACHING: RFC9111
   REST:
-    target: https://roy.gbiv.com/pubs/dissertation/top.htm
-    title: Architectural Styles and the Design of Network-based Software Architectures
+    target: https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm
+    title: Representational State Transfer (REST)
     author:
       -
-        ins: R. Fielding
+        ins: R. T. Fielding
         name: Roy Thomas Fielding
         org: University of California, Irvine
     date:
       month: September
       year: 2000
-    refcontent: Doctoral Dissertation, University of California, Irvine
+    refcontent: Chapter 5, Architectural Styles and the Design of Network-based Software Architectures
+    seriesinfo: Doctoral Dissertation, University of California, Irvine
     format:
-      PDF: https://roy.gbiv.com/pubs/dissertation/fielding_dissertation.pdf
+      PDF: https://roy.gbiv.com/pubs/dissertation/fielding_dissertation.pdf#G16.1026811
   RFC7838:
   RFC9112:
     -: HTTP1
@@ -88,13 +89,13 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 
 {::include sections/preliminaries.md}
 
-{::include sections/discovery.md}
+{::include-nested sections/discovery.md}
 
-{::include sections/single-notification.md}
+{::include-nested sections/single-notification.md}
 
-{::include sections/multiple-notifications.md}
+{::include-nested sections/multiple-notifications.md}
 
-{::include sections/representation.md}
+{::include-nested sections/representation.md}
 
 
 <!-- Considerations Sections -->
