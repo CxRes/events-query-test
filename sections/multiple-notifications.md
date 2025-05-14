@@ -26,6 +26,4 @@ The response stream encapsulates multiple event notifications (typically, but no
 ~~~
 {: sourcecode-name="multiple-notifications-response-example.http" #multiple-notifications-response-example title="Multiple Notifications Response"}
 
-### Termination {#multiple-notifications-response-termination}
-
 Apart from the connection exceeding time period set in the =duration= property of the =Events= header field, a server MUST end the response immediately after the resource has been deleted.

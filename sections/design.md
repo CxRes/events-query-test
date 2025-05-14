@@ -67,9 +67,10 @@ The {{&protocol}} Protocol does not specify:
 
 + {: #no-scope--representations}
 Specific representations for request or response. For the purposes of illustration, we shall use:
-  + An imaginary `example/event-request` media-type for the request.
-  + An imaginary `example/event-response` media-type for the response with a single event notification.
-  + `application/http` media-type ({{-HTTP1, Section 10.2}}) as the composite media-type for the response that includes a representation and/or multiple event notifications.
+
+    + An imaginary `example/event-request` media-type for the request.
+    + An imaginary `example/event-response` media-type for the response with a single event notification.
+    + `application/http` media-type ({{-HTTP1, Section 10.2}}) as the composite media-type for the response that includes a representation and/or multiple event notifications.
 
 ## Limitations {#limitations}
 

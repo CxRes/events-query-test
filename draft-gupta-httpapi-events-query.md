@@ -46,7 +46,7 @@ informative:
     title: Representational State Transfer (REST)
     author:
       -
-        ins: R. T. Fielding
+        ins: R. Fielding
         name: Roy Thomas Fielding
         org: University of California, Irvine
     date:

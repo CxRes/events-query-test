@@ -17,26 +17,27 @@ IANA is requested to create a new registry, "HTTP Events Field Registry", under 
 
 ### Template {#events-field-registry-template}
 
-The registration template for the "HTTP Events Field Registry" is:
+The registration of an =Events= property MUST include the following fields:
 
 + Property Name: A Dictionary ({{HTTP-SF, Section 3.2}}) key to be used in the =Events= header field.
-
 + Structured Type: The Structured Data Type of the value associated with the key, according to requirements in {{Section 3.2 of HTTP-SF}}.
++ Reference: A pointer to the specification text.
 
-+ Optional Parameters: An enumeration of optional parameters, and their values, associated with the entry.
+The registration MAY also include the following fields:
 
-+ Reference:
-
-+ Comments: (optional)
++ Optional Parameters: An enumeration of optional parameters, and their values, associated with the property value.
++ Comments: Additional information to be included in the template.
 
 ### Initial Registry Contents {#events-field-registry-initial-content}
 
 The initial contents of the HTTP Events Field Registry are:
 
-| Property Name  | Structured-Type  | Optional Parameters  | Reference             |
+| Property Name  | Structured-Type  | Reference             |
 |-
-| =duration=     | Integer Item     | -                    | {{duration-property}} |
+| =duration=     | Integer Item     | {{duration-property}} |
 {: title="List of HTTP Events Field property name registrations" #events-property-registration-list}
+
+
 <!--
 ## HTTP Status Code Registration {#status-code-registration}
 
