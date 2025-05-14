@@ -18,7 +18,8 @@
 Gemfile.lock
 archive.json
 draft-gupta-httpapi-events-query.xml
-draft-todo-yourname-protocol.xml
 package-lock.json
 report.xml
 !requirements.txt
+_*
+TODO

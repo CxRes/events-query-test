@@ -3,12 +3,12 @@ title: "HTTP Events Query"
 category: info
 
 docname: draft-gupta-httpapi-events-query-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+submissiontype: IETF
 number:
 date:
 consensus: true
 v: 3
-area: ""
+area: "Web and Internet Transport"
 workgroup: "Building Blocks for HTTP APIs"
 keyword:
  - event
@@ -16,7 +16,7 @@ keyword:
  - notification
 venue:
   group: "Building Blocks for HTTP APIs"
-  type: ""
+  type: "Working Group"
   mail: "httpapi@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/httpapi/"
   github: "CxRes/events-query"
@@ -25,39 +25,80 @@ venue:
 author:
  -
     fullname: "Rahul Gupta"
-    organization: Your Organization Here
     email: "CxRes@users.noreply.github.com"
 
-normative:
+autolink-iref-cleanup: true
+entity:
+  empty: ""
+  protocol: Events Query
 
+normative:
+  HTTP: RFC9110
+  HTTP-SF: RFC9651
+  HTTP-QUERY: I-D.ietf-httpbis-safe-method-w-body-10
+  INCREMENTAL-HTTP-MESSAGES: I-D.ietf-httpbis-incremental-00
+  RFC8126:
 informative:
+  DESIGN-FRAMEWORK: DOI.10.1145/267896.267920
+  HTTP-CACHING: RFC9111
+  REST:
+    target: https://roy.gbiv.com/pubs/dissertation/top.htm
+    title: Architectural Styles and the Design of Network-based Software Architectures
+    author:
+      -
+        ins: R. Fielding
+        name: Roy Thomas Fielding
+        org: University of California, Irvine
+    date:
+      month: September
+      year: 2000
+    refcontent: Doctoral Dissertation, University of California, Irvine
+    format:
+      PDF: https://roy.gbiv.com/pubs/dissertation/fielding_dissertation.pdf
+  RFC7838:
+  RFC9112:
+    -: HTTP1
+    display: HTTP/1.1
+  RFC9205:
+  SSE: W3C.eventsource
+  WEBSUB: W3C.websub
+  WS: W3C.websockets
 
 
 --- abstract
 
-TODO Abstract
+Events Query is a minimal protocol built on top of HTTP that allows user agents to receive event notifications directly from any resource of interest. The Events Query Protocol (EQP) is predicated on the idea that the most intuitive source for event notifications is the resource itself.
 
 
 --- middle
 
-# Introduction
+{::include-nested sections/introduction.md}
 
-TODO Introduction
+{::include sections/design.md}
 
+<!-- Conformance Sections -->
 
-# Conventions and Definitions
+{::include boilerplate/conformance.md}
 
-{::boilerplate bcp14-tagged}
+{::include sections/definitions.md}
 
+<!-- Normative Sections -->
 
-# Security Considerations
+{::include sections/discovery.md}
 
-TODO Security
+{::include sections/single.md}
 
+{::include sections/multiple.md}
 
-# IANA Considerations
+{::include sections/representation.md}
 
-This document has no IANA actions.
+{::include sections/data-model.md}
+
+<!-- Considerations Sections -->
+
+{::include considerations/security.md}
+
+{::include considerations/iana.md}
 
 
 --- back

@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+Host: example.org
+Accept-Query: example/event-request
+Content-Type: application/http
+Incremental: ?0
+Events: duration=600
+
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 14
+
+Hello World!
+
+HTTP/1.1 200 OK
+Content-Type: example/event-response
+Content-Length: 31
+
+Event-ID: 789
+Type: Update
