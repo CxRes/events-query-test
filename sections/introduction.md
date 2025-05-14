@@ -16,24 +16,26 @@ The objective of this specification is to make the request and receipt of event 
 With the help of a suitable composite media-type parser, {{&protocol}} responses can be consumed with just a few lines of code, as illustrated in the JavaScript example below:
 
 ~~~ js
-const response = fetch('http://example.com', {
-  method: 'QUERY',
+const response = fetch("http://example.com/foo", {
+  method: "QUERY",
   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/http'
+    "Content-Type": "application/json",
+    Accept: "application/http"
   },
   body: JSON.stringify({
-    state: { Accept: 'text/plain' },
-    events: { Accept: 'example/event-request' }
+    state: { Accept: "text/plain" },
+    events: { Accept: "example/event-request" }
   })
 });
 
 const splitResponse = splitHTTPResponseStream(response);
 // splits the response into an iterable of representation and notifications
 
-const representation = await splitResponse.next();
-// Isolate the representation
-// API identical to fetch Response
+const {done, value: representation} = await splitResponse.next();
+if (!done) {
+  // do something with the representation
+  // API identical to fetch Response
+}
 
 for await (const notification of splitResponse) {
   // do something with a notification
@@ -43,7 +45,7 @@ for await (const notification of splitResponse) {
 {: #events-query-fetch-example sourcecode-name="events-query-fetch-example.js" title="Events Query fetch example"}
 
 {: #intro-content-negotiation}
-Unlike other HTTP based event notification mechanisms, {{&protocol}} supports content negotiation for notifications, just like representations. Thus, the {{&protocol}} protocol preserves the flexibility of interaction afforded by HTTP and extends it to notifications.
+Unlike other HTTP based event notification mechanisms, {{&protocol}} supports content negotiation for notifications, just like representations. Thus, the {{&protocol}} Protocol preserves the flexibility of interaction afforded by HTTP and extends it to notifications.
 
 {: #intro-sync}
 When combined with suitable synchronization mechanisms like Conflict Free Replicated Data Types (CRDT) or Operational Transforms (OT), such event notifications can be used create representations that are "live" for user agents. This has the potential to immensely simplify the task of programming multi-author distributed real-time applications.

@@ -4,11 +4,12 @@ The change controller for the following registrations is: "IETF (iesg@ietf.org) 
 
 ## HTTP Field Registration {#field-registration}
 
-IANA is requested to add the following entry in the "[Hypertext Transfer Protocol (HTTP) Field Name Registry](https://www.iana.org/assignments/http-fields/)" defined by [HTTP]:
+IANA is requested to add the following entry in the "[Hypertext Transfer Protocol (HTTP) Field Name Registry](https://www.iana.org/assignments/http-fields/)" (See {{Section 16.1.1 of [HTTP]}}):
 
 | Header Field Names  | Status     | Structured-Type  | Reference         |
 |-
 | =Events=            | Permanent  | Dictionary       | {{events-field}}  |
+{: title="List of HTTP Field Name registrations" #field-registration-list}
 
 ## The HTTP Events Field Registry {#events-field-registry}
 
@@ -24,20 +25,18 @@ The registration template for the "HTTP Events Field Registry" is:
 
 + Optional Parameters: An enumeration of optional parameters, and their values, associated with the entry.
 
-+ Description:
-
 + Reference:
 
-+ Notes: (optional)
++ Comments: (optional)
 
 ### Initial Registry Contents {#events-field-registry-initial-content}
 
 The initial contents of the HTTP Events Field Registry are:
 
-| Property Name  | Structured-Type  | Description                | Reference             |
+| Property Name  | Structured-Type  | Optional Parameters  | Reference             |
 |-
-| =duration=     | Integer Item     | See {{duration-property}}  | {{duration-property}} |
-
+| =duration=     | Integer Item     | -                    | {{duration-property}} |
+{: title="List of HTTP Events Field property name registrations" #events-property-registration-list}
 <!--
 ## HTTP Status Code Registration {#status-code-registration}
 

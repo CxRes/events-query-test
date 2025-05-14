@@ -13,7 +13,7 @@ The =Events= header field MUST be used by a server to communicate the properties
 
 *[=Events=]: #events-field (((events (header field) ))) `Events`
 
-### The `duration` property {#duration-property}
+### `duration` Property {#duration-property}
 
 {: #duration-property-request}
 The =duration= property MAY be used by a client in a request to specify the duration for which they prefer the response stream to remain open. A server is completely free to ignore this property.
@@ -28,7 +28,7 @@ The =duration= property is a key specified in the =Events= header field of the t
 
 ## `Incremental` Header Field {#incremental-header}
 
-A server providing event notifications using the {{&protocol}} MUST include in the response the `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) with its value set to `?0`.
+A server providing event notifications using the {{&protocol}} Protocol MUST include in the response the `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) with its value set to `?0`.
 
 ## Events Query Data Model {#data-model}
 
