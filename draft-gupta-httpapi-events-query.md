@@ -76,23 +76,26 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 
 {::include sections/design.md}
 
+
 <!-- Conformance Sections -->
 
 {::include boilerplate/conformance.md}
 
-{::include sections/definitions.md}
 
 <!-- Normative Sections -->
 
+{::include sections/terminology.md}
+
+{::include sections/preliminaries.md}
+
 {::include sections/discovery.md}
 
-{::include sections/single.md}
+{::include sections/single-notification.md}
 
-{::include sections/multiple.md}
+{::include sections/multiple-notifications.md}
 
 {::include sections/representation.md}
 
-{::include sections/data-model.md}
 
 <!-- Considerations Sections -->
 

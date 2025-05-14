@@ -12,7 +12,7 @@ Unlike other notification protocols, {{&protocol}} does not (usually) require ad
 The goals of the {{&protocol}} are:
 
 1. {: #goal--http-only}
-to provide notifications only using the HTTP protocol [STD97](https://www.rfc-editor.org/info/std97) {{HTTP}} so that the clients fetching resources using HTTP are not required to switch to another protocol for receiving event notifications.
+to provide notifications only using the HTTP protocol [STD97]({{HTTP}}) {{HTTP}} so that the clients fetching resources using HTTP are not required to switch to another protocol for receiving event notifications.
 
 1. {: #goal--unified-source-of-truth}
 to provide updates directly from a resource of interest, obviating the need to create another endpoint for event notifications, minimizing round-trips between clients and servers and eliminating the need to co-ordinate responses between a resource and the notification endpoint.
