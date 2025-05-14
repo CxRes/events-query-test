@@ -95,7 +95,6 @@ Table of Contents
    8.  Multiple Notifications
      8.1.  Request
      8.2.  Response
-       8.2.1.  Termination
    9.  Including Representation
      9.1.  Request
      9.2.  Response
@@ -268,14 +267,14 @@ Table of Contents
    *  Specific representations for request or response.  For the
       purposes of illustration, we shall use:
 
-   *  An imaginary example/event-request media-type for the request.
+      -  An imaginary example/event-request media-type for the request.
 
-   *  An imaginary example/event-response media-type for the response
-      with a single event notification.
+      -  An imaginary example/event-response media-type for the response
+         with a single event notification.
 
-   *  application/http media-type ([HTTP/1.1], Section 10.2) as the
-      composite media-type for the response that includes a
-      representation and/or multiple event notifications.
+      -  application/http media-type ([HTTP/1.1], Section 10.2) as the
+         composite media-type for the response that includes a
+         representation and/or multiple event notifications.
 
 2.4.  Limitations
 
@@ -589,8 +588,6 @@ Table of Contents
 
                  Figure 8: Multiple Notifications Response
 
-8.2.1.  Termination
-
    Apart from the connection exceeding time period set in the duration
    property of the Events header field, a server MUST end the response
    immediately after the resource has been deleted.
@@ -711,7 +708,8 @@ Table of Contents
 
 11.2.1.  Template
 
-   The registration template for the "HTTP Events Field Registry" is:
+   The registration of an Events property MUST include the following
+   fields:
 
    *  Property Name: A Dictionary ([HTTP-SF], Section 3.2) key to be
       used in the Events header field.
@@ -720,26 +718,27 @@ Table of Contents
       with the key, according to requirements in Section 3.2 of
       [HTTP-SF].
 
+   *  Reference: A pointer to the specification text.
+
+   The registration MAY also include the following fields:
+
    *  Optional Parameters: An enumeration of optional parameters, and
-      their values, associated with the entry.
+      their values, associated with the property value.
 
-   *  Reference:
-
-   *  Comments: (optional)
+   *  Comments: Additional information to be included in the template.
 
 11.2.2.  Initial Registry Contents
 
    The initial contents of the HTTP Events Field Registry are:
 
-   +===============+=================+=====================+===========+
-   | Property Name | Structured-Type | Optional            | Reference |
-   |               |                 | Parameters          |           |
-   +===============+=================+=====================+===========+
-   | duration      | Integer Item    | -                   | Section   |
-   |               |                 |                     | 5.1.1     |
-   +---------------+-----------------+---------------------+-----------+
+            +===============+=================+===============+
+            | Property Name | Structured-Type | Reference     |
+            +===============+=================+===============+
+            | duration      | Integer Item    | Section 5.1.1 |
+            +---------------+-----------------+---------------+
 
-       Table 2: List of HTTP Events Field property name registrations
+                Table 2: List of HTTP Events Field property
+                             name registrations
 
 12.  References
 
@@ -802,7 +801,7 @@ Table of Contents
               Ed., "HTTP/1.1", STD 99, RFC 9112, DOI 10.17487/RFC9112,
               June 2022, <https://www.rfc-editor.org/rfc/rfc9112>.
 
-   [REST]     Fielding, R. T., "Representational State Transfer (REST)",
+   [REST]     Fielding, R., "Representational State Transfer (REST)",
               Chapter 5, Architectural Styles and the Design of Network-
               based Software Architectures, Doctoral Dissertation,
               University of California, Irvine ,
@@ -836,8 +835,8 @@ Index
 
       D
 
-         duration (property)  *_Section 5.1.1_*; Section 8.2.1,
-            Paragraph 1; Table 2
+         duration (property)  *_Section 5.1.1_*; Section 8.2, Paragraph
+            3; Table 2
 
       E
 
@@ -850,19 +849,19 @@ Index
             Paragraph 2.1.1; Section 2.1, Paragraph 2.2.1; Section 2.1,
             Paragraph 2.4.1; Section 2.1, Paragraph 2.5.1; Section 2.3,
             Paragraph 2.2.1; Section 2.3, Paragraph 2.4.1; Section 2.3,
-            Paragraph 4.3.1; Section 2.3, Paragraph 4.4.1; Section 4.2,
-            Paragraph 2; *_Section 4.3_*; Section 4.3, Paragraph 1;
-            Section 4.3, Paragraph 2; Section 4.3, Paragraph 3;
-            Section 4.4, Paragraph 1; Section 4.4, Paragraph 2;
-            Section 5.1, Paragraph 2; Section 5.2, Paragraph 1;
-            Section 7.1, Paragraph 1; Section 7.1, Paragraph 2;
-            Section 7.2, Paragraph 1; Section 7.2, Paragraph 3.2;
-            Section 8, Paragraph 1; Section 8.1, Paragraph 1;
-            Section 8.1, Paragraph 3; Section 8.2, Paragraph 1;
-            Section 9, Paragraph 1
-         events (header field)  *_Section 5.1_*; Section 8.2.1,
-            Paragraph 1; Table 1; Section 11.2, Paragraph 1;
-            Section 11.2.1, Paragraph 2.1.1
+            Paragraph 4.1.2.2.1; Section 2.3, Paragraph 4.1.2.3.1;
+            Section 4.2, Paragraph 2; *_Section 4.3_*; Section 4.3,
+            Paragraph 1; Section 4.3, Paragraph 2; Section 4.3,
+            Paragraph 3; Section 4.4, Paragraph 1; Section 4.4,
+            Paragraph 2; Section 5.1, Paragraph 2; Section 5.2,
+            Paragraph 1; Section 7.1, Paragraph 1; Section 7.1,
+            Paragraph 2; Section 7.2, Paragraph 1; Section 7.2,
+            Paragraph 3.2; Section 8, Paragraph 1; Section 8.1,
+            Paragraph 1; Section 8.1, Paragraph 3; Section 8.2,
+            Paragraph 1; Section 9, Paragraph 1
+         events (header field)  *_Section 5.1_*; Section 8.2, Paragraph
+            3; Table 1; Section 11.2, Paragraph 1; Section 11.2.1,
+            Paragraph 1; Section 11.2.1, Paragraph 2.1.1
          events (property)  Section 8.1, Paragraph 2.2.1; Section 8.1,
             Paragraph 2.3.1
          Events Query Data Model  *_Section 5.3_*; Section 8.1,
@@ -881,15 +880,16 @@ Index
             Paragraph 2.1.1; Section 2.1, Paragraph 2.2.1; Section 2.1,
             Paragraph 2.4.1; Section 2.1, Paragraph 2.5.1; Section 2.3,
             Paragraph 2.2.1; Section 2.3, Paragraph 2.4.1; Section 2.3,
-            Paragraph 4.3.1; Section 2.3, Paragraph 4.4.1; Section 4.2,
-            Paragraph 2; *_Section 4.3_*; Section 4.3, Paragraph 1;
-            Section 4.3, Paragraph 3; Section 4.4, Paragraph 1;
-            Section 4.4, Paragraph 2; Section 5.1, Paragraph 2;
-            Section 5.2, Paragraph 1; Section 7.1, Paragraph 1;
-            Section 7.1, Paragraph 2; Section 7.2, Paragraph 1;
-            Section 7.2, Paragraph 3.2; Section 8, Paragraph 1;
-            Section 8.1, Paragraph 1; Section 8.1, Paragraph 3;
-            Section 8.2, Paragraph 1; Section 9, Paragraph 1
+            Paragraph 4.1.2.2.1; Section 2.3, Paragraph 4.1.2.3.1;
+            Section 4.2, Paragraph 2; *_Section 4.3_*; Section 4.3,
+            Paragraph 1; Section 4.3, Paragraph 3; Section 4.4,
+            Paragraph 1; Section 4.4, Paragraph 2; Section 5.1,
+            Paragraph 2; Section 5.2, Paragraph 1; Section 7.1,
+            Paragraph 1; Section 7.1, Paragraph 2; Section 7.2,
+            Paragraph 1; Section 7.2, Paragraph 3.2; Section 8,
+            Paragraph 1; Section 8.1, Paragraph 1; Section 8.1,
+            Paragraph 3; Section 8.2, Paragraph 1; Section 9, Paragraph
+            1
 
       O
 

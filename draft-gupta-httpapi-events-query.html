@@ -1235,11 +1235,6 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-response-2" class="internal xref">Response</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2.2.1">
-                    <p id="section-toc.1-1.8.2.2.2.1.1"><a href="#section-8.2.1" class="auto internal xref">8.2.1</a>.  <a href="#name-termination" class="internal xref">Termination</a></p>
-</li>
-                </ul>
 </li>
             </ul>
 </li>
@@ -1475,18 +1470,20 @@ for await (const notification of splitResponse) {
 <li id="section-2.3-4.1" class="normal">
 <div class="normal" id="no-scope--representations">
             <p id="section-2.3-4.1.1">Specific representations for request or response. For the purposes of illustration, we shall use:<a href="#section-2.3-4.1.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-2.3-4.1.2.1">
+                <p id="section-2.3-4.1.2.1.1">An imaginary <code>example/event-request</code> media-type for the request.<a href="#section-2.3-4.1.2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-2.3-4.1.2.2">
+                <p id="section-2.3-4.1.2.2.1">An imaginary <code>example/event-response</code> media-type for the response with a single <span id="iref-notification-27" class="iref"></span><span id="iref-event-notification-28" class="iref"></span><a href="#notification" class="internal xref">event notification</a>.<a href="#section-2.3-4.1.2.2.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-2.3-4.1.2.3">
+                <p id="section-2.3-4.1.2.3.1"><code>application/http</code> media-type (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-10.2" class="relref">Section 10.2</a></span>) as the composite media-type for the response that includes a representation and/or multiple <span id="iref-notification-29" class="iref"></span><span id="iref-event-notification-30" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-2.3-4.1.2.3.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
 </div>
-          </li>
-<li class="normal" id="section-2.3-4.2">
-            <p id="section-2.3-4.2.1">An imaginary <code>example/event-request</code> media-type for the request.<a href="#section-2.3-4.2.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-2.3-4.3">
-            <p id="section-2.3-4.3.1">An imaginary <code>example/event-response</code> media-type for the response with a single <span id="iref-notification-27" class="iref"></span><span id="iref-event-notification-28" class="iref"></span><a href="#notification" class="internal xref">event notification</a>.<a href="#section-2.3-4.3.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-2.3-4.4">
-            <p id="section-2.3-4.4.1"><code>application/http</code> media-type (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-10.2" class="relref">Section 10.2</a></span>) as the composite media-type for the response that includes a representation and/or multiple <span id="iref-notification-29" class="iref"></span><span id="iref-event-notification-30" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-2.3-4.4.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
+        </li>
+</ul>
 </section>
 </div>
 <div id="limitations">
@@ -1847,14 +1844,7 @@ Type: Delete
 <a href="#name-multiple-notifications-resp" class="selfRef">Multiple Notifications Response</a>
           </figcaption></figure>
 </div>
-<div id="multiple-notifications-response-termination">
-<section id="section-8.2.1">
-          <h4 id="name-termination">
-<a href="#section-8.2.1" class="section-number selfRef">8.2.1. </a><a href="#name-termination" class="section-name selfRef">Termination</a>
-          </h4>
-<p id="section-8.2.1-1">Apart from the connection exceeding time period set in the <span id="iref-duration-property-113" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property of the <span id="iref-events-header-field-114" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field, a server <span class="bcp14">MUST</span> end the response immediately after the resource has been deleted.<a href="#section-8.2.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
+<p id="section-8.2-3">Apart from the connection exceeding time period set in the <span id="iref-duration-property-113" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property of the <span id="iref-events-header-field-114" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field, a server <span class="bcp14">MUST</span> end the response immediately after the resource has been deleted.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2004,22 +1994,25 @@ Type: Update
           <h4 id="name-template">
 <a href="#section-11.2.1" class="section-number selfRef">11.2.1. </a><a href="#name-template" class="section-name selfRef">Template</a>
           </h4>
-<p id="section-11.2.1-1">The registration template for the "HTTP Events Field Registry" is:<a href="#section-11.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.2.1-1">The registration of an <span id="iref-events-header-field-127" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> property <span class="bcp14">MUST</span> include the following fields:<a href="#section-11.2.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-11.2.1-2.1">
-              <p id="section-11.2.1-2.1.1">Property Name: A Dictionary (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.2" class="relref">Section 3.2</a></span>) key to be used in the <span id="iref-events-header-field-127" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-11.2.1-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-2.1.1">Property Name: A Dictionary (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.2" class="relref">Section 3.2</a></span>) key to be used in the <span id="iref-events-header-field-128" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-11.2.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-2.2">
               <p id="section-11.2.1-2.2.1">Structured Type: The Structured Data Type of the value associated with the key, according to requirements in <span><a href="https://rfc-editor.org/rfc/rfc9651#section-3.2" class="relref">Section 3.2</a> of [<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>]</span>.<a href="#section-11.2.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-11.2.1-2.3">
-              <p id="section-11.2.1-2.3.1">Optional Parameters: An enumeration of optional parameters, and their values, associated with the entry.<a href="#section-11.2.1-2.3.1" class="pilcrow">¶</a></p>
+              <p id="section-11.2.1-2.3.1">Reference: A pointer to the specification text.<a href="#section-11.2.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.2.1-2.4">
-              <p id="section-11.2.1-2.4.1">Reference:<a href="#section-11.2.1-2.4.1" class="pilcrow">¶</a></p>
+          </ul>
+<p id="section-11.2.1-3">The registration <span class="bcp14">MAY</span> also include the following fields:<a href="#section-11.2.1-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-11.2.1-4.1">
+              <p id="section-11.2.1-4.1.1">Optional Parameters: An enumeration of optional parameters, and their values, associated with the property value.<a href="#section-11.2.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-11.2.1-2.5">
-              <p id="section-11.2.1-2.5.1">Comments: (optional)<a href="#section-11.2.1-2.5.1" class="pilcrow">¶</a></p>
+            <li class="normal" id="section-11.2.1-4.2">
+              <p id="section-11.2.1-4.2.1">Comments: Additional information to be included in the template.<a href="#section-11.2.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </section>
@@ -2040,17 +2033,15 @@ Type: Update
               <tr>
                 <th class="text-left" rowspan="1" colspan="1">Property Name</th>
                 <th class="text-left" rowspan="1" colspan="1">Structured-Type</th>
-                <th class="text-left" rowspan="1" colspan="1">Optional Parameters</th>
                 <th class="text-left" rowspan="1" colspan="1">Reference</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">
-                  <span id="iref-duration-property-128" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a>
+                  <span id="iref-duration-property-129" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a>
 </td>
                 <td class="text-left" rowspan="1" colspan="1">Integer Item</td>
-                <td class="text-left" rowspan="1" colspan="1">-</td>
                 <td class="text-left" rowspan="1" colspan="1">
                   <a href="#duration-property" class="auto internal xref">Section 5.1.1</a>
 </td>
@@ -2126,7 +2117,7 @@ Type: Update
 <dd class="break"></dd>
 <dt id="REST">[REST]</dt>
         <dd>
-<span class="refAuthor">Fielding, R. T.</span>, <span class="refTitle">"Representational State Transfer (REST)"</span>, <span class="refContent">Chapter 5, Architectural Styles and the Design of Network-based Software Architectures</span>, <span class="seriesInfo">Doctoral Dissertation, University of California, Irvine </span>, <span>&lt;<a href="https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm">https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm</a>&gt;</span>. </dd>
+<span class="refAuthor">Fielding, R.</span>, <span class="refTitle">"Representational State Transfer (REST)"</span>, <span class="refContent">Chapter 5, Architectural Styles and the Design of Network-based Software Architectures</span>, <span class="seriesInfo">Doctoral Dissertation, University of California, Irvine </span>, <span>&lt;<a href="https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm">https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7838">[RFC7838]</dt>
         <dd>
@@ -2187,7 +2178,7 @@ Type: Update
                 <dd style="margin-left: 1.5em" id="appendix-B-2.1.2.1.1.2">
                   <p id="appendix-B-2.1.2.1.1.2.1">
                     <strong><em><a href="#duration-property" class="auto internal xref">Section 5.1.1</a></em></strong>; 
-<a href="#section-8.2.1-1" class="auto internal xref">Section 8.2.1, Paragraph 1</a>; 
+<a href="#section-8.2-3" class="auto internal xref">Section 8.2, Paragraph 3</a>; 
 <a href="#events-property-registration-list" class="auto internal xref">Table 2</a><a href="#appendix-B-2.1.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
@@ -2228,8 +2219,8 @@ Type: Update
 <a href="#section-2.1-2.5.1" class="auto internal xref">Section 2.1, Paragraph 2.5.1</a>; 
 <a href="#section-2.3-2.2.1" class="auto internal xref">Section 2.3, Paragraph 2.2.1</a>; 
 <a href="#section-2.3-2.4.1" class="auto internal xref">Section 2.3, Paragraph 2.4.1</a>; 
-<a href="#section-2.3-4.3.1" class="auto internal xref">Section 2.3, Paragraph 4.3.1</a>; 
-<a href="#section-2.3-4.4.1" class="auto internal xref">Section 2.3, Paragraph 4.4.1</a>; 
+<a href="#section-2.3-4.1.2.2.1" class="auto internal xref">Section 2.3, Paragraph 4.1.2.2.1</a>; 
+<a href="#section-2.3-4.1.2.3.1" class="auto internal xref">Section 2.3, Paragraph 4.1.2.3.1</a>; 
 <a href="#section-4.2-2" class="auto internal xref">Section 4.2, Paragraph 2</a>; 
 <strong><em><a href="#notification" class="auto internal xref">Section 4.3</a></em></strong>; 
 <a href="#section-4.3-1" class="auto internal xref">Section 4.3, Paragraph 1</a>; 
@@ -2254,9 +2245,10 @@ Type: Update
                 <dd style="margin-left: 1.5em" id="appendix-B-2.2.2.1.1.6">
                   <p id="appendix-B-2.2.2.1.1.6.1">
                     <strong><em><a href="#events-field" class="auto internal xref">Section 5.1</a></em></strong>; 
-<a href="#section-8.2.1-1" class="auto internal xref">Section 8.2.1, Paragraph 1</a>; 
+<a href="#section-8.2-3" class="auto internal xref">Section 8.2, Paragraph 3</a>; 
 <a href="#field-registration-list" class="auto internal xref">Table 1</a>; 
 <a href="#section-11.2-1" class="auto internal xref">Section 11.2, Paragraph 1</a>; 
+<a href="#section-11.2.1-1" class="auto internal xref">Section 11.2.1, Paragraph 1</a>; 
 <a href="#section-11.2.1-2.1.1" class="auto internal xref">Section 11.2.1, Paragraph 2.1.1</a><a href="#appendix-B-2.2.2.1.1.6.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
@@ -2322,8 +2314,8 @@ Type: Update
 <a href="#section-2.1-2.5.1" class="auto internal xref">Section 2.1, Paragraph 2.5.1</a>; 
 <a href="#section-2.3-2.2.1" class="auto internal xref">Section 2.3, Paragraph 2.2.1</a>; 
 <a href="#section-2.3-2.4.1" class="auto internal xref">Section 2.3, Paragraph 2.4.1</a>; 
-<a href="#section-2.3-4.3.1" class="auto internal xref">Section 2.3, Paragraph 4.3.1</a>; 
-<a href="#section-2.3-4.4.1" class="auto internal xref">Section 2.3, Paragraph 4.4.1</a>; 
+<a href="#section-2.3-4.1.2.2.1" class="auto internal xref">Section 2.3, Paragraph 4.1.2.2.1</a>; 
+<a href="#section-2.3-4.1.2.3.1" class="auto internal xref">Section 2.3, Paragraph 4.1.2.3.1</a>; 
 <a href="#section-4.2-2" class="auto internal xref">Section 4.2, Paragraph 2</a>; 
 <strong><em><a href="#notification" class="auto internal xref">Section 4.3</a></em></strong>; 
 <a href="#section-4.3-1" class="auto internal xref">Section 4.3, Paragraph 1</a>; 
