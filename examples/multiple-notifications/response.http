@@ -2,7 +2,7 @@ HTTP/1.1 200 OK
 Host: example.org
 Accept-Query: example/event-request
 Content-Type: application/http
-Incremental: ?0
+Incremental: ?1
 Events: duration=600
 
 HTTP/1.1 200 OK
