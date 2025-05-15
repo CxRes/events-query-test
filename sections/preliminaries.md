@@ -28,7 +28,7 @@ The =duration= property is a key specified in the =Events= header field of the t
 
 ## `Incremental` Header Field {#incremental-header}
 
-A server providing event notifications using the {{&protocol}} Protocol MUST include in the response the `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) with its value set to `?0`.
+A server providing event notifications using the {{&protocol}} Protocol MUST include in the response the `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) with its value set to `?1`.
 
 ## Events Query Data Model {#data-model}
 
