@@ -21,7 +21,7 @@ state:
 events:
   Accept: example/event-response
 ~~~
-{: sourcecode-name="multiple-events-request-example.yaml" #data-model-example title="Events Query Data Model in a YAML like syntax"}
+{: sourcecode-name="data-model-example.yaml" #data-model-example title="Events Query Data Model in a YAML like syntax"}
 
 *[data model]: #data-model
 *[Data Model]: #data-model

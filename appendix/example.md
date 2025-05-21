@@ -6,15 +6,15 @@ The following example illustrates a complete request and response for representa
 ## Request {#request-representation-and-notifications}
 
 ~~~ http-message
-{::include examples/multiple-notifications/request.http}
+{::include examples/stream/state-request.http}
 ~~~
 {: sourcecode-name="notifications-stream-request-with-representation.http" #notifications-stream-request-with-representation-example title="Request for Representation and Notifications"}
 
 ## Response {#request-representation-and-notifications}
 
 ~~~ http-message
-{::include examples/multiple-notifications/response-headers.http}
-{::include examples/representation/representation.http}
+{::include examples/stream/response-headers.http}
+{::include examples/stream/representation.http}
 {::include examples/notifications/update.http}
 {::include examples/notifications/delete.http}
 ~~~
