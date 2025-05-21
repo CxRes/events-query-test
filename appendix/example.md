@@ -1,7 +1,7 @@
 # Example {#example}
 
 {: #example-description}
-The following example illustrates a complete request and response for representation and notifications using [PROTOCOL]. Chunk size has been omitted for clarity.
+The following example illustrates a complete request and response for representation and notifications using {{&protocol}}. Chunk size has been omitted for clarity.
 
 ## Request {#request-representation-and-notifications}
 
