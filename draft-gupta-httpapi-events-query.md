@@ -56,6 +56,7 @@ informative:
     seriesinfo: Doctoral Dissertation, University of California, Irvine
     format:
       PDF: https://roy.gbiv.com/pubs/dissertation/fielding_dissertation.pdf#G16.1026811
+  RFC6202:
   RFC7838:
   RFC9112:
     -: HTTP1
@@ -68,7 +69,7 @@ informative:
 
 --- abstract
 
-Events Query is a minimal protocol built on top of HTTP that allows user agents to receive event notifications directly from any resource of interest. The Events Query Protocol (EQP) is predicated on the idea that the most intuitive source for event notifications is the resource itself.
+Events Query is a minimal protocol built on top of HTTP that allows user agents to receive event-notifications directly from any resource of interest. The Events Query Protocol (EQP) is predicated on the idea that the most intuitive source for event-notifications is the resource itself.
 
 
 --- middle
@@ -87,7 +88,9 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 
 {::include sections/terminology.md}
 
-{::include sections/preliminaries.md}
+{::include sections/events-field.md}
+
+{::include sections/data-model.md}
 
 {::include-nested sections/discovery.md}
 
@@ -107,7 +110,7 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 
 --- back
 
-# Acknowledgments
-{:numbered="false"}
+{::include-nested appendix/examples.md}
 
-TODO acknowledge.
+{::include-nested appendix/acknowledgments.md}
+

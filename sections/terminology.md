@@ -2,35 +2,39 @@
 
 ## Event {#event}
 
-{: #defn-event}
-An !event is the instantaneous effect of the (normal or abnormal) termination of invocation of an operation on an object of interest {{DESIGN-FRAMEWORK}}. The entity invoking an operation is termed the (((!invoker)))i&zwnj;nvoker.
+{: #event-defn}
+An event is the instantaneous effect of the (normal or abnormal) termination of invocation of an operation on an object of interest {{DESIGN-FRAMEWORK}}. The entity invoking an operation is termed the (((!invoker)))i&zwnj;nvoker.
 
 {: #events-in-HTTP}
 In the specific context of HTTP, the object of interest is data scoped to some resource. When the operation is an HTTP method, the invoker is a user agent. However, an operation need not be limited an HTTP method, it might just as easily have been invoked using another mechanism or protocol. !Events are then an extension of resource state (See {{HTTP, Section 3.2}}) in the temporal dimension.
 
 ## Observation {#observation}
 
-An !event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence. This entity is the (((!observer)))o&zwnj;bserver. It follows from the HTTP uniform interface that the observer is always a server. The !events that are observed, the mechanism of observation, and information recorded from the !event are implementation details for the server.
+{: #observation-defn}
+An event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence. This entity is the (((!observer)))o&zwnj;bserver. It follows from the HTTP uniform interface that the observer is always a server. The events that are observed, the mechanism of observation, and information recorded from the event are implementation details for the server.
 
-That an origin server has to assume the role of an observer in order to generate event notifications is obvious. An intermediary while not observing the data scoped to a resource directly, still has the possibility to serve as an observer. An intermediary can observe !events transmitted by an origin server or another intermediary, whether using {{&protocol}} or another mechanism, to generate event notifications for outbound consumers.
+{: #observation-roles}
+That an origin server has to assume the role of an observer in order to generate event-notifications is obvious. An intermediary while not observing the data scoped to a resource directly, still has the possibility to serve as an observer. An intermediary can observe events transmitted by an origin server or another intermediary, whether using {{&protocol}} or another mechanism, to generate event-notifications for outbound consumers.
 
 ## Event Notification {#notification}
 
-An event notification, or notification, is information transmitted by an observer that is intended to reflect an !event or contiguous !events on a resource. {{&protocol}} extends "information hiding" behind the HTTP uniform interface to the temporal dimension by defining communication with respect to a transferable !notification of the resource !event(s), rather than transferring the !event(s) themselves.
+{: #notification-defn}
+An event-notification, or notification, is information transmitted by an observer that is intended to reflect an event or contiguous events on a resource. {{&protocol}} extends "information hiding" behind the HTTP uniform interface to the temporal dimension by defining communication with respect to a transferable notification of the resource event(s), rather than transferring the event(s) themselves.
 
-A target resource might be capable of generating multiple !notifications to transmit !events that a subscriber can select from using content negotiation. Hypertext !notifications not only can provide information of the resource !events but also processing instructions that help guide the recipient's future actions, for example, the possibility to determine of the current representation from a previous representation and !notifications.
-
-A response to a subscription request might be used to transmit a single !notification ({{single-notification}}). Alternatively, the response might be a potentially unbounded stream that transmits a sequence of !notifications ({{multiple-notifications}}). Further, a response can also be used transmit representation of the resource state ({{representation-with-notifications}}) along with event notifications.
+{: #notification-characteristics}
+A target resource might be capable of generating multiple notifications to transmit an event that a subscriber can select from using content negotiation. Hypertext notifications not only can provide information of the resource events but also processing instructions that help guide the recipient's future actions, for example, the possibility to determine the current representation from a previous representation.
 
 ## Subscription {#subscription}
 
-A subscription is an expression of interest to receive event notifications sent to an observer. Due to the request/response semantics of HTTP, the user agent that wants to receive event notifications is also the (((!subscriber)))s&zwnj;ubscriber.
+{: #subscription-defn}
+A subscription is an expression of interest to receive event-notifications sent to an observer. Due to the request/response semantics of HTTP, the user agent that wants to receive event-notifications is also the (((!subscriber)))s&zwnj;ubscriber.
 
-The subscription query affords the user agent the opportunity to engage in content negotiation for preferred form of event notifications (as well as the representation, if simultaneously requested).
+{: #subscription-conneg}
+The subscription query affords the user agent the opportunity to engage in content negotiation for preferred form of event-notifications (as well as the representation, if simultaneously requested).
 
-*[!event]: #event (((event))) event
-*[!Event]: #event (((event))) Event
-*[!events]: #event (((event))) events
+*[event]: #event (((event))) event
+*[Event]: #event (((event))) Event
+*[events]: #event (((event))) events
 *[!Events]: #event (((event))) Events
 
 *[invoker]:
@@ -42,15 +46,15 @@ The subscription query affords the user agent the opportunity to engage in conte
 *[observation]: #observation
 *[Observation]: #observation (((observation)))
 
-*[Event Notification]: #notification (((notification))) (((event notification)))
-*[event notification]: #notification (((notification))) (((event notification)))
-*[Event Notifications]: #notification (((notification))) (((event notification)))
-*[event notifications]: #notification (((notification))) (((event notification)))
+*[Event-Notification]: #notification (((notification))) (((event notification))) Event Notification
+*[event-notification]: #notification (((notification))) (((event notification))) event notification
+*[Event-Notifications]: #notification (((notification))) (((event notification))) Event Notifications
+*[event-notifications]: #notification (((notification))) (((event notification))) event notifications
 
-*[!Notification]: #notification (((event notification))) (((notification))) Notification
-*[!notification]: #notification (((event notification))) (((notification))) notification
-*[!Notifications]: #notification (((event notification))) (((notification))) Notifications
-*[!notifications]: #notification (((event notification))) (((notification))) notifications
+*[Notification]: #notification (((event notification))) (((notification))) Notification
+*[notification]: #notification (((event notification))) (((notification))) notification
+*[Notifications]: #notification (((event notification))) (((notification))) Notifications
+*[notifications]: #notification (((event notification))) (((notification))) notifications
 
 *[subscriber]:
 *[Subscriber]: (((subscriber)))

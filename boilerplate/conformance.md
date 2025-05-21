@@ -2,7 +2,7 @@
 
 ## Document Conventions {#document-conventions}
 
-All assertions, diagrams, examples and notes in this specification are non-normative.
+All examples and notes in this specification are non-normative.
 
 ## Requirements Notation {#requirements-notation}
 

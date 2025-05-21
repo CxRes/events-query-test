@@ -1,16 +1,14 @@
-# Including Representation {#representation-with-notifications}
+# Representation {#representation}
 
-{{&protocol}} allows a user agent to simultaneously request for a representation along with event notifications. This not only saves on an extra round trip, but relieves a user agent from the burden of ensuring that event notifications are temporally coordinated with the representation.
+{{&protocol}} allows a user agent to simultaneously request for a representation along with event-notifications. This not only saves on an extra round trip, but relieves a user agent from the burden of managing potential race conditions between the representation and event-notifications.
 
 ## Request {#representation-request}
 
-To request that a representation of the resource be sent along with events notifications, a client:
+{: #representation-request-procedure}
+To request a representation of the resource using [PROTOCOL], a client MUST use the subscription data model ({{data-model}}) with the +state+ property in an appropriate media-type when issuing a request using the `QUERY` method ({{HTTP-QUERY, Section 3}}).
 
-+ MUST use the Events Query Data Model ({{data-model}}) in an appropriate media-type when issuing a subscription request using the `QUERY` method ({{HTTP-QUERY, Section 3}}).
-+ MUST specify the +state+ property ({{data-model-property-state}}) in the body of the subscription query.
-+ MAY specify any header field under the +state+ property in the body of the subscription query.
-
-Otherwise, the request is identical to a [Multiple Notifications Request](#multiple-notifications-request):
+{: #representation-request-state-conneg}
+The +state+ property MAY be used to specify any header field in the body of the subscription query to negotiate the representation.
 
 ~~~ http-message
 {::include examples/representation/request.http}
@@ -19,9 +17,17 @@ Otherwise, the request is identical to a [Multiple Notifications Request](#multi
 
 ## Response {#representation-response}
 
-Much like in the case of [Multiple Notifications Response](#multiple-notifications-response), the response stream encapsulates the representation (typically) in a composite media-type. Again, we shall use the `application/http` media-type ({{-HTTP1, Section 10.2}}) for the purpose of illustration.
+{: #representation-response-body}
+A server able to provide a stream with a representation and event-notifications transmits the representation immediately following the response header({{#stream-response-headers}}). Otherwise, the response is the same as that described in {{#stream-response}}. Again, we shall use the `application/http` media-type ({{-HTTP1, Section 10.2}}) for the purpose of illustration.
 
 ~~~ http-message
-{::include examples/representation/response.http}
+{::include examples/multiple-notifications/response-headers.http}
+{::include examples/representation/representation.http}
 ~~~
-{: sourcecode-name="representation-response-example.http" #representation-response-example title="Representation and Notifications Response"}
+{: sourcecode-name="representation-response-example.http" #representation-response-example title="Representation Response"}
+
+{{: #representation-response-non-standard}}
+While this is default behaviour, there is no requirement that a representation is the first message or is sent only once. In such cases, the encapsulated message needs to indicate if it is a representation and not an event-notification. Such a mechanism is not defined in this specification.
+
+{{: #representation-response-notifications}}
+Notifications are transmitted just as described in {{#stream-response}}. See {{#example}} for a complete example of a response with representation and notifications.
