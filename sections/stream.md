@@ -46,7 +46,7 @@ The `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) set to
 ### Notifications {#stream-response-body}
 
 {: #stream-response-event}
-Subsequently, when event(s) occur, the server transmits a notification identical to the [Single Notification Response](#single-notification-response), except header fields redundant with response header ({{#stream-response-header}}) are omitted.
+Subsequently, when event(s) occur, the server transmits a notification identical to the [Single Notification Response](#single-notification-response), except header fields redundant with response header ({{stream-response-header}}) are omitted.
 
 ~~~ http-message
 {::include examples/notifications/update.http}
