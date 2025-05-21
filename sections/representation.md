@@ -11,7 +11,7 @@ To request a representation of the resource using [PROTOCOL], a client MUST use 
 The +state+ property MAY be used to specify any header field in the body of the subscription query to negotiate the representation.
 
 ~~~ http-message
-{::include examples/representation/request.http}
+{::include examples/stream/state-request.http}
 ~~~
 {: sourcecode-name="representation-request-example.http" #representation-request-example title="Representation and Notifications Request"}
 
@@ -21,8 +21,8 @@ The +state+ property MAY be used to specify any header field in the body of the 
 A server able to provide a stream with a representation and event-notifications transmits the representation immediately following the response header({{#stream-response-headers}}). Otherwise, the response is the same as that described in {{#stream-response}}. Again, we shall use the `application/http` media-type ({{-HTTP1, Section 10.2}}) for the purpose of illustration.
 
 ~~~ http-message
-{::include examples/multiple-notifications/response-headers.http}
-{::include examples/representation/representation.http}
+{::include examples/stream/response-headers.http}
+{::include examples/stream/representation.http}
 ~~~
 {: sourcecode-name="representation-response-example.http" #representation-response-example title="Representation Response"}
 

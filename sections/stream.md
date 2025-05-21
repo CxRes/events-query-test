@@ -12,10 +12,10 @@ To request a stream of event-notifications from a resource using [PROTOCOL], a c
 The +events+ property MAY be used to specify any header field in the body of the subscription query to negotiate notifications.
 
 {: #stream-request-conneg}
-A client can also negotiate the form of the representation that encapsulates the event-notifications using header fields. Since the response carries an encapsulating representation, header fields can no longer be used to negotiate the form of an event-notification itself like in the case of a {{single-notification-request}}.
+A client can also negotiate the form of the representation that encapsulates the event-notifications using header fields. Since the response carries an encapsulating representation, header fields can no longer be used to negotiate the form of an event-notification itself like in the case of a [Single Notification Request](#single-notification-request).
 
 ~~~ http-message
-{::include examples/multiple-notifications/request.http}
+{::include examples/stream/events-request.http}
 ~~~
 {: sourcecode-name="stream-request-example.http" #stream-request-example title="Notifications Stream Request"}
 
@@ -39,19 +39,19 @@ The =Events= header field to communicate the properties of the notifications str
 The `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) set to `?1` to indicate that the response is to be immediately forwarded by intermediaries and not buffered.
 
 ~~~ http-message
-{::include examples/multiple-notifications/response-headers.http}
+{::include examples/stream/response-headers.http}
 ~~~
-{: sourcecode-name="multiple-response-headers-example.http" #stream-response-header-example title="Multiple Notifications Response Headers"}
+{: sourcecode-name="stream-response-headers-example.http" #stream-response-header-example title="Notifications Stream Response Headers"}
 
 ### Notifications {#stream-response-body}
 
 {: #stream-response-event}
-Subsequently, when event(s) occur, the server transmits a notification identical to the [Single Notification Response](#single-notification-response), except header fields that are redundant with response header ({{#stream-response-header}}) are omitted.
+Subsequently, when event(s) occur, the server transmits a notification identical to the [Single Notification Response](#single-notification-response), except header fields redundant with response header ({{#stream-response-header}}) are omitted.
 
 ~~~ http-message
 {::include examples/notifications/update.http}
 ~~~
-{: sourcecode-name="stream-update-event.http" #stream-update-event title="An Update Notification"}
+{: sourcecode-name="stream-update-event.http" #stream-update-event title="Update Notification"}
 
 {: #stream-response-terminal-event}
 Apart from the connection exceeding time period set in the =duration= property of the =Events= header field, a server MUST end the response immediately after the resource has been deleted.
@@ -59,4 +59,4 @@ Apart from the connection exceeding time period set in the =duration= property o
 ~~~ http-message
 {::include examples/notifications/delete.http}
 ~~~
-{: sourcecode-name="stream-delete-event.http" #stream-delete-event title="A Delete Notification"}
+{: sourcecode-name="stream-delete-event.http" #stream-delete-event title="Delete Notification"}
