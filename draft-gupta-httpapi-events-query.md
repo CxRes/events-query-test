@@ -96,7 +96,7 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 
 {::include-nested sections/single-notification.md}
 
-{::include-nested sections/multiple-notifications.md}
+{::include-nested sections/stream.md}
 
 {::include-nested sections/representation.md}
 
@@ -110,7 +110,7 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 
 --- back
 
-{::include-nested appendix/examples.md}
+{::include-nested appendix/example.md}
 
 {::include-nested appendix/acknowledgments.md}
 
