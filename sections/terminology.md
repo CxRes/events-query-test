@@ -11,7 +11,10 @@ In the specific context of HTTP, the object of interest is data scoped to some r
 ## Observation {#observation}
 
 {: #observation-defn}
-An event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence. This entity is the (((!observer)))observe&zwnj;r. It follows from the HTTP uniform interface that the observer is always a server. The events that are observed, the mechanism of observation, and information recorded from the event are implementation details for the server.
+An event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence {{DESIGN-FRAMEWORK}}. This entity is the (((!observer)))observe&zwnj;r.
+
+{: #observer-in-HTTP}
+It follows from the HTTP uniform interface that the observer is always a server. The events that are observed, the mechanism of observation, and information recorded from the event are implementation details for the server.
 
 {: #observation-roles}
 That an origin server has to assume the role of an observer in order to generate event-notifications is obvious. An intermediary while not observing the data scoped to a resource directly, still has the possibility to serve as an observer. An intermediary can observe events transmitted by an origin server or another intermediary, whether using {{&protocol}} or another mechanism, to generate event-notifications for outbound consumers.
@@ -19,18 +22,24 @@ That an origin server has to assume the role of an observer in order to generate
 ## Event Notification {#notification}
 
 {: #notification-defn}
-An event-notification, or notification, is information transmitted by an observer that is intended to reflect an event or contiguous events on a resource. {{&protocol}} extends "information hiding" behind the HTTP uniform interface to the temporal dimension by defining communication with respect to a transferable notification of the resource event(s), rather than transferring the event(s) themselves.
+An event-notification, or notification, is information transmitted by an observer upon an event or contiguous events on a resource.
+
+{: #notification-in-HTTP}
+{{&protocol}} extends "information hiding" behind the HTTP uniform interface to the temporal dimension by defining communication with respect to a transferable notification of the resource event(s), rather than transferring the event(s) themselves.
 
 {: #notification-characteristics}
-A target resource might be capable of generating multiple notifications to transmit an event that a subscriber can select from using content negotiation. Hypertext notifications not only can provide information of the resource events but also processing instructions that help guide the recipient's future actions, for example, the possibility to determine the current representation from a previous representation.
+A target resource might be capable of generating multiple notifications for the same event(s) that a subscriber can select from using content negotiation. Hypertext notifications can not only provide information of the resource events but also processing instructions that help guide the recipient's future actions, for example, the possibility to determine the current representation from a previous representation.
 
 ## Subscription {#subscription}
 
 {: #subscription-defn}
-A subscription is an expression of interest to receive event-notifications sent to an observer. Due to the request/response semantics of HTTP, the user agent that wants to receive event-notifications is also the (((!subscriber)))subscribe&zwnj;r.
+A subscription is an expression of interest to receive event-notifications sent to an observer. The requesting entity is a subscriber.
+
+{: #subscriber-in-HTTP}
+Due to the request/response semantics of HTTP, the (((!subscriber)))subscriber&zwnj;r coincides with the recipient of event-notifications ({{DESIGN-FRAMEWORK}} uses the term _requester_ or _broker_ to identify a requesting entity, with the _broker_ and _recipient_ together forming the subscriber; for this specification the distinction is not necessary).
 
 {: #subscription-conneg}
-The subscription query affords the user agent the opportunity to engage in content negotiation for preferred form of event-notifications (as well as the representation, if simultaneously requested).
+The subscription in the form of a query affords the user agent the opportunity to engage in content negotiation for preferred form of event-notifications (as well as the representation, if simultaneously requested).
 
 *[event]: #event (((event))) event
 *[Event]: #event (((event))) Event
