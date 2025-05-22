@@ -1909,12 +1909,12 @@ Events: duration=600
 <figure id="figure-9">
             <div class="lang-http-message sourcecode" id="section-9.2.2-2.1">
 <pre>
-HTTP/1.1 200 OK
-Content-Type: example/event-response
-Content-Length: 31
-
-Event-ID: 456
-Type: Update
+HTTP/1.1 200 OK                                  | Notification
+Content-Type: example/event-response             |
+Content-Length: 31                               |
+                                                 |
+Event-ID: 456                                    |
+Type: Update                                     |
 </pre>
 </div>
 <figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
@@ -1928,12 +1928,12 @@ Type: Update
 <figure id="figure-10">
             <div class="lang-http-message sourcecode" id="section-9.2.2-4.1">
 <pre>
-HTTP/1.1 200 OK
-Content-Type: example/event-response
-Content-Length: 31
-
-Event-ID: 789
-Type: Delete
+HTTP/1.1 200 OK                                  | Notification
+Content-Type: example/event-response             |
+Content-Length: 31                               |
+                                                 |
+Event-ID: 789                                    |
+Type: Delete                                     |
 </pre>
 </div>
 <figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
@@ -2005,11 +2005,11 @@ Transfer-Encoding: chunked
 Incremental: ?1
 Events: duration=600
 
-HTTP/1.1 200 OK
-Content-Type: text/plain
-Content-Length: 14
-
-Hello World!
+HTTP/1.1 200 OK                                  | Representation
+Content-Type: text/plain                         |
+Content-Length: 14                               |
+                                                 |
+Hello World!                                     |
 </pre>
 </div>
 <figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
@@ -2317,25 +2317,25 @@ Transfer-Encoding: chunked
 Incremental: ?1
 Events: duration=600
 
-HTTP/1.1 200 OK
-Content-Type: text/plain
-Content-Length: 14
+HTTP/1.1 200 OK                                  | Representation
+Content-Type: text/plain                         |
+Content-Length: 14                               |
+                                                 |
+Hello World!                                     |
 
-Hello World!
+HTTP/1.1 200 OK                                  | Notification
+Content-Type: example/event-response             |
+Content-Length: 31                               |
+                                                 |
+Event-ID: 456                                    |
+Type: Update                                     |
 
-HTTP/1.1 200 OK
-Content-Type: example/event-response
-Content-Length: 31
-
-Event-ID: 456
-Type: Update
-
-HTTP/1.1 200 OK
-Content-Type: example/event-response
-Content-Length: 31
-
-Event-ID: 789
-Type: Delete
+HTTP/1.1 200 OK                                  | Notification
+Content-Type: example/event-response             |
+Content-Length: 31                               |
+                                                 |
+Event-ID: 789                                    |
+Type: Delete                                     |
 </pre>
 </div>
 <figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:

@@ -602,12 +602,12 @@ Table of Contents
    (Section 8.2), except header fields redundant with response header
    (Section 9.2.1) are omitted.
 
-   HTTP/1.1 200 OK
-   Content-Type: example/event-response
-   Content-Length: 31
-
-   Event-ID: 456
-   Type: Update
+   HTTP/1.1 200 OK                                  | Notification
+   Content-Type: example/event-response             |
+   Content-Length: 31                               |
+                                                    |
+   Event-ID: 456                                    |
+   Type: Update                                     |
 
                        Figure 9: Update Notification
 
@@ -615,12 +615,12 @@ Table of Contents
    property of the Events header field, a server MUST end the response
    immediately after the resource has been deleted.
 
-   HTTP/1.1 200 OK
-   Content-Type: example/event-response
-   Content-Length: 31
-
-   Event-ID: 789
-   Type: Delete
+   HTTP/1.1 200 OK                                  | Notification
+   Content-Type: example/event-response             |
+   Content-Length: 31                               |
+                                                    |
+   Event-ID: 789                                    |
+   Type: Delete                                     |
 
                        Figure 10: Delete Notification
 
@@ -670,11 +670,11 @@ Table of Contents
    Incremental: ?1
    Events: duration=600
 
-   HTTP/1.1 200 OK
-   Content-Type: text/plain
-   Content-Length: 14
-
-   Hello World!
+   HTTP/1.1 200 OK                                  | Representation
+   Content-Type: text/plain                         |
+   Content-Length: 14                               |
+                                                    |
+   Hello World!                                     |
 
                      Figure 12: Representation Response
 
@@ -890,25 +890,25 @@ A.2.  Response
    Incremental: ?1
    Events: duration=600
 
-   HTTP/1.1 200 OK
-   Content-Type: text/plain
-   Content-Length: 14
+   HTTP/1.1 200 OK                                  | Representation
+   Content-Type: text/plain                         |
+   Content-Length: 14                               |
+                                                    |
+   Hello World!                                     |
 
-   Hello World!
+   HTTP/1.1 200 OK                                  | Notification
+   Content-Type: example/event-response             |
+   Content-Length: 31                               |
+                                                    |
+   Event-ID: 456                                    |
+   Type: Update                                     |
 
-   HTTP/1.1 200 OK
-   Content-Type: example/event-response
-   Content-Length: 31
-
-   Event-ID: 456
-   Type: Update
-
-   HTTP/1.1 200 OK
-   Content-Type: example/event-response
-   Content-Length: 31
-
-   Event-ID: 789
-   Type: Delete
+   HTTP/1.1 200 OK                                  | Notification
+   Content-Type: example/event-response             |
+   Content-Length: 31                               |
+                                                    |
+   Event-ID: 789                                    |
+   Type: Delete                                     |
 
       Figure 14: Response Stream with Representation and Notifications
 
