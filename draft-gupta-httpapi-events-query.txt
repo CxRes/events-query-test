@@ -341,7 +341,7 @@ Table of Contents
    An event is the instantaneous effect of the (normal or abnormal)
    termination of invocation of an operation on an object of interest
    [DESIGN-FRAMEWORK].  The entity invoking an operation is termed the
-   invoker.
+   *invoker*.
 
    In the specific context of HTTP, the object of interest is data
    scoped to some resource.  When the operation is an HTTP method, the
@@ -354,7 +354,7 @@ Table of Contents
 
    An event is considered observable, if an entity outside the invoker
    and object of interest can detect its occurrence [DESIGN-FRAMEWORK].
-   This entity is the observer.
+   This entity is the *observer*.
 
    It follows from the HTTP uniform interface that the observer is
    always a server.  The events that are observed, the mechanism of
@@ -391,9 +391,9 @@ Table of Contents
 
    A subscription is an expression of interest to receive event
    notifications sent to an observer.  The requesting entity is a
-   subscriber.
+   *subscriber*.
 
-   Due to the request/response semantics of HTTP, the subscriberr
+   Due to the request/response semantics of HTTP, the subscriber
    coincides with the recipient of event notifications
    ([DESIGN-FRAMEWORK] uses the term _requester_ or _broker_ to identify
    a requesting entity, with the _broker_ and _recipient_ together
@@ -1022,8 +1022,8 @@ Index
 
          state (property)  Section 10.1, Paragraph 1; Section 10.1,
             Paragraph 2
-         subscriber  Section 4.3, Paragraph 3; Section 4.4, Paragraph 1;
-            *_Section 4.4, Paragraph 2_*
+         subscriber  Section 4.3, Paragraph 3; *_Section 4.4, Paragraph
+            1_*; Section 4.4, Paragraph 2
          subscription  Section 2.3, Paragraph 2.3.1; *_Section 4.4_*;
             Section 6, Paragraph 4; Section 8.1, Paragraph 1;
             Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
