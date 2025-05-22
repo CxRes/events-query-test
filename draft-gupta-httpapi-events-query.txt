@@ -602,7 +602,6 @@ Table of Contents
    (Section 8.2), except header fields redundant with response header
    (Section 9.2.1) are omitted.
 
-   {{&empty}}
    HTTP/1.1 200 OK                                  | Notification
    Content-Type: example/event-response             |
    Content-Length: 31                               |
@@ -616,7 +615,6 @@ Table of Contents
    property of the Events header field, a server MUST end the response
    immediately after the resource has been deleted.
 
-   {{&empty}}
    HTTP/1.1 200 OK                                  | Notification
    Content-Type: example/event-response             |
    Content-Length: 31                               |
