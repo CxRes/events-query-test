@@ -49,6 +49,7 @@ The `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) set to
 Subsequently, when event(s) occur, the server transmits a notification identical to the [Single Notificatio&zwnj;n Response](#single-notification-response), except header fields redundant with response header ({{stream-response-header}}) are omitted.
 
 ~~~ http-message
+
 {::include examples/notifications/update.http}
 ~~~
 {: sourcecode-name="stream-update-event.http" #stream-update-event title="Update Notification"}
@@ -57,6 +58,7 @@ Subsequently, when event(s) occur, the server transmits a notification identical
 Apart from the connection exceeding time period set in the =duration= property of the =Events= header field, a server MUST end the response immediately after the resource has been deleted.
 
 ~~~ http-message
+
 {::include examples/notifications/delete.http}
 ~~~
 {: sourcecode-name="stream-delete-event.http" #stream-delete-event title="Delete Notification"}
