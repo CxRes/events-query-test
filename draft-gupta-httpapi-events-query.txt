@@ -348,10 +348,12 @@ Table of Contents
 4.2.  Observation
 
    An event is considered observable, if an entity outside the invoker
-   and object of interest can detect its occurrence.  This entity is the
-   observer.  It follows from the HTTP uniform interface that the
-   observer is always a server.  The events that are observed, the
-   mechanism of observation, and information recorded from the event are
+   and object of interest can detect its occurrence [DESIGN-FRAMEWORK].
+   This entity is the observer.
+
+   It follows from the HTTP uniform interface that the observer is
+   always a server.  The events that are observed, the mechanism of
+   observation, and information recorded from the event are
    implementation details for the server.
 
    That an origin server has to assume the role of an observer in order
@@ -365,15 +367,16 @@ Table of Contents
 4.3.  Event Notification
 
    An event notification, or notification, is information transmitted by
-   an observer that is intended to reflect an event or contiguous events
-   on a resource.  Events Query extends "information hiding" behind the
-   HTTP uniform interface to the temporal dimension by defining
-   communication with respect to a transferable notification of the
-   resource event(s), rather than transferring the event(s) themselves.
+   an observer upon an event or contiguous events on a resource.
+
+   Events Query extends "information hiding" behind the HTTP uniform
+   interface to the temporal dimension by defining communication with
+   respect to a transferable notification of the resource event(s),
+   rather than transferring the event(s) themselves.
 
    A target resource might be capable of generating multiple
-   notifications to transmit an event that a subscriber can select from
-   using content negotiation.  Hypertext notifications not only can
+   notifications for the same event(s) that a subscriber can select from
+   using content negotiation.  Hypertext notifications can not only
    provide information of the resource events but also processing
    instructions that help guide the recipient's future actions, for
    example, the possibility to determine the current representation from
@@ -382,13 +385,19 @@ Table of Contents
 4.4.  Subscription
 
    A subscription is an expression of interest to receive event
-   notifications sent to an observer.  Due to the request/response
-   semantics of HTTP, the user agent that wants to receive event
-   notifications is also the subscriber.
+   notifications sent to an observer.  The requesting entity is a
+   subscriber.
 
-   The subscription query affords the user agent the opportunity to
-   engage in content negotiation for preferred form of event
-   notifications (as well as the representation, if simultaneously
+   Due to the request/response semantics of HTTP, the subscriberr
+   coincides with the recipient of event notifications
+   ([DESIGN-FRAMEWORK] uses the term _requester_ or _broker_ to identify
+   a requesting entity, with the _broker_ and _recipient_ together
+   forming the subscriber; for this specification the distinction is not
+   necessary).
+
+   The subscription in the form of a query affords the user agent the
+   opportunity to engage in content negotiation for preferred form of
+   event notifications (as well as the representation, if simultaneously
    requested).
 
 5.  Events Header Field
@@ -468,6 +477,15 @@ Table of Contents
 
                         Figure 4: Discovery Response
 
+      |  Implementations are advised against enabling event
+      |  notifications on long-lived resources over HTTP.  A resource
+      |  might be considered long-lived, if a server determines a low
+      |  probability of an event on the resource in the duration of the
+      |  response.  In such instances, servers are strongly advised to
+      |  respond with the Cache-Control ([HTTP-CACHING], Section 5)
+      |  header field and the max-age parameter ([HTTP-CACHING],
+      |  Section 5.2.2.1) set in it.
+
 8.  Single Notification
 
    The simplest event query is to ask for a notification for the next
@@ -508,16 +526,9 @@ Table of Contents
 
                 Figure 6: Single Event Notification Response
 
-      |  *Implementation Guidance*
-      |  
-      |  Implementations are advised against sending event notifications
-      |  for long-lived resources over HTTP.  A resource might be
-      |  considered long-lived, if a server determines that the resource
-      |  is unlikely to change in the duration of the notification
-      |  response.  In such instances, resource servers are strongly
-      |  advised to respond with the Cache-Control ([HTTP-CACHING],
-      |  Section 5) header field and the max-age parameter
-      |  ([HTTP-CACHING], Section 5.2.2.1) set in it.
+      |  When a user navigates away from a website or an application
+      |  using Events Query, user agents are strongly encouraged to
+      |  properly close the response and release the connection.
 
 9.  Notification Stream
 
@@ -924,9 +935,11 @@ Index
          event  Section 2, Paragraph 1; Section 2, Paragraph 2;
             Section 2.3, Paragraph 4.2.1; Section 2.4, Paragraph 1;
             *_Section 4.1_*; Section 4.2, Paragraph 1; Section 4.2,
-            Paragraph 2; Section 4.3, Paragraph 1; Section 4.3,
-            Paragraph 2; Section 5, Paragraph 3; Section 8, Paragraph 1;
-            Section 8.1, Paragraph 1; Section 9.2.2, Paragraph 1
+            Paragraph 2; Section 4.2, Paragraph 3; Section 4.3,
+            Paragraph 1; Section 4.3, Paragraph 2; Section 4.3,
+            Paragraph 3; Section 5, Paragraph 3; Section 7, Paragraph
+            4.1; Section 8, Paragraph 1; Section 8.1, Paragraph 1;
+            Section 9.2.2, Paragraph 1
          event notification  Section Abstract, Paragraph 1; Section 1,
             Paragraph 2; Section 1, Paragraph 3; Section 1, Paragraph 4;
             Section 1, Paragraph 7; Section 1, Paragraph 8; Section 2,
@@ -938,13 +951,14 @@ Index
             2.4.1; Section 2.3, Paragraph 2.5.1; Section 2.3, Paragraph
             4.1.1; Section 2.3, Paragraph 4.2.1; Section 2.3, Paragraph
             4.3.1; Section 2.3, Paragraph 4.4.1; Section 2.4, Paragraph
-            1; Section 2.4, Paragraph 2; Section 4.2, Paragraph 2;
+            1; Section 2.4, Paragraph 2; Section 4.2, Paragraph 3;
             *_Section 4.3_*; Section 4.3, Paragraph 1; Section 4.3,
-            Paragraph 2; Section 4.4, Paragraph 1; Section 4.4,
-            Paragraph 2; Section 5, Paragraph 2; Section 6, Paragraph 1;
-            Section 6, Paragraph 3.1.1; Section 8, Paragraph 1;
-            Section 8.1, Paragraph 1; Section 8.1, Paragraph 2;
-            Section 8.2, Paragraph 1; Section 8.2, Paragraph 3.2;
+            Paragraph 2; Section 4.3, Paragraph 3; Section 4.4,
+            Paragraph 1; Section 4.4, Paragraph 2; Section 4.4,
+            Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph 1;
+            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.1;
+            Section 8, Paragraph 1; Section 8.1, Paragraph 1;
+            Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
             Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
@@ -978,33 +992,35 @@ Index
             2.4.1; Section 2.3, Paragraph 2.5.1; Section 2.3, Paragraph
             4.1.1; Section 2.3, Paragraph 4.2.1; Section 2.3, Paragraph
             4.3.1; Section 2.3, Paragraph 4.4.1; Section 2.4, Paragraph
-            1; Section 2.4, Paragraph 2; Section 4.2, Paragraph 2;
+            1; Section 2.4, Paragraph 2; Section 4.2, Paragraph 3;
             *_Section 4.3_*; Section 4.3, Paragraph 1; Section 4.4,
-            Paragraph 1; Section 4.4, Paragraph 2; Section 5, Paragraph
-            2; Section 6, Paragraph 1; Section 6, Paragraph 3.1.1;
+            Paragraph 1; Section 4.4, Paragraph 2; Section 4.4,
+            Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph 1;
+            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.1;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
-            Section 8.2, Paragraph 3.2; Section 9, Paragraph 1;
-            Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
-            Section 9.1, Paragraph 3; Section 9.2, Paragraph 1;
-            Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
-            Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
-            1; Section 10, Paragraph 1; Section 10.2, Paragraph 1;
-            Section 10.2, Paragraph 4; Section 10.2, Paragraph 5;
-            Section 11, Paragraph 2; Appendix A, Paragraph 1
+            Section 9, Paragraph 1; Section 9.1, Paragraph 1;
+            Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
+            Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
+            Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
+            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 10, Paragraph
+            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 4;
+            Section 10.2, Paragraph 5; Section 11, Paragraph 2;
+            Appendix A, Paragraph 1
 
       O
 
          observation  *_Section 4.2_*
          observer  *_Section 4.2, Paragraph 1_*; Section 4.2, Paragraph
-            2; Section 4.3, Paragraph 1; Section 4.4, Paragraph 1
+            2; Section 4.2, Paragraph 3; Section 4.3, Paragraph 1;
+            Section 4.4, Paragraph 1
 
       S
 
          state (property)  Section 10.1, Paragraph 1; Section 10.1,
             Paragraph 2
-         subscriber  Section 4.3, Paragraph 2; *_Section 4.4, Paragraph
-            1_*
+         subscriber  Section 4.3, Paragraph 3; Section 4.4, Paragraph 1;
+            *_Section 4.4, Paragraph 2_*
          subscription  Section 2.3, Paragraph 2.3.1; *_Section 4.4_*;
             Section 6, Paragraph 4; Section 8.1, Paragraph 1;
             Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
