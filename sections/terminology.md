@@ -3,7 +3,7 @@
 ## Event {#event}
 
 {: #event-defn}
-An event is the instantaneous effect of the (normal or abnormal) termination of invocation of an operation on an object of interest {{DESIGN-FRAMEWORK}}. The entity invoking an operation is termed the (((!invoker)))i&zwnj;nvoker.
+An event is the instantaneous effect of the (normal or abnormal) termination of invocation of an operation on an object of interest {{DESIGN-FRAMEWORK}}. The entity invoking an operation is termed the (((!invoker)))invoke&zwnj;r.
 
 {: #events-in-HTTP}
 In the specific context of HTTP, the object of interest is data scoped to some resource. When the operation is an HTTP method, the invoker is a user agent. However, an operation need not be limited an HTTP method, it might just as easily have been invoked using another mechanism or protocol. !Events are then an extension of resource state (See {{HTTP, Section 3.2}}) in the temporal dimension.
@@ -11,7 +11,7 @@ In the specific context of HTTP, the object of interest is data scoped to some r
 ## Observation {#observation}
 
 {: #observation-defn}
-An event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence. This entity is the (((!observer)))o&zwnj;bserver. It follows from the HTTP uniform interface that the observer is always a server. The events that are observed, the mechanism of observation, and information recorded from the event are implementation details for the server.
+An event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence. This entity is the (((!observer)))observe&zwnj;r. It follows from the HTTP uniform interface that the observer is always a server. The events that are observed, the mechanism of observation, and information recorded from the event are implementation details for the server.
 
 {: #observation-roles}
 That an origin server has to assume the role of an observer in order to generate event-notifications is obvious. An intermediary while not observing the data scoped to a resource directly, still has the possibility to serve as an observer. An intermediary can observe events transmitted by an origin server or another intermediary, whether using {{&protocol}} or another mechanism, to generate event-notifications for outbound consumers.
@@ -27,7 +27,7 @@ A target resource might be capable of generating multiple notifications to trans
 ## Subscription {#subscription}
 
 {: #subscription-defn}
-A subscription is an expression of interest to receive event-notifications sent to an observer. Due to the request/response semantics of HTTP, the user agent that wants to receive event-notifications is also the (((!subscriber)))s&zwnj;ubscriber.
+A subscription is an expression of interest to receive event-notifications sent to an observer. Due to the request/response semantics of HTTP, the user agent that wants to receive event-notifications is also the (((!subscriber)))subscribe&zwnj;r.
 
 {: #subscription-conneg}
 The subscription query affords the user agent the opportunity to engage in content negotiation for preferred form of event-notifications (as well as the representation, if simultaneously requested).

@@ -12,7 +12,7 @@ To request a stream of event-notifications from a resource using {{&protocol}}, 
 The +events+ property MAY be used to specify any header field in the body of the subscription query to negotiate notifications.
 
 {: #stream-request-conneg}
-A client can also negotiate the form of the representation that encapsulates the event-notifications using header fields. Since the response carries an encapsulating representation, header fields can no longer be used to negotiate the form of an event-notification itself like in the case of a [Single Notification Request](#single-notification-request).
+A client can also negotiate the form of the representation that encapsulates the event-notifications using header fields. Since the response carries an encapsulating representation, header fields can no longer be used to negotiate the form of an event-notification itself like in the case of a [Single Notificatio&zwnj;n Request](#single-notification-request).
 
 ~~~ http-message
 {::include examples/stream/events-request.http}
@@ -46,7 +46,7 @@ The `Incremental` header field ({{INCREMENTAL-HTTP-MESSAGES, Section 3}}) set to
 ### Notifications {#stream-response-body}
 
 {: #stream-response-event}
-Subsequently, when event(s) occur, the server transmits a notification identical to the [Single Notification Response](#single-notification-response), except header fields redundant with response header ({{stream-response-header}}) are omitted.
+Subsequently, when event(s) occur, the server transmits a notification identical to the [Single Notificatio&zwnj;n Response](#single-notification-response), except header fields redundant with response header ({{stream-response-header}}) are omitted.
 
 ~~~ http-message
 {::include examples/notifications/update.http}
