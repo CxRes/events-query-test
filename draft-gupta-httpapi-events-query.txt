@@ -647,9 +647,10 @@ Table of Contents
    A server able to provide a stream with a representation and event
    notifications transmits the representation immediately following the
    response header (Section 9.2.1).  Otherwise, the response is the same
-   as that described in Section 9.2.  Again, we shall use the
-   application/http media-type ([HTTP/1.1], Section 10.2) for the
-   purpose of illustration.
+   as that described in Section 9.2.
+
+   Again, we shall use the application/http media-type ([HTTP/1.1],
+   Section 10.2) for the purpose of illustration.
 
    HTTP/1.1 200 OK
    Accept-Query: example/event-request
@@ -657,6 +658,7 @@ Table of Contents
    Transfer-Encoding: chunked
    Incremental: ?1
    Events: duration=600
+
    HTTP/1.1 200 OK
    Content-Type: text/plain
    Content-Length: 14
@@ -876,17 +878,20 @@ A.2.  Response
    Transfer-Encoding: chunked
    Incremental: ?1
    Events: duration=600
+
    HTTP/1.1 200 OK
    Content-Type: text/plain
    Content-Length: 14
 
    Hello World!
+
    HTTP/1.1 200 OK
    Content-Type: example/event-response
    Content-Length: 31
 
    Event-ID: 456
    Type: Update
+
    HTTP/1.1 200 OK
    Content-Type: example/event-response
    Content-Length: 31
@@ -945,8 +950,8 @@ Index
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
             Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
             2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 10, Paragraph
-            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 3;
-            Section 10.2, Paragraph 4; Section 11, Paragraph 2;
+            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 4;
+            Section 10.2, Paragraph 5; Section 11, Paragraph 2;
             Appendix A, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
             2.1.1; Section 9.2.2, Paragraph 3; Table 1; Section 12.2,
@@ -985,7 +990,7 @@ Index
             Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
             Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
             1; Section 10, Paragraph 1; Section 10.2, Paragraph 1;
-            Section 10.2, Paragraph 3; Section 10.2, Paragraph 4;
+            Section 10.2, Paragraph 4; Section 10.2, Paragraph 5;
             Section 11, Paragraph 2; Appendix A, Paragraph 1
 
       O
