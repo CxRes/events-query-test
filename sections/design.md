@@ -47,19 +47,19 @@ conforms to the {{<<REST}}, best practices for {{<<RFC9205}} {{RFC9205}}, and {{
 The {{&protocol}} Protocol specifies:
 
 1. {: #scope--discovery}
-A mechanism to discover notification capabilities on a resource.
+A mechanism to discover notification capabilities on a resource ({{discovery}}).
 
 1. {: #scope--request}
-A mechanism to request event-notifications from a resource.
+A mechanism to request event-notifications from a resource (Sections {{<single-notification-request}} and {{<stream-request}}) along with the representation ({{representation-request}}).
 
 1. {: #scope--query-data-model}
-An abstract data model for the subscription.
+An abstract data model for the subscription ({{data-model}}).
 
-1. {: #scope--single-response-semantics}
-Semantics for a response carrying a single notification.
+1. {:noabbrev #scope--single-response-semantics}
+Semantics for a response carrying a [single notification](#single-notification-response){:noabbrev}.
 
-1. {: #scope--streaming-response-semantics}
-Semantics for the response streaming representation (if requested) and multiple event-notifications.
+1. {:noabbrev #scope--streaming-response-semantics}
+Semantics for the response streaming [multiple event notifications](#stream-response){:noabbrev} as well as the [representation](#representation-response), if requested.
 
 
 {: #out-of-scope}
