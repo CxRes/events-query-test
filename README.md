@@ -6,23 +6,15 @@ This is the working area for individual Internet-Drafts.
 
 ## HTTP Events Query
 
-* [Editor's Copy](https://CxRes.github.io/events-query/#go.draft-gupta-httpapi-events-query.html)
+* [Editor's Copy](https://CxRes.github.io/events-query-test/#go.draft-gupta-httpapi-events-query.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-gupta-httpapi-events-query)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-gupta-httpapi-events-query)
-* [Compare Editor's Copy to Individual Draft](https://CxRes.github.io/events-query/#go.draft-gupta-httpapi-events-query.diff)
-
-## TODO - Your title
-
-* [Editor's Copy](https://CxRes.github.io/events-query/#go.draft-todo-yourname-protocol.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-todo-yourname-protocol)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-todo-yourname-protocol)
-* [Compare Editor's Copy to Individual Draft](https://CxRes.github.io/events-query/#go.draft-todo-yourname-protocol.diff)
-
+* [Compare Editor's Copy to Individual Draft](https://CxRes.github.io/events-query-test/#go.draft-gupta-httpapi-events-query.diff)
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/CxRes/events-query/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/CxRes/events-query-test/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
