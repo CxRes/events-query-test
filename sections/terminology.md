@@ -3,7 +3,7 @@
 ## Event {#event}
 
 {: #event-defn}
-An event is the instantaneous effect of the (normal or abnormal) termination of invocation of an operation on an object of interest {{DESIGN-FRAMEWORK}}. The entity invoking an operation is termed the (((!invoker)))invoke&zwnj;r.
+An event is the instantaneous effect of the (normal or abnormal) termination of invocation of an operation on an object of interest {{DESIGN-FRAMEWORK}}. The entity invoking an operation is termed the **(((!invoker)))invoker**{:noabbrev}.
 
 {: #events-in-HTTP}
 In the specific context of HTTP, the object of interest is data scoped to some resource. When the operation is an HTTP method, the invoker is a user agent. However, an operation need not be limited an HTTP method, it might just as easily have been invoked using another mechanism or protocol. !Events are then an extension of resource state (See {{HTTP, Section 3.2}}) in the temporal dimension.
@@ -11,7 +11,7 @@ In the specific context of HTTP, the object of interest is data scoped to some r
 ## Observation {#observation}
 
 {: #observation-defn}
-An event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence {{DESIGN-FRAMEWORK}}. This entity is the (((!observer)))observe&zwnj;r.
+An event is considered observable, if an entity outside the invoker and object of interest can detect its occurrence {{DESIGN-FRAMEWORK}}. This entity is the **(((!observer)))observer**{:noabbrev}.
 
 {: #observer-in-HTTP}
 It follows from the HTTP uniform interface that the observer is always a server. The events that are observed, the mechanism of observation, and information recorded from the event are implementation details for the server.
@@ -33,10 +33,10 @@ A target resource might be capable of generating multiple notifications for the 
 ## Subscription {#subscription}
 
 {: #subscription-defn}
-A subscription is an expression of interest to receive event-notifications sent to an observer. The requesting entity is a subscriber.
+A subscription is an expression of interest to receive event-notifications sent to an observer. The requesting entity is a **(((!subscriber)))subscriber**{:noabbrev}.
 
 {: #subscriber-in-HTTP}
-Due to the request/response semantics of HTTP, the (((!subscriber)))subscriber&zwnj;r coincides with the recipient of event-notifications ({{DESIGN-FRAMEWORK}} uses the term _requester_ or _broker_ to identify a requesting entity, with the _broker_ and _recipient_ together forming the subscriber; for this specification the distinction is not necessary).
+Due to the request/response semantics of HTTP, the subscriber coincides with the recipient of event-notifications ({{DESIGN-FRAMEWORK}} uses the term _requester_ or _broker_ to identify a requesting entity, with the _broker_ and _recipient_ together forming the subscriber; for this specification the distinction is not necessary).
 
 {: #subscription-conneg}
 The subscription in the form of a query affords the user agent the opportunity to engage in content negotiation for preferred form of event-notifications (as well as the representation, if simultaneously requested).
