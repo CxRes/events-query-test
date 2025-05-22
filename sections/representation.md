@@ -18,10 +18,14 @@ The +state+ property MAY be used to specify any header field in the body of the 
 ## Response {#representation-response}
 
 {: #representation-response-body}
-A server able to provide a stream with a representation and event-notifications transmits the representation immediately following the response header ({{stream-response-header}}). Otherwise, the response is the same as that described in {{stream-response}}. Again, we shall use the `application/http` media-type ({{-HTTP1, Section 10.2}}) for the purpose of illustration.
+A server able to provide a stream with a representation and event-notifications transmits the representation immediately following the response header ({{stream-response-header}}). Otherwise, the response is the same as that described in {{stream-response}}.
+
+{: #representation-response-encapsulation}
+Again, we shall use the `application/http` media-type ({{-HTTP1, Section 10.2}}) for the purpose of illustration.
 
 ~~~ http-message
 {::include examples/stream/response-headers.http}
+
 {::include examples/stream/representation.http}
 ~~~
 {: sourcecode-name="representation-response-example.http" #representation-response-example title="Representation Response"}

@@ -14,8 +14,11 @@ The following example illustrates a complete request and response for representa
 
 ~~~ http-message
 {::include examples/stream/response-headers.http}
+
 {::include examples/stream/representation.http}
+
 {::include examples/notifications/update.http}
+
 {::include examples/notifications/delete.http}
 ~~~
 {: sourcecode-name="notifications-stream-response-with-representation.http" #notifications-stream-response-with-representation-example title="Response Stream with Representation and Notifications"}
