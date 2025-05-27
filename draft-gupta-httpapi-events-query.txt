@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                               22 May 2025
+Internet-Draft                                               27 May 2025
 Intended status: Standards Track                                        
-Expires: 23 November 2025
+Expires: 28 November 2025
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 November 2025.
+   This Internet-Draft will expire on 28 November 2025.
 
 Copyright Notice
 
@@ -660,6 +660,10 @@ Table of Contents
 
 10.2.  Response
 
+   A server unable to provide a representation MUST NOT serve event
+   notifications.  This does not apply in case of conditional request
+   for representation that is not fulfilled.
+
    A server able to provide a stream with a representation and event
    notifications transmits the representation immediately following the
    response header (Section 9.2.1).  Otherwise, the response is the same
@@ -968,9 +972,9 @@ Index
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
             Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
             2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 10, Paragraph
-            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 4;
-            Section 10.2, Paragraph 5; Section 11, Paragraph 2;
-            Appendix A, Paragraph 1
+            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
+            Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
+            Section 11, Paragraph 2; Appendix A, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
             2.1.1; Section 9.2.2, Paragraph 3; Table 1; Section 12.2,
             Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
@@ -1007,9 +1011,9 @@ Index
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
             Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
             2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 10, Paragraph
-            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 4;
-            Section 10.2, Paragraph 5; Section 11, Paragraph 2;
-            Appendix A, Paragraph 1
+            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
+            Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
+            Section 11, Paragraph 2; Appendix A, Paragraph 1
 
       O
 
