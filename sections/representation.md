@@ -17,6 +17,9 @@ The +state+ property MAY be used to specify any header field in the body of the 
 
 ## Response {#representation-response}
 
+{: #representation-not-available}
+A server unable to provide a representation MUST NOT serve event-notifications. This does not apply in case of conditional request for representation that is not fulfilled.
+
 {: #representation-response-body}
 A server able to provide a stream with a representation and event-notifications transmits the representation immediately following the response header ({{stream-response-header}}). Otherwise, the response is the same as that described in {{stream-response}}.
 
