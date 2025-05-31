@@ -1,6 +1,6 @@
 # Representation {#representation}
 
-{{&protocol}} allows a user agent to simultaneously request for a representation along with event-notifications. This not only saves on an extra round trip, but relieves a user agent from the burden of managing potential race conditions between the representation and event-notifications.
+{{&protocol}} lets a user agent to ask and receive the current representation and subsequent event-notifications in a single request/response. When compared to using, say, Fetch {{FETCH}} and EventSource {{SSE}} in conjunction, {{&protocol}} not only saves on an extra round trip, but relieves a user agent from the burden of handling the possible race condition.
 
 ## Request {#representation-request}
 

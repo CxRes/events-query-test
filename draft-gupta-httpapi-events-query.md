@@ -40,6 +40,16 @@ normative:
   RFC8126:
 informative:
   DESIGN-FRAMEWORK: DOI.10.1145/267896.267920
+  FETCH:
+    target: https://fetch.spec.whatwg.org
+    title: Fetch
+    author:
+      -
+        ins: A. van Kesteren
+        name: Anne van Kesteren
+    seriesinfo:
+      WHATWG: Living Standard
+    date: Last Updated 28 May 2025
   HTTP-CACHING: RFC9111
   REST:
     target: https://roy.gbiv.com/pubs/dissertation/rest_arch_style.htm
@@ -53,7 +63,8 @@ informative:
       month: September
       year: 2000
     refcontent: Chapter 5, Architectural Styles and the Design of Network-based Software Architectures
-    seriesinfo: Doctoral Dissertation, University of California, Irvine
+    seriesinfo:
+      "Doctoral Dissertation": University of California, Irvine
     format:
       PDF: https://roy.gbiv.com/pubs/dissertation/fielding_dissertation.pdf#G16.1026811
   RFC6202:
