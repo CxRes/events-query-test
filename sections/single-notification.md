@@ -26,7 +26,9 @@ When providing a single notification, the server MUST close the connection immed
 ~~~
 {: sourcecode-name="single-notification-response-example.http" #single-notification-response-example title="Single Event Notification Response"}
 
+{{&zwsp}}
+
 {:aside #no-hogging}
+> **Implementation Advice**
+>
 > When a user navigates away from a website or an application using {{&protocol}}, user agents are strongly encouraged to properly close the response and release the connection.
-
-
