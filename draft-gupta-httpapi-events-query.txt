@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                               27 May 2025
+Internet-Draft                                               31 May 2025
 Intended status: Standards Track                                        
-Expires: 28 November 2025
+Expires: 2 December 2025
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 November 2025.
+   This Internet-Draft will expire on 2 December 2025.
 
 Copyright Notice
 
@@ -482,14 +482,15 @@ Table of Contents
 
                         Figure 4: Discovery Response
 
-      |  Implementations are advised against enabling event
-      |  notifications on long-lived resources over HTTP.  A resource
-      |  might be considered long-lived, if a server determines a low
-      |  probability of an event on the resource in the duration of the
-      |  response.  In such instances, servers are strongly advised to
-      |  respond with the Cache-Control ([HTTP-CACHING], Section 5)
-      |  header field and the max-age parameter ([HTTP-CACHING],
-      |  Section 5.2.2.1) set in it.
+      |  *Implementation Advice*
+      |  
+      |  Servers are advised against enabling event notifications on
+      |  long-lived resources over HTTP.  A resource might be considered
+      |  long-lived, if a server determines a low probability of an
+      |  event on the resource in the duration of the response.  In such
+      |  instances, servers are strongly advised to respond with the
+      |  Cache-Control ([HTTP-CACHING], Section 5) header field and the
+      |  max-age parameter ([HTTP-CACHING], Section 5.2.2.1) set in it.
 
 8.  Single Notification
 
@@ -531,6 +532,10 @@ Table of Contents
 
                 Figure 6: Single Event Notification Response
 
+   &zwsp;
+
+      |  *Implementation Advice*
+      |  
       |  When a user navigates away from a website or an application
       |  using Events Query, user agents are strongly encouraged to
       |  properly close the response and release the connection.
@@ -947,7 +952,7 @@ Index
             Paragraph 2; Section 4.2, Paragraph 3; Section 4.3,
             Paragraph 1; Section 4.3, Paragraph 2; Section 4.3,
             Paragraph 3; Section 5, Paragraph 3; Section 7, Paragraph
-            4.1; Section 8, Paragraph 1; Section 8.1, Paragraph 1;
+            4.2; Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 9.2.2, Paragraph 1
          event notification  Section Abstract, Paragraph 1; Section 1,
             Paragraph 2; Section 1, Paragraph 3; Section 1, Paragraph 4;
@@ -964,7 +969,7 @@ Index
             Paragraph 2; Section 4.3, Paragraph 3; Section 4.4,
             Paragraph 1; Section 4.4, Paragraph 2; Section 4.4,
             Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph 1;
-            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.1;
+            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.2;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
@@ -1003,7 +1008,7 @@ Index
             *_Section 4.3_*; Section 4.3, Paragraph 1; Section 4.4,
             Paragraph 1; Section 4.4, Paragraph 2; Section 4.4,
             Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph 1;
-            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.1;
+            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.2;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
