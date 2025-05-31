@@ -532,7 +532,6 @@ Table of Contents
 
                 Figure 6: Single Event Notification Response
 
-   &zwsp;
 
       |  *Implementation Advice*
       |  
@@ -621,9 +620,8 @@ Table of Contents
 
                        Figure 9: Update Notification
 
-   Apart from the connection exceeding time period set in the duration
-   property of the Events header field, a server MUST end the response
-   immediately after the resource has been deleted.
+   A server MUST end the response immediately after transmitting the
+   event notification upon a resource being deleted.
 
    HTTP/1.1 200 OK                                  | Notification
    Content-Type: example/event-response             |
@@ -633,6 +631,10 @@ Table of Contents
    Type: Delete                                     |
 
                        Figure 10: Delete Notification
+
+   Otherwise, a server MUST end the response when the connection
+   duration has exceeded the period set in the duration property of the
+   Events header field.  A server MAY terminate the response earlier.
 
 10.  Representation
 
@@ -942,7 +944,7 @@ Index
             Paragraph 4.1.1; *_Section 6_*; Section 9.1, Paragraph 1;
             Section 10.1, Paragraph 1
          duration (property)  *_Section 5.1_*; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 3; Table 2
+            2.1.2.1.1; Section 9.2.2, Paragraph 5; Table 2
 
       E
 
@@ -976,12 +978,13 @@ Index
             Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
             Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 10, Paragraph
-            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
-            Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
-            Section 11, Paragraph 2; Appendix A, Paragraph 1
+            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
+            Paragraph 3; Section 10, Paragraph 1; Section 10.2,
+            Paragraph 1; Section 10.2, Paragraph 2; Section 10.2,
+            Paragraph 5; Section 10.2, Paragraph 6; Section 11,
+            Paragraph 2; Appendix A, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
-            2.1.1; Section 9.2.2, Paragraph 3; Table 1; Section 12.2,
+            2.1.1; Section 9.2.2, Paragraph 5; Table 1; Section 12.2,
             Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
             Paragraph 2.1.1
          events (property)  Section 9.1, Paragraph 1; Section 9.1,
@@ -1015,10 +1018,11 @@ Index
             Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
             Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 10, Paragraph
-            1; Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
-            Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
-            Section 11, Paragraph 2; Appendix A, Paragraph 1
+            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
+            Paragraph 3; Section 10, Paragraph 1; Section 10.2,
+            Paragraph 1; Section 10.2, Paragraph 2; Section 10.2,
+            Paragraph 5; Section 10.2, Paragraph 6; Section 11,
+            Paragraph 2; Appendix A, Paragraph 1
 
       O
 
