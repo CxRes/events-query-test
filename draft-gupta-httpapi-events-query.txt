@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                               31 May 2025
+Internet-Draft                                               1 June 2025
 Intended status: Standards Track                                        
-Expires: 2 December 2025
+Expires: 3 December 2025
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 December 2025.
+   This Internet-Draft will expire on 3 December 2025.
 
 Copyright Notice
 
@@ -638,11 +638,12 @@ Table of Contents
 
 10.  Representation
 
-   Events Query allows a user agent to simultaneously request for a
-   representation along with event notifications.  This not only saves
-   on an extra round trip, but relieves a user agent from the burden of
-   managing potential race conditions between the representation and
-   event notifications.
+   Events Query lets a user agent to ask and receive the current
+   representation and subsequent event notifications in a single
+   request/response.  When compared to using, say, Fetch [FETCH] and
+   EventSource [SSE] in conjunction, Events Query not only saves on an
+   extra round trip, but relieves a user agent from the burden of
+   handling the possible race condition.
 
 10.1.  Request
 
@@ -677,7 +678,8 @@ Table of Contents
    as that described in Section 9.2.
 
    Again, we shall use the application/http media-type ([HTTP/1.1],
-   Section 10.2) for the purpose of illustration.
+   Section 10.2) for the purpose of illustration.  Chunks have been
+   omitted for clarity.
 
    HTTP/1.1 200 OK
    Accept-Query: example/event-request
@@ -838,6 +840,9 @@ Table of Contents
               DOI 10.1145/267896.267920, November 1997,
               <https://doi.org/10.1145/267896.267920>.
 
+   [FETCH]    van Kesteren, A., "Fetch", WHATWG Living Standard, May
+              2025, <https://fetch.spec.whatwg.org>.
+
    [HTTP-CACHING]
               Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "HTTP Caching", STD 98, RFC 9111,
@@ -850,8 +855,8 @@ Table of Contents
 
    [REST]     Fielding, R., "Representational State Transfer (REST)",
               Chapter 5, Architectural Styles and the Design of Network-
-              based Software Architectures, Doctoral Dissertation,
-              University of California, Irvine ,
+              based Software Architectures, Doctoral
+              Dissertation University of California, Irvine,
               <https://roy.gbiv.com/pubs/dissertation/
               rest_arch_style.htm>.
 
@@ -881,7 +886,7 @@ Table of Contents
 Appendix A.  Example
 
    The following example illustrates a complete request and response for
-   representation and notifications using Events Query.  Chunk size has
+   representation and notifications using Events Query.  Chunks have
    been omitted for clarity.
 
 A.1.  Request
