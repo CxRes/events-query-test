@@ -6,10 +6,7 @@ Instead of long-polling for event-notifications, {{&protocol}} can also be used 
 ## Request {#stream-request}
 
 {: #stream-request-procedure}
-To request a stream of event-notifications from a resource using {{&protocol}}, a client MUST use the subscription data model ({{data-model}}) with the +events+ property in an appropriate media-type when issuing a request using the `QUERY` method ({{HTTP-QUERY, Section 3}}).
-
-{: #stream-request-events-conneg}
-The +events+ property MAY be used to specify any header field in the body of the subscription query to negotiate notifications.
+To request a stream of event-notifications from a resource using {{&protocol}}, a client MUST use the subscription data model ({{data-model}}) to specify zero or more header fields to content negotiate event-notifications in an appropriate media-type with the `QUERY` method ({{HTTP-QUERY, Section 3}}).
 
 {: #stream-request-conneg}
 A client can also negotiate the form of the representation that encapsulates the event-notifications using header fields. Since the response carries an encapsulating representation, header fields can no longer be used to negotiate the form of an event-notification itself like in the case of a [Single Notification Request](#single-notification-request){:noabbrev}.

@@ -1,19 +1,22 @@
 # Subscription Data Model {#data-model}
 
 {: #data-model-description}
-The abstract data model specifies the semantics of the query that allows a client to negotiate the form of notifications and representation when subscribing for event-notifications.
+The abstract data model specifies the semantics of an {{&protocol}}. Specifically, it allows a client to express an interest in receiving representation and event-notifications in an appropriate form.
 
-{: #data-model-properties}
-The data model has the following OPTIONAL properties:
+{: #data-model-requirements}
+A realization of the data model MUST allow a client to specify in a subscription request:
 
-+ {: #data-model-property-events}
-`events` to specify header fields needed to content negotiate notifications, and
++ {: #data-model-requirement-representation-header}
+header fields for requesting a representation, and
 
-+ {: #data-model-property-state}
-`state` to specify header fields needed to content negotiate a representation.
++ {: #data-model-requirement-notification-header}
+header fields for requesting event-notifications.
 
-{: #data-model-extensions}
-Implementations are free to extend the data model with additional properties. Implementations can choose an appropriate media-type to realize the subscription data model.
+{: #data-model-realization}
+Implementations can choose an appropriate media-type to realize the subscription data model. Implementations are free to extend the data model to include additional data. A specific realization of the data model is outside the scope of this specification.
+
+{: #data-model-example}
+The following example shows the body of a subscription requesting representation and event-notifications using the `state` and `events` properties respectively in a YAML like syntax.
 
 ~~~ yaml
 state:
@@ -21,7 +24,7 @@ state:
 events:
   Accept: example/event-response
 ~~~
-{: sourcecode-name="data-model-example.yaml" #data-model-example title="Events Query Data Model in a YAML like syntax"}
+{: sourcecode-name="data-model-example.yaml" #data-model-example-yaml title="Events Query Data Model in a YAML like syntax"}
 
 *[data model]: #data-model
 *[Data Model]: #data-model
