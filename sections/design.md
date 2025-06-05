@@ -12,7 +12,7 @@ Unlike other protocols, {{&protocol}} does not (usually) require additional reso
 The goals of the {{&protocol}} are:
 
 1. {: #goal--http-only}
-to use the Hypertext Transfer Protocol {{HTTP}} as transport for reliable and in-order event-notifications. Clients fetching resources using HTTP need not required to switch to another protocol for receiving event-notifications.
+to use the Hypertext Transfer Protocol {{HTTP}} for reliable and in-order transfer of event-notifications. Clients fetching resources using HTTP need not required to switch to another protocol for receiving event-notifications.
 
 1. {: #goal--unified-source-of-truth}
 to provide updates directly from a resource of interest, obviating the need to create another endpoint for event-notifications. This eliminates the need to co-ordinate responses between a resource and the notification endpoint as is the case with existing approaches.
