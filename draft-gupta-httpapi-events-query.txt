@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                               1 June 2025
+Internet-Draft                                               5 June 2025
 Intended status: Standards Track                                        
-Expires: 3 December 2025
+Expires: 7 December 2025
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 December 2025.
+   This Internet-Draft will expire on 7 December 2025.
 
 Copyright Notice
 
@@ -209,8 +209,8 @@ Table of Contents
 
    The goals of the Events Query are:
 
-   1.  to use the Hypertext Transfer Protocol [HTTP] as transport for
-       reliable and in-order event notifications.  Clients fetching
+   1.  to use the Hypertext Transfer Protocol [HTTP] for reliable and
+       in-order transfer of event notifications.  Clients fetching
        resources using HTTP need not required to switch to another
        protocol for receiving event notifications.
 
