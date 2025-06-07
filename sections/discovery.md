@@ -1,6 +1,7 @@
 # Discovery {#discovery}
 
-A user agent can discover if a server supports {{&protocol}} on a resource by examining the `Accept-Query` header field ({{HTTP-QUERY, Section 3}}) in a response for an appropriate media-type that can accommodate the {{<<data-model}}.
+{: #discovery-requirement}
+A user agent can discover if a server enables {{&protocol}} on a resource by examining support for query with a media-type that can realize the {{<<data-model}}. A server MUST advertise media-types accepted for {{&protocol}} using the `Accept-Query` header field ({{HTTP-QUERY, Section 3}}) in a response.
 
 ~~~ http-message
 {::include examples/discovery/request.http}
