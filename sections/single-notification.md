@@ -6,7 +6,7 @@ The simplest event query is to ask for a notification for the next event(s) on a
 ## Request {#single-notification-request}
 
 {: #single-notification-request-content}
-A client can send an empty query to be notified of a single event. A server MUST interpret a request with an empty query in an appropriate media-type made using the `QUERY` method ({{HTTP-QUERY, Section 3}}) as a subscription request for a single event-notification.
+To be notified of the next event(s) on a resource using {{&protocol}}, a client can send an empty query. A server MUST consider a request with an empty query in an appropriate media-type made using the `QUERY` method ({{HTTP-QUERY, Section 3}}) as a subscription request for a single event-notification.
 
 {: #single-notification-request-conneg}
 A client can, as usual, negotiate the form of the event-notification using header fields.
