@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                               7 June 2025
+Internet-Draft                                               2 July 2025
 Intended status: Standards Track                                        
-Expires: 9 December 2025
+Expires: 3 January 2026
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 December 2025.
+   This Internet-Draft will expire on 3 January 2026.
 
 Copyright Notice
 
@@ -104,9 +104,10 @@ Table of Contents
      12.2.  The HTTP Events Field Registry
        12.2.1.  Template
        12.2.2.  Initial Registry Contents
-   13. References
-     13.1.  Normative References
-     13.2.  Informative References
+   13. End User Considerations
+   14. References
+     14.1.  Normative References
+     14.2.  Informative References
    Appendix A.  Example
      A.1.  Request
      A.2.  Response
@@ -441,21 +442,24 @@ Table of Contents
 
 6.  Subscription Data Model
 
-   The abstract data model specifies the semantics of the query that
-   allows a client to negotiate the form of notifications and
-   representation when subscribing for event notifications.
+   The abstract data model specifies the semantics of an Events Query.
 
-   The data model has the following OPTIONAL properties:
+   A realization of the data model MUST allow a client to specify in a
+   subscription request:
 
-   *  events to specify header fields needed to content negotiate
-      notifications, and
+   *  interest in receiving a representation in a preferred form.
 
-   *  state to specify header fields needed to content negotiate a
-      representation.
+   *  interest in receiving event notifications in a preferred form.
 
-   Implementations are free to extend the data model with additional
-   properties.  Implementations can choose an appropriate media-type to
-   realize the subscription data model.
+   Implementations can choose an appropriate media-type to realize the
+   subscription data model.  Implementations are free to extend the data
+   model to include additional data.  A specific realization of the data
+   model is outside the scope of this specification.
+
+   The following example shows the body of a subscription request
+   wherein the state and events properties are used to specify request
+   headers for representation and event notifications respectively in a
+   YAML like syntax.
 
    state:
      Accept: text/html
@@ -466,10 +470,11 @@ Table of Contents
 
 7.  Discovery
 
-   A user agent can discover if a server supports Events Query on a
-   resource by examining the Accept-Query header field ([HTTP-QUERY],
-   Section 3) in a response for an appropriate media-type that can
-   accommodate the Subscription Data Model.
+   A user agent can discover if a server enables Events Query on a
+   resource by examining support for query with a media-type that can
+   realize the Subscription Data Model.  A server MUST advertise media-
+   types accepted for Events Query using the Accept-Query header field
+   ([HTTP-QUERY], Section 3) in a response.
 
    HEAD /foo HTTP/1.1
    Host: example.org
@@ -548,24 +553,27 @@ Table of Contents
 
 9.1.  Request
 
-   To request a stream of event notifications from a resource using
-   Events Query, a client MUST use the subscription data model
-   (Section 6) with the events property in an appropriate media-type
-   when issuing a request using the QUERY method ([HTTP-QUERY],
+   To request a stream of event notifications from a resource in an
+   Events Query, a client MUST express the interest in receiving the
+   event notifications in a preferred form using a realization of the
+   subscription data model with the QUERY method ([HTTP-QUERY],
    Section 3).
 
-   The events property MAY be used to specify any header field in the
-   body of the subscription query to negotiate notifications.
+   A client can also negotiate the response that encapsulates event
+   notifications using header fields.  Since the response carries an
+   encapsulating representation, header fields can no longer be used to
+   negotiate the form of an event notification itself like in the case
+   of a Single Notification Request (Section 8.1).
 
-   A client can also negotiate the form of the representation that
-   encapsulates the event notifications using header fields.  Since the
-   response carries an encapsulating representation, header fields can
-   no longer be used to negotiate the form of an event notification
-   itself like in the case of a Single Notification Request
-   (Section 8.1).
+   The following example shows subscription request for a stream of
+   event notifications transmitted using the application/http media-
+   type.  The events property indicates the interest in receiving event
+   notifications.  Preferences are specified using the request headers
+   in the events property.
 
    QUERY /foo HTTP/1.1
    Host: example.org
+   Accept: application/http
    Content-Type: example/event-request
    Events: duration=0
 
@@ -648,16 +656,20 @@ Table of Contents
 
 10.1.  Request
 
-   To request a representation of the resource using Events Query, a
-   client MUST use the subscription data model (Section 6) with the
-   state property in an appropriate media-type when issuing a request
-   using the QUERY method ([HTTP-QUERY], Section 3).
+   To request a representation of the resource in an Events Query, a
+   client MUST express the interest in receiving the representation in a
+   preferred form using a realization of the subscription data model
+   (Section 6) with the QUERY method ([HTTP-QUERY], Section 3).
 
-   The state property MAY be used to specify any header field in the
-   body of the subscription query to negotiate the representation.
+   The following example shows subscription request for representation
+   along with notifications transmitted using the application/http
+   media-type.  The state property indicates the interest in receiving
+   representation.  The preferred form of representation is specified
+   using the request headers in the state property.
 
    QUERY /foo HTTP/1.1
    Host: example.org
+   Accept: application/http
    Content-Type: example/event-request
 
    state:
@@ -790,9 +802,59 @@ Table of Contents
                 Table 2: List of HTTP Events Field property
                              name registrations
 
-13.  References
+13.  End User Considerations
 
-13.1.  Normative References
+
+   // If we, the IETF, claim that the Internet is for the end user
+   // [RFC8890] and promote the end-to-end principle [RFC3724], every
+   // specification we produce ought to consider its impact on the
+   // Internet end user.  For this reason, I propose that specifications
+   // must include a considerations section where authors assess the
+   // impact of their proposal on the internet end user, aligned with
+   // the mission of IETF [RFC3935].
+
+   End users of the HTTP protocol can be classified into two groups:
+   publishers and consumers.  Consumers have an incentive to subscribe
+   to event notifications from many resources and to hold on to a
+   connection for as long as possible.  Whereas publishers bear the cost
+   of server infrastructure.  Consumers also typically outnumber
+   publishers, in many cases by multiple orders of magnitude.  This
+   creates an imbalance in the effort to subscribe versus effort to
+   deliver; consumers can easily place a disproportionate burden on
+   servers, reminiscent of a denial-of-service attack.
+
+   At the outset, requiring that clients subscribe to event
+   notifications per resource serves as an effective filtering mechanism
+   that limits the burden on servers.  Compare this to the typical
+   implementation of protocols such as WebSockets [WS], where clients
+   connect to dedicated endpoints to receive notifications; the server
+   either has to broadcast notifications for multiple resources or track
+   resources of interest for each client to filter event notifications
+   accordingly.
+
+   Events Query empowers servers to decide content and duration for
+   which event notifications are served on any given resource, as well
+   as allowing servers to close the response stream at any time.
+   Servers may also limit event notifications and/or their content,
+   except to authenticated consumers.  Such authenticated consumers
+   might, for example, be asked to share the cost burden with publishers
+   in return for a higher quality of service.
+
+   The use of HTTP Semantics also enables intermediation of event
+   notifications, unlike existing mechanisms built with protocols such
+   as WebSockets [WS] or WebSub [WEBSUB].  Intermediaries can help with
+   improving the latency and reliability of transmission of event
+   notifications as well as scaling of the event notification traffic to
+   reach a significantly larger base of consumers.  On the flip side,
+   economies of scale will likely lead to greater consolidation of
+   intermediary service providers (though not centralization) with the
+   attendant risk of anti-consumer behaviour.  In the opinion of the
+   authors, policies designed to treat network traffic as a public
+   utility might provide better outcomes for the end user.
+
+14.  References
+
+14.1.  Normative References
 
    [HTTP]     Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "HTTP Semantics", STD 97, RFC 9110,
@@ -831,7 +893,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-13.2.  Informative References
+14.2.  Informative References
 
    [DESIGN-FRAMEWORK]
               Rosenblum, D. and A. Wolf, "A design framework for
@@ -861,6 +923,16 @@ Table of Contents
               <https://roy.gbiv.com/pubs/dissertation/
               rest_arch_style.htm>.
 
+   [RFC3724]  Kempf, J., Ed., Austein, R., Ed., and IAB, "The Rise of
+              the Middle and the Future of End-to-End: Reflections on
+              the Evolution of the Internet Architecture", RFC 3724,
+              DOI 10.17487/RFC3724, March 2004,
+              <https://www.rfc-editor.org/rfc/rfc3724>.
+
+   [RFC3935]  Alvestrand, H., "A Mission Statement for the IETF",
+              BCP 95, RFC 3935, DOI 10.17487/RFC3935, October 2004,
+              <https://www.rfc-editor.org/rfc/rfc3935>.
+
    [RFC6202]  Loreto, S., Saint-Andre, P., Salsano, S., and G. Wilkins,
               "Known Issues and Best Practices for the Use of Long
               Polling and Streaming in Bidirectional HTTP", RFC 6202,
@@ -870,6 +942,10 @@ Table of Contents
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/rfc/rfc7838>.
+
+   [RFC8890]  Nottingham, M., "The Internet is for End Users", RFC 8890,
+              DOI 10.17487/RFC8890, August 2020,
+              <https://www.rfc-editor.org/rfc/rfc8890>.
 
    [RFC9205]  Nottingham, M., "Building Protocols with HTTP", BCP 56,
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
@@ -894,6 +970,7 @@ A.1.  Request
 
    QUERY /foo HTTP/1.1
    Host: example.org
+   Accept: application/http
    Content-Type: example/event-request
 
    state:
@@ -961,7 +1038,8 @@ Index
             Paragraph 1; Section 4.3, Paragraph 2; Section 4.3,
             Paragraph 3; Section 5, Paragraph 3; Section 7, Paragraph
             4.2; Section 8, Paragraph 1; Section 8.1, Paragraph 1;
-            Section 9.2.2, Paragraph 1
+            Section 9.2.2, Paragraph 1; Section 13, Paragraph 4;
+            Section 13, Paragraph 5
          event notification  Section Abstract, Paragraph 1; Section 1,
             Paragraph 2; Section 1, Paragraph 3; Section 1, Paragraph 4;
             Section 1, Paragraph 7; Section 1, Paragraph 8; Section 2,
@@ -976,8 +1054,8 @@ Index
             *_Section 4.3_*; Section 4.3, Paragraph 1; Section 4.3,
             Paragraph 2; Section 4.3, Paragraph 3; Section 4.4,
             Paragraph 1; Section 4.4, Paragraph 2; Section 4.4,
-            Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph 1;
-            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.2;
+            Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph
+            3.2.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
@@ -985,16 +1063,16 @@ Index
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
             Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
             2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
-            Paragraph 3; Section 10, Paragraph 1; Section 10.2,
-            Paragraph 1; Section 10.2, Paragraph 2; Section 10.2,
-            Paragraph 5; Section 10.2, Paragraph 6; Section 11,
-            Paragraph 2; Appendix A, Paragraph 1
+            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
+            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
+            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
+            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
+            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
+            Section 13, Paragraph 5; Appendix A, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
             2.1.1; Section 9.2.2, Paragraph 5; Table 1; Section 12.2,
             Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
             Paragraph 2.1.1
-         events (property)  Section 9.1, Paragraph 1; Section 9.1,
-            Paragraph 2
 
       I
 
@@ -1016,8 +1094,8 @@ Index
             1; Section 2.4, Paragraph 2; Section 4.2, Paragraph 3;
             *_Section 4.3_*; Section 4.3, Paragraph 1; Section 4.4,
             Paragraph 1; Section 4.4, Paragraph 2; Section 4.4,
-            Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph 1;
-            Section 6, Paragraph 3.1.1; Section 7, Paragraph 4.2;
+            Paragraph 3; Section 5, Paragraph 2; Section 6, Paragraph
+            3.2.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
@@ -1025,10 +1103,12 @@ Index
             Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
             Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
             2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
-            Paragraph 3; Section 10, Paragraph 1; Section 10.2,
-            Paragraph 1; Section 10.2, Paragraph 2; Section 10.2,
-            Paragraph 5; Section 10.2, Paragraph 6; Section 11,
-            Paragraph 2; Appendix A, Paragraph 1
+            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
+            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
+            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
+            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
+            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
+            Section 13, Paragraph 5; Appendix A, Paragraph 1
 
       O
 
@@ -1039,14 +1119,13 @@ Index
 
       S
 
-         state (property)  Section 10.1, Paragraph 1; Section 10.1,
-            Paragraph 2
          subscriber  Section 4.3, Paragraph 3; *_Section 4.4, Paragraph
             1_*; Section 4.4, Paragraph 2
          subscription  Section 2.3, Paragraph 2.3.1; *_Section 4.4_*;
-            Section 6, Paragraph 4; Section 8.1, Paragraph 1;
-            Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
-            Section 10.1, Paragraph 1; Section 10.1, Paragraph 2
+            Section 6, Paragraph 2; Section 6, Paragraph 4; Section 6,
+            Paragraph 5; Section 8.1, Paragraph 1; Section 9.1,
+            Paragraph 1; Section 9.1, Paragraph 3; Section 10.1,
+            Paragraph 1; Section 10.1, Paragraph 2
 
 Author's Address
 
