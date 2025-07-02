@@ -67,8 +67,11 @@ informative:
       "Doctoral Dissertation": University of California, Irvine
     format:
       PDF: https://roy.gbiv.com/pubs/dissertation/fielding_dissertation.pdf#G16.1026811
+  RFC3724:
+  RFC3935:
   RFC6202:
   RFC7838:
+  RFC8890:
   RFC9112:
     -: HTTP1
     display: HTTP/1.1
@@ -117,6 +120,8 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 {::include considerations/security.md}
 
 {::include considerations/iana.md}
+
+{::include considerations/end-user.md}
 
 
 --- back
