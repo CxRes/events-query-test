@@ -5,10 +5,10 @@
 ## Request {#representation-request}
 
 {: #representation-request-procedure}
-To request a representation of the resource using {{&protocol}}, a client MUST use the subscription data model ({{data-model}}) with the +state+ property in an appropriate media-type when issuing a request using the `QUERY` method ({{HTTP-QUERY, Section 3}}).
+To request a representation of the resource in an {{&protocol}}, a client MUST express the interest in receiving the representation in a preferred form using a realization of the subscription data model ({{data-model}}) with the `QUERY` method ({{HTTP-QUERY, Section 3}}).
 
-{: #representation-request-state-conneg}
-The +state+ property MAY be used to specify any header field in the body of the subscription query to negotiate the representation.
+{: #representation-request-example}
+The following example shows subscription request for representation along with notifications transmitted using the `application/http` media-type. The `state` property indicates the interest in receiving representation. The preferred form of representation is specified using the request headers in the `state` property.
 
 ~~~ http-message
 {::include examples/stream/state-request.http}
