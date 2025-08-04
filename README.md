@@ -1,15 +1,14 @@
 <!-- regenerate: on (set to off if you edit this file) -->
 
-# HTTPAPI Drafts
+# HTTP Events Query
 
-This is the working area for individual Internet-Drafts.
-
-## HTTP Events Query
+This is the working area for the individual Internet-Draft, "HTTP Events Query".
 
 * [Editor's Copy](https://CxRes.github.io/events-query-test/#go.draft-gupta-httpapi-events-query.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-gupta-httpapi-events-query)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-gupta-httpapi-events-query)
 * [Compare Editor's Copy to Individual Draft](https://CxRes.github.io/events-query-test/#go.draft-gupta-httpapi-events-query.diff)
+
 
 ## Contributing
 

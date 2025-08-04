@@ -35,9 +35,9 @@ To the extent feasible, the {{&protocol}}:
 adheres to established practices and conventions. In particular, every attempt has been made to reuse existing protocols and specifications. Implementers shall be able to repurpose existing tools and libraries for implementing this specification.
 
 1. {: #constraint--rest}
-conforms to the {{<<REST}}, best practices for {{<<RFC9205}} {{RFC9205}}, and {{<<RFC6202}} {{RFC6202}}. This specification can, thus, be used to extend the capabilities of any existing HTTP resource to provide event-notifications. Implementers shall be able to scale notifications along with their data/applications.
+conforms to {{<<REST}}, best practices for {{<<RFC9205}} {{RFC9205}}, and {{<<RFC6202}} {{RFC6202}}. This specification can, thus, be used to extend the capabilities of any existing HTTP resource to provide event-notifications. Implementers shall be able to scale notifications along with their data/applications.
 <!--
-  See my original comment on the Solid/Specification Gitter channel on 24 April 2020
+  See my original comment on the solid/specification Gitter channel on 24 April 2020
   https://matrix.to/#/!PlIOdBsCTDRSCxsTGA:gitter.im/$VgCcuq2HbpLKJvxIw4witAUOsqcdhC98glgzqVI1WOY
 -->
 

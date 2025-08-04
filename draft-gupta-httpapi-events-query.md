@@ -29,7 +29,6 @@ author:
 
 autolink-iref-cleanup: true
 entity:
-  empty: ""
   protocol: Events Query
 
 normative:

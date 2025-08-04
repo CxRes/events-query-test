@@ -1,5 +1,6 @@
 # Representation {#representation}
 
+{: #representation-description}
 {{&protocol}} lets a user agent to ask and receive the current representation and subsequent event-notifications in a single request/response. When compared to using, say, Fetch {{FETCH}} and EventSource {{SSE}} in conjunction, {{&protocol}} not only saves on an extra round trip, but relieves a user agent from the burden of handling the possible race condition.
 
 ## Request {#representation-request}
@@ -7,7 +8,7 @@
 {: #representation-request-procedure}
 To request a representation of the resource in an {{&protocol}}, a client MUST express the interest in receiving the representation in a preferred form using a realization of the subscription data model ({{data-model}}) with the `QUERY` method ({{HTTP-QUERY, Section 3}}).
 
-{: #representation-request-example}
+{: #representation-request-example-description}
 The following example shows subscription request for representation along with notifications transmitted using the `application/http` media-type. The `state` property indicates the interest in receiving representation. The preferred form of representation is specified using the request headers in the `state` property.
 
 ~~~ http-message
