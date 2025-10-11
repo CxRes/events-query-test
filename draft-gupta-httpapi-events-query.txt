@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                               2 July 2025
+Internet-Draft                                           11 October 2025
 Intended status: Standards Track                                        
-Expires: 3 January 2026
+Expires: 14 April 2026
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2026.
+   This Internet-Draft will expire on 14 April 2026.
 
 Copyright Notice
 
@@ -245,7 +245,7 @@ Table of Contents
        specifications.  Implementers shall be able to repurpose existing
        tools and libraries for implementing this specification.
 
-   2.  conforms to the Representational State Transfer (REST), best
+   2.  conforms to Representational State Transfer (REST), best
        practices for Building Protocols with HTTP [RFC9205], and Known
        Issues and Best Practices for the Use of Long Polling and
        Streaming in Bidirectional HTTP [RFC6202].  This specification
