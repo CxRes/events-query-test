@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                           11 October 2025
+Internet-Draft                                           13 October 2025
 Intended status: Standards Track                                        
-Expires: 14 April 2026
+Expires: 16 April 2026
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 April 2026.
+   This Internet-Draft will expire on 16 April 2026.
 
 Copyright Notice
 
@@ -117,20 +117,28 @@ Table of Contents
 
 1.  Introduction
 
-   HTTP was originally designed for transferring static documents within
-   a single request and response.  HTTP does not automatically inform
-   clients of changes to a document.  This design was adequate for web
-   pages that were mostly static and written by hand.
+   HTTP was originally designed as a stateless, request/response
+   protocol for transferring hypermedia documents on the web ([HTTP],
+   Section 1.2).  This design was adequate for web pages that were
+   mostly static and written by hand.
 
-   But web-applications today are dynamic, requiring instantaneous
-   updates from sources.  The many workarounds developed over the years
-   to provide real-time updates for resources using HTTP have proven to
-   be inadequate.  Web programmers instead resort to implementing custom
-   messaging systems over alternate protocols such as WebSockets [WS],
-   which requires additional layers of code, typically involving non-
-   standard JavaScript frameworks to provide event notifications.  It
-   also requires additional work to coordinate a representation and
-   notifications that are served on different protocols.
+   But web applications have evolved over time to provide increasingly
+   dynamic and interactive experiences, requiring near-instantaneous
+   updates.  HTTP does not automatically inform clients of changes to a
+   resource.  Developers have employed various techniques, such as Comet
+   [COMET] and Server-Sent Events [SSE] to work around this constraint,
+   but these can be suboptimal for many applications.
+
+   For this reason, web programmers often prefer implementing custom
+   messaging systems over alternate protocols such as WebSocket [WS] and
+   WebSub [WEBSUB].  Not only does this approach require additional
+   layers of code, involving multiple Web APIs and/or userland libraries
+   such as socket.io (https://socket.io/), it demands extra co-
+   ordination effort to synchronize representation and notifications
+   across these distinct protocols.  The dual-protocol approach is thus
+   accompanied by an increased development and maintenance overhead.
+   Furthermore, deployment at scale is challenging with the
+   notifications traffic now opaque to network intermediaries.
 
    Events Query is a minimal protocol built on top of [HTTP] that allows
    applications to request event notifications directly from a resource
@@ -138,12 +146,11 @@ Table of Contents
 
    The objective of this specification is to make the request and
    receipt of event notifications extremely convenient for consumers.
-   Programmers implementing Events Query shall no longer be forced to
-   switch to another protocol to incorporate real-time functionality in
-   their web applications.  Not only that, web-applications shall
-   receive a representation and notifications in a single response,
-   obviating any need for co-ordination and saving on unnecessary
-   roundtrips.
+   Events Query allows programmers to incorporate real-time
+   functionality in their web applications without the need to switch to
+   another protocol.  Further, Events Query can deliver representation
+   and notifications from a resource in a single response, obviating any
+   need for co-ordination and saving on unnecessary roundtrips.
 
    With the help of a suitable composite media-type parser, Events Query
    responses can be consumed with just a few lines of code, as
@@ -177,18 +184,16 @@ Table of Contents
 
                     Figure 1: Events Query fetch example
 
-   Unlike other HTTP based event notification mechanisms, Events Query
-   supports content negotiation for notifications, just like
-   representations.  Thus, the Events Query Protocol preserves the
-   flexibility of interaction afforded by HTTP and extends it to event
-   notifications.
+   Unlike other event notification mechanisms, Events Query supports
+   content negotiation for notifications, just like representations.
+   Thus, the Events Query Protocol preserves the flexibility of
+   interaction afforded by HTTP and extends it to event notifications.
 
-   When combined with suitable data synchronization mechanisms like
+   When combined with suitable data synchronization technologies like
    Conflict Free Replicated Data Types (CRDT) or Operational Transforms
-   (OT), event notifications can be used create representations that are
-   "live" for user agents.  This has the potential to immensely simplify
-   the task of programming multi-author distributed real-time
-   applications.
+   (OT), event notifications can be used to create "live"
+   representations.  This can immensely simplify the task of programming
+   multi-author distributed real-time applications.
 
 2.  Design
 
@@ -870,9 +875,9 @@ Table of Contents
    [HTTP-QUERY]
               Reschke, J., Snell, J. M., and M. Bishop, "The HTTP QUERY
               Method", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-safe-method-w-body-10, 29 April 2025,
+              httpbis-safe-method-w-body-12, 29 September 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              safe-method-w-body-10>.
+              safe-method-w-body-12>.
 
    [HTTP-SF]  Nottingham, M. and P. Kamp, "Structured Field Values for
               HTTP", RFC 9651, DOI 10.17487/RFC9651, September 2024,
@@ -900,6 +905,11 @@ Table of Contents
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 14.2.  Informative References
+
+   [COMET]    Russell, A. and A. Russell, "Comet: Low Latency Data for
+              the Browser", Infrequently Noted, March 2006,
+              <https://infrequently.org/2006/03/comet-low-latency-data-
+              for-the-browser/>.
 
    [DESIGN-FRAMEWORK]
               Rosenblum, D. and A. Wolf, "A design framework for
@@ -1050,8 +1060,8 @@ Index
             Section 9.2.2, Paragraph 1; Section 13, Paragraph 4;
             Section 13, Paragraph 5
          event notification  Section Abstract, Paragraph 1; Section 1,
-            Paragraph 2; Section 1, Paragraph 3; Section 1, Paragraph 4;
-            Section 1, Paragraph 7; Section 1, Paragraph 8; Section 2,
+            Paragraph 3; Section 1, Paragraph 4; Section 1, Paragraph 5;
+            Section 1, Paragraph 8; Section 1, Paragraph 9; Section 2,
             Paragraph 1; Section 2, Paragraph 2; Section 2.1, Paragraph
             2.1.1; Section 2.1, Paragraph 2.2.1; Section 2.1, Paragraph
             2.3.1; Section 2.1, Paragraph 2.4.1; Section 2.1, Paragraph
@@ -1091,8 +1101,8 @@ Index
       N
 
          notification  Section Abstract, Paragraph 1; Section 1,
-            Paragraph 2; Section 1, Paragraph 3; Section 1, Paragraph 4;
-            Section 1, Paragraph 7; Section 1, Paragraph 8; Section 2,
+            Paragraph 3; Section 1, Paragraph 4; Section 1, Paragraph 5;
+            Section 1, Paragraph 8; Section 1, Paragraph 9; Section 2,
             Paragraph 1; Section 2, Paragraph 2; Section 2.1, Paragraph
             2.1.1; Section 2.1, Paragraph 2.2.1; Section 2.1, Paragraph
             2.3.1; Section 2.1, Paragraph 2.4.1; Section 2.1, Paragraph
