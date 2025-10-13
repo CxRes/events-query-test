@@ -135,10 +135,10 @@ Table of Contents
    layers of code, involving multiple Web APIs and/or userland libraries
    such as socket.io (https://socket.io/), it demands extra co-
    ordination effort to synchronize representation and notifications
-   across these distinct protocols.  The dual-protocol approach is thus
-   accompanied by an increased development and maintenance overhead.
-   Furthermore, deployment at scale is challenging with the
-   notifications traffic now opaque to network intermediaries.
+   across multiple protocols.  The dual-protocol approach thus compounds
+   the development and maintenance overhead.  Furthermore, deployment at
+   scale is challenging with the notifications traffic now opaque to
+   network intermediaries.
 
    Events Query is a minimal protocol built on top of [HTTP] that allows
    applications to request event notifications directly from a resource
