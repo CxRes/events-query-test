@@ -446,14 +446,16 @@ Table of Contents
 
    The abstract data model specifies the semantics of an Events Query.
 
-   A realization of the data model MUST allow a client to specify in a
+   A realization of the data model allows a client to specify in a
    subscription request:
 
-   *  interest in receiving a representation in a preferred form.
+   *  interest in receiving a representation of a resource in a
+      preferred form.
 
-   *  interest in receiving event notifications in a preferred form.
+   *  interest in receiving event notifications from a resource in a
+      preferred form.
 
-   Implementations can choose an appropriate media-type to realize the
+   Implementations can choose appropriate media-types to realize the
    subscription data model.  Implementations are free to extend the data
    model to include additional data.  A specific realization of the data
    model is outside the scope of this specification.

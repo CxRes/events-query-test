@@ -1667,22 +1667,22 @@ appear in all capitals, as shown here.<a href="#section-3.2-1" class="pilcrow">�
 <p id="section-6-1">The abstract data model specifies the semantics of an Events Query.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </div>
 <div id="data-model-requirements">
-<p id="section-6-2">A realization of the data model <span class="bcp14">MUST</span> allow a client to specify in a <span id="iref-subscription-137" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request:<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-2">A realization of the data model allows a client to specify in a <span id="iref-subscription-137" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request:<a href="#section-6-2" class="pilcrow">¶</a></p>
 </div>
 <ul class="normal">
 <li id="section-6-3.1" class="normal">
 <div class="normal" id="data-model-requirement-representation">
-          <p id="section-6-3.1.1">interest in receiving a representation in a preferred form.<a href="#section-6-3.1.1" class="pilcrow">¶</a></p>
+          <p id="section-6-3.1.1">interest in receiving a representation of a resource in a preferred form.<a href="#section-6-3.1.1" class="pilcrow">¶</a></p>
 </div>
         </li>
 <li id="section-6-3.2" class="normal">
 <div class="normal" id="data-model-requirement-notifications">
-          <p id="section-6-3.2.1">interest in receiving <span id="iref-notification-138" class="iref"></span><span id="iref-event-notification-139" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in a preferred form.<a href="#section-6-3.2.1" class="pilcrow">¶</a></p>
+          <p id="section-6-3.2.1">interest in receiving <span id="iref-notification-138" class="iref"></span><span id="iref-event-notification-139" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> from a resource in a preferred form.<a href="#section-6-3.2.1" class="pilcrow">¶</a></p>
 </div>
       </li>
 </ul>
 <div id="data-model-realization">
-<p id="section-6-4">Implementations can choose an appropriate media-type to realize the <span id="iref-subscription-140" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> data model. Implementations are free to extend the data model to include additional data. A specific realization of the data model is outside the scope of this specification.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-4">Implementations can choose appropriate media-types to realize the <span id="iref-subscription-140" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> data model. Implementations are free to extend the data model to include additional data. A specific realization of the data model is outside the scope of this specification.<a href="#section-6-4" class="pilcrow">¶</a></p>
 </div>
 <div id="data-model-example">
 <p id="section-6-5">The following example shows the body of a <span id="iref-subscription-141" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request wherein the <code>state</code> and <code>events</code> properties are used to specify request headers for representation and <span id="iref-notification-142" class="iref"></span><span id="iref-event-notification-143" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> respectively in a YAML like syntax.<a href="#section-6-5" class="pilcrow">¶</a></p>
