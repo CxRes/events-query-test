@@ -404,37 +404,43 @@ Table of Contents
 
 5.  Events Header Field
 
-   The Events header field when used by a client in a request
-   communicates preferences for the Events Query response.  The Events
-   header field is not meant for content negotiation.
+   "Events" is a Dictionary structured header field ([HTTP-SF],
+   Section 3.2) to communicate the properties of a response to an Events
+   Query.
 
-   The Events header field allows a server to communicate the properties
-   of a response carrying event notifications.
+   In a request, the Events header field allows a client to indicate its
+   preferences for the properties of the response carrying event
+   notifications.  The Events header field is not meant for content
+   negotiation.
 
-   Events is a Dictionary structured header field ([HTTP-SF],
-   Section 3.2).  The order of keys is insignificant.  Senders SHOULD
-   NOT generate keys not registered with the HTTP Event Field Registry
-   (An exception is made to allow for experimentation).  Recipients MAY
-   ignore keys that they are unaware of.
+   In a response, the Events header field allows a server to specify the
+   properties of a response carrying event notifications.
+
+   The order of keys in the Events header field is insignificant.
+   Senders SHOULD NOT generate keys not registered with the HTTP Event
+   Field Registry (An exception is made to allow for experimentation).
+   Recipients MAY ignore keys that they are unaware of.
 
 5.1.  duration Property
 
-   The duration property when be used by a client in a request specifies
-   the duration for which they prefer the response stream to remain
-   open.  A server is completely free to ignore this property.
+   The "duration" property is an Integer ([HTTP-SF], Section 3.3.1) or
+   Decimal ([HTTP-SF], Section 3.3.2) valued key specified on the Events
+   header field to communicate the response duration in seconds.
 
-   The duration property when used by a server in a response indicates
-   the minimum duration for which a server intends to keep the response
-   stream open.  This property is merely advisory, and a server might
-   still close the response stream before this duration.
+   In a request, the duration property indicates the duration for which
+   a client prefers the response stream to remain open.  A server is
+   completely free to ignore this property.
 
-   The duration property is a key specified in the Events header field.
-   It is of the type Integer ([HTTP-SF], Section 3.3.1) with its value
-   indicating duration in seconds.  Only positive integer values are
-   valid.  A value of 0 indicates an indefinite duration.  A sender MUST
-   conform to these stipulations when generating the duration property.
-   If the value of the duration property fails to conform to these
-   stipulations, it MUST be ignored by the recipient.
+   In a response, the duration property specifies the maximum duration
+   for which a server intends to keep the response stream open.  This
+   property is merely advisory, and a server might still close the
+   response stream before this duration.
+
+   Only positive values are valid.  A value of 0 indicates an indefinite
+   duration.  A sender MUST conform to these stipulations when
+   generating the duration property.  If the value of the duration
+   property fails to conform to these stipulations, it MUST be ignored
+   by the recipient.
 
 6.  Subscription Data Model
 
@@ -796,14 +802,14 @@ Table of Contents
 
    The initial contents of the HTTP Events Field Registry are:
 
-             +===============+=================+=============+
-             | Property Name | Structured-Type | Reference   |
-             +===============+=================+=============+
-             | duration      | Integer Item    | Section 5.1 |
-             +---------------+-----------------+-------------+
+         +===============+=========================+=============+
+         | Property Name | Structured-Type         | Reference   |
+         +===============+=========================+=============+
+         | duration      | Integer or Decimal Item | Section 5.1 |
+         +---------------+-------------------------+-------------+
 
-                Table 2: List of HTTP Events Field property
-                             name registrations
+              Table 2: List of HTTP Events Field property name
+                               registrations
 
 13.  End User Considerations
 
@@ -1047,7 +1053,7 @@ Index
             Paragraph 1; Section 4.2, Paragraph 2; Section 4.2,
             Paragraph 3; Section 4.3, Paragraph 1; Section 4.3,
             Paragraph 2; Section 4.3, Paragraph 3; Section 5, Paragraph
-            3; Section 7, Paragraph 4.2; Section 8, Paragraph 1;
+            4; Section 7, Paragraph 4.2; Section 8, Paragraph 1;
             Section 8.1, Paragraph 1; Section 9.2.2, Paragraph 1;
             Section 13, Paragraph 4; Section 13, Paragraph 5
          event notification  Section Abstract, Paragraph 1; Section 1,
@@ -1064,21 +1070,22 @@ Index
             Paragraph 3; *_Section 4.3_*; Section 4.3, Paragraph 1;
             Section 4.3, Paragraph 2; Section 4.3, Paragraph 3;
             Section 4.4, Paragraph 1; Section 4.4, Paragraph 2;
-            Section 4.4, Paragraph 3; Section 5, Paragraph 2; Section 6,
-            Paragraph 3.2.1; Section 6, Paragraph 5; Section 7,
-            Paragraph 4.2; Section 8, Paragraph 1; Section 8.1,
-            Paragraph 1; Section 8.1, Paragraph 2; Section 8.2,
-            Paragraph 1; Section 9, Paragraph 1; Section 9.1, Paragraph
-            1; Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
-            Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
-            Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
-            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
-            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
-            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
-            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
-            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
-            Section 13, Paragraph 5; Appendix A, Paragraph 1
+            Section 4.4, Paragraph 3; Section 5, Paragraph 2; Section 5,
+            Paragraph 3; Section 6, Paragraph 3.2.1; Section 6,
+            Paragraph 5; Section 7, Paragraph 4.2; Section 8, Paragraph
+            1; Section 8.1, Paragraph 1; Section 8.1, Paragraph 2;
+            Section 8.2, Paragraph 1; Section 9, Paragraph 1;
+            Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
+            Section 9.1, Paragraph 3; Section 9.2, Paragraph 1;
+            Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
+            Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
+            1; Section 9.2.2, Paragraph 3; Section 10, Paragraph 1;
+            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
+            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
+            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
+            Section 13, Paragraph 2; Section 13, Paragraph 3;
+            Section 13, Paragraph 4; Section 13, Paragraph 5;
+            Appendix A, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
             2.1.1; Section 9.2.2, Paragraph 5; Table 1; Section 12.2,
             Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
@@ -1104,21 +1111,22 @@ Index
             Paragraph 1; Section 2.4, Paragraph 2; Section 4.2,
             Paragraph 3; *_Section 4.3_*; Section 4.3, Paragraph 1;
             Section 4.4, Paragraph 1; Section 4.4, Paragraph 2;
-            Section 4.4, Paragraph 3; Section 5, Paragraph 2; Section 6,
-            Paragraph 3.2.1; Section 6, Paragraph 5; Section 7,
-            Paragraph 4.2; Section 8, Paragraph 1; Section 8.1,
-            Paragraph 1; Section 8.1, Paragraph 2; Section 8.2,
-            Paragraph 1; Section 9, Paragraph 1; Section 9.1, Paragraph
-            1; Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
-            Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
-            Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
-            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
-            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
-            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
-            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
-            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
-            Section 13, Paragraph 5; Appendix A, Paragraph 1
+            Section 4.4, Paragraph 3; Section 5, Paragraph 2; Section 5,
+            Paragraph 3; Section 6, Paragraph 3.2.1; Section 6,
+            Paragraph 5; Section 7, Paragraph 4.2; Section 8, Paragraph
+            1; Section 8.1, Paragraph 1; Section 8.1, Paragraph 2;
+            Section 8.2, Paragraph 1; Section 9, Paragraph 1;
+            Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
+            Section 9.1, Paragraph 3; Section 9.2, Paragraph 1;
+            Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
+            Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
+            1; Section 9.2.2, Paragraph 3; Section 10, Paragraph 1;
+            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
+            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
+            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
+            Section 13, Paragraph 2; Section 13, Paragraph 3;
+            Section 13, Paragraph 4; Section 13, Paragraph 5;
+            Appendix A, Paragraph 1
 
       O
 
