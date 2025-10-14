@@ -1,8 +1,8 @@
-# End User Considerations {#end-user-coniderations}
+# End User Considerations {#end-user-considerations}
 
 [^End_User]
 
-[^End_User]: If we, the IETF, claim that the Internet is for the end user {{RFC8890}} and promote the end-to-end principle {{RFC3724}}, every specification we produce ought to consider its impact on the Internet end user. For this reason, I propose that specifications must include a considerations section where authors assess the impact of their proposal on the internet end user, aligned with the mission of IETF {{RFC3935}}.
+[^End_User]: If we, the IETF, claim that the Internet is for the end user {{RFC8890}} and promote the end-to-end principle {{RFC3724}}, every specification we produce ought to consider its impact on the Internet end user. For this reason, I propose that specifications must include a considerations section where authors assess the impact of their proposal on the Internet end user, aligned with the mission of IETF {{RFC3935}}.
 
 End users of the HTTP protocol can be classified into two groups: publishers and consumers. Consumers have an incentive to subscribe to event-notifications from many resources and to hold on to a connection for as long as possible. Whereas publishers bear the cost of server infrastructure. Consumers also typically outnumber publishers, in many cases by multiple orders of magnitude. This creates an imbalance in the effort to subscribe versus effort to deliver; consumers can easily place a disproportionate burden on servers, reminiscent of a denial-of-service attack.
 
