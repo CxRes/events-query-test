@@ -75,7 +75,7 @@ Table of Contents
      2.2.  Constraints
      2.3.  Scope
      2.4.  Limitations
-     2.5.  Comparison with Server Sent Events
+     2.5.  Comparison with Server-Sent Events
    3.  Conformance
      3.1.  Document Conventions
      3.2.  Requirements Notation
@@ -230,10 +230,10 @@ Table of Contents
        of the representation and notifications.
 
    4.  to enable the transfer of event notifications using arbitrary
-       formats that might be content negotiated.  This allows
+       formats that might be content-negotiated.  This allows
        implementers to serve notifications that are more expressive,
        say, in comparison to existing HTTP based messaging protocols
-       such as Server Sent Events [SSE].
+       such as Server-Sent Events [SSE].
 
    5.  to specify transparent notification semantics that empowers
        intermediaries to scale event notifications, improve reliability
@@ -253,7 +253,7 @@ Table of Contents
        practices for Building Protocols with HTTP [RFC9205], and Known
        Issues and Best Practices for the Use of Long Polling and
        Streaming in Bidirectional HTTP [RFC6202].  This specification
-       can, thus, be used to extend the capabilities of any existing or
+       can thus be used to extend the capabilities of any existing or
        future resource to additionally serve event notifications over
        HTTP.  This is to afford implementors the opportunity to scale
        notifications with their data and application.
@@ -318,7 +318,7 @@ Table of Contents
    exercise caution when simultaneously opening multiple persistent
    connections to a given host.
 
-2.5.  Comparison with Server Sent Events
+2.5.  Comparison with Server-Sent Events
 
    At the time of writing, Server-Sent Events (SSE) is the de facto
    mechanism for transferring event notifications over HTTP,
@@ -341,7 +341,16 @@ Table of Contents
    textual content forces developers to opt for alternative protocols
    such as WebSockets [WS], despite the increased complexity.  The
    EventSource API does not even allow for headers to be sent with
-   requests.
+   requests.  This has led to a proliferation of after-market hacks
+   // such as this (https://www.npmjs.com/package/event-source-plus),
+   // this (https://www.npmjs.com/package/@microsoft/fetch-event-
+   // source), this (https://www.npmjs.com/package/fetch-event-stream),
+   // this (https://www.npmjs.com/package/extended-eventsource), this
+   // (https://www.npmjs.com/package/ngx-sse-client) and this
+   // (https://www.npmjs.com/package/sse.js) that extend Server-Sent
+   Events with support for custom headers, such as for credentials, or
+   use the POST method to communicate additional configuration in the
+   request body.
 
    Events Query takes a principled approach to event notifications, as
    described in 4.  In particular, the definition of an event
