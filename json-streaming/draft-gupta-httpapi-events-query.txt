@@ -113,7 +113,7 @@ Table of Contents
      A.1.  Representation and Notifications
        A.1.1.  Request
        A.1.2.  Response
-     A.2.  JSON Notifications
+     A.2.  Notifications Stream
        A.2.1.  Request
        A.2.2.  Response
    Acknowledgments
@@ -725,7 +725,11 @@ Table of Contents
    The same event notification when transferred in a application/json-
    seq response stream is as follows:
 
-   ␞{::include examples/notifications/update.json}␊
+   ␞{                                               | Notification
+     "published": "2025-01-02T10:11:12.345Z",       |
+     "event-id": 456,                               |
+     "type": "Update"                               |
+   }␊                                               |
 
                     Figure 11: JSON Update Notification
 
@@ -739,7 +743,7 @@ Table of Contents
    Content-Type: example/event-notification         |
    Content-Length: 31                               |
                                                     |
-   published: 2012-11-10T12:13:14.567Z              |
+   published: 2025-01-02T11:12:13.456Z              |
    event-id: 789                                    |
    type: delete                                     |
 
@@ -748,13 +752,11 @@ Table of Contents
    The same notification for the delete event in JSON would be as
    follows:
 
-   ␞
-   {
-     "published": "2012-11-10T12:13:14.567Z",
-     "event-ID": 789,                                    |
-     "type": "Delete"
-   }
-   ␊
+   ␞{                                               | Notification
+     "published": "2025-01-02T11:12:13.456Z",       |
+     "event-id": 789,                               |
+     "type": "delete"                               |
+   }␊                                               |
 
                     Figure 13: JSON Delete Notification
 
@@ -795,7 +797,7 @@ Table of Contents
    events:
      Accept: example/event-notification
 
-            Figure 14: Representation and Notifications Request
+          Figure 14: HTTP Representation and Notifications Request
 
 10.2.  Response
 
@@ -824,7 +826,7 @@ Table of Contents
                                                     |
    Hello World!                                     |
 
-                     Figure 15: Representation Response
+          Figure 15: Representation Response before Notifications
 
    While this is default behaviour, there is no requirement that a
    representation is the first message or that representations are sent
@@ -1096,7 +1098,7 @@ A.1.  Representation and Notifications
 
    The following example illustrates a complete request and response for
    representation and notifications transferred with the application/
-   http media-type as described in Representation.
+   http media-type as described in Section 10:Representation.
 
 A.1.1.  Request
 
@@ -1139,17 +1141,18 @@ A.1.2.  Response
    Content-Type: example/event-notification         |
    Content-Length: 31                               |
                                                     |
-   published: 2012-11-10T12:13:14.567Z              |
+   published: 2025-01-02T11:12:13.456Z              |
    event-id: 789                                    |
    type: delete                                     |
 
          Figure 17: Response with Representation and Notifications
 
-A.2.  JSON Notifications
+A.2.  Notifications Stream
 
    This following example illustrates complete request and response for
    JSON formatted notifications transferred with the application/json-
-   seq media-type as described in Notifications Stream.
+   seq media-type as described in Notifications Stream:Notifications
+   Stream.
 
 A.2.1.  Request
 
@@ -1173,9 +1176,16 @@ A.2.2.  Response
    Events: duration=600
    Content-Type: application/json-seq
 
-   ␞{::include examples/notifications/update.json}␊
-
-   ␞{::include examples/notifications/delete.json}␊
+   ␞{                                               | Notification
+     "published": "2025-01-02T10:11:12.345Z",       |
+     "event-id": 456,                               |
+     "type": "Update"                               |
+   }␊                                               |
+   ␞{                                               | Notification
+     "published": "2025-01-02T11:12:13.456Z",       |
+     "event-id": 789,                               |
+     "type": "delete"                               |
+   }␊                                               |
 
                 Figure 19: Response with JSON Notifications
 
