@@ -725,11 +725,11 @@ Table of Contents
    The same event notification when transferred in a application/json-
    seq response stream is as follows:
 
-   ␞{                                               | Notification
+   ␞{                                              | Notification
      "published": "2025-01-02T10:11:12.345Z",       |
      "event-id": 456,                               |
      "type": "Update"                               |
-   }␊                                               |
+   }                                                |
 
                     Figure 11: JSON Update Notification
 
@@ -752,11 +752,11 @@ Table of Contents
    The same notification for the delete event in JSON would be as
    follows:
 
-   ␞{                                               | Notification
+   ␞{                                              | Notification
      "published": "2025-01-02T11:12:13.456Z",       |
      "event-id": 789,                               |
      "type": "delete"                               |
-   }␊                                               |
+   }                                                |
 
                     Figure 13: JSON Delete Notification
 
@@ -1176,16 +1176,16 @@ A.2.2.  Response
    Events: duration=600
    Content-Type: application/json-seq
 
-   ␞{                                               | Notification
+   ␞{                                              | Notification
      "published": "2025-01-02T10:11:12.345Z",       |
      "event-id": 456,                               |
      "type": "Update"                               |
-   }␊                                               |
-   ␞{                                               | Notification
+   }                                                |
+   ␞{                                              | Notification
      "published": "2025-01-02T11:12:13.456Z",       |
      "event-id": 789,                               |
      "type": "delete"                               |
-   }␊                                               |
+   }                                                |
 
                 Figure 19: Response with JSON Notifications
 
