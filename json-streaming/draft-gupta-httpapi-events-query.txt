@@ -748,7 +748,13 @@ Table of Contents
    The same notification for the delete event in JSON would be as
    follows:
 
-   ␞{::include examples/notifications/delete.json}␊
+   ␞
+   {
+     "published": "2012-11-10T12:13:14.567Z",
+     "event-ID": 789,                                    |
+     "type": "Delete"
+   }
+   ␊
 
                     Figure 13: JSON Delete Notification
 
