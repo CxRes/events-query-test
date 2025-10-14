@@ -75,6 +75,7 @@ Table of Contents
      2.2.  Constraints
      2.3.  Scope
      2.4.  Limitations
+     2.5.  Comparison with Server-Sent Events
    3.  Conformance
      3.1.  Document Conventions
      3.2.  Requirements Notation
@@ -316,6 +317,53 @@ Table of Contents
    event notifications over an HTTP/1.1 connection are advised to
    exercise caution when simultaneously opening multiple persistent
    connections to a given host.
+
+2.5.  Comparison with Server-Sent Events
+
+   At the time of writing, Server-Sent Events (SSE) is the de facto
+   mechanism for transferring event notifications over HTTP,
+   standardized through the EventSource API [SSE] as part of HTML Living
+   Standard by the WHATWG.
+   // As of October 2022, HTML Living Standard maintainer Anne van
+   // Kesteren has stated (https://github.com/whatwg/html/
+   // issues/8297#issuecomment-1291658863) that WHATWG does not intend
+   // to extend EventSource, with reasons for the decision cited in a
+   // subsequent comment (https://github.com/whatwg/html/
+   // issues/8297#issuecomment-1291658863).
+
+   Server-Sent Events defines the text/event-stream media type to
+   transmit event notifications in response to a GET request.  This
+   approach is fundamentally inconsistent with terminology defined in
+   HTTP Semantics ([HTTP], Section 3.2), transferring a sequence of
+   asynchronous messages instead of a representation "that is intended
+   to reflect a past, current, or desired state of a given resource".
+   Practically, the text/event-stream media type being limited to only
+   textual content forces developers to opt for alternative protocols
+   such as WebSockets [WS], despite the increased complexity.  The
+   EventSource API does not even allow for headers to be sent with
+   requests.  This has led to a proliferation of after-market hacks
+   // such as this (https://www.npmjs.com/package/event-source-plus),
+   // this (https://www.npmjs.com/package/@microsoft/fetch-event-
+   // source), this (https://www.npmjs.com/package/fetch-event-stream),
+   // this (https://www.npmjs.com/package/extended-eventsource), this
+   // (https://www.npmjs.com/package/ngx-sse-client) and this
+   // (https://www.npmjs.com/package/sse.js) that extend Server-Sent
+   Events with support for custom headers, such as for credentials, or
+   use the POST method to communicate additional configuration in the
+   request body.
+
+   Events Query takes a principled approach to event notifications, as
+   established in Section 4.  In particular, the definition of an event
+   notification as a "representation" of event(s) (Section 4.3) admits
+   the use of arbitrary media types for event notifications.  Clients
+   can use content negotiation as well as preconditions in a
+   subscription request.  Further, Events Query not only lets clients
+   receive both the representation and notifications over the same
+   protocol, viz. HTTP, but these can be encapsulated within a single
+   HTTP response.  Clients do not need to, say, authenticate multiple
+   times, possibly with different mechanisms, to obtain data from the
+   same resource or co-ordinate and synchronize multiple response
+   streams carrying a representation and notifications.
 
 3.  Conformance
 
@@ -1054,14 +1102,14 @@ Index
       E
 
          event  Section 2, Paragraph 1; Section 2.3, Paragraph 4.2.1;
-            Section 2.4, Paragraph 1; *_Section 4.1_*; Section 4.2,
-            Paragraph 1; Section 4.2, Paragraph 2; Section 4.2,
-            Paragraph 3; Section 4.3, Paragraph 1; Section 4.3,
-            Paragraph 2; Section 4.3, Paragraph 3; Section 5, Paragraph
-            4; Section 7, Paragraph 4.2; Section 8, Paragraph 1;
-            Section 8.1, Paragraph 1; Section 9.2.2, Paragraph 1;
-            Section 9.2.2, Paragraph 3; Section 13, Paragraph 4;
-            Section 13, Paragraph 5
+            Section 2.4, Paragraph 1; Section 2.5, Paragraph 3;
+            *_Section 4.1_*; Section 4.2, Paragraph 1; Section 4.2,
+            Paragraph 2; Section 4.2, Paragraph 3; Section 4.3,
+            Paragraph 1; Section 4.3, Paragraph 2; Section 4.3,
+            Paragraph 3; Section 5, Paragraph 4; Section 7, Paragraph
+            4.2; Section 8, Paragraph 1; Section 8.1, Paragraph 1;
+            Section 9.2.2, Paragraph 1; Section 9.2.2, Paragraph 3;
+            Section 13, Paragraph 4; Section 13, Paragraph 5
          event notification  Section Abstract, Paragraph 1; Section 1,
             Paragraph 3; Section 1, Paragraph 4; Section 1, Paragraph 5;
             Section 1, Paragraph 8; Section 1, Paragraph 9; Section 2,
@@ -1072,27 +1120,28 @@ Index
             Paragraph 2.2.1; Section 2.3, Paragraph 2.3.1; Section 2.3,
             Paragraph 4.1.1; Section 2.3, Paragraph 4.2.1; Section 2.3,
             Paragraph 4.3.1; Section 2.3, Paragraph 4.4.1; Section 2.4,
-            Paragraph 1; Section 2.4, Paragraph 2; Section 4.2,
-            Paragraph 3; *_Section 4.3_*; Section 4.3, Paragraph 1;
-            Section 4.3, Paragraph 2; Section 4.3, Paragraph 3;
-            Section 4.4, Paragraph 1; Section 4.4, Paragraph 2;
-            Section 4.4, Paragraph 3; Section 5, Paragraph 2; Section 5,
-            Paragraph 3; Section 5.1, Paragraph 2; Section 5.1,
-            Paragraph 3; Section 6, Paragraph 3.2.1; Section 6,
-            Paragraph 5; Section 7, Paragraph 4.2; Section 8, Paragraph
-            1; Section 8.1, Paragraph 1; Section 8.1, Paragraph 2;
-            Section 8.2, Paragraph 1; Section 9, Paragraph 1;
-            Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
-            Section 9.1, Paragraph 3; Section 9.2, Paragraph 1;
-            Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
-            Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
-            1; Section 9.2.2, Paragraph 3; Section 10, Paragraph 1;
-            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
-            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
-            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
-            Section 13, Paragraph 2; Section 13, Paragraph 3;
-            Section 13, Paragraph 4; Section 13, Paragraph 5;
-            Appendix A, Paragraph 1
+            Paragraph 1; Section 2.4, Paragraph 2; Section 2.5,
+            Paragraph 1; Section 2.5, Paragraph 2; Section 2.5,
+            Paragraph 3; Section 4.2, Paragraph 3; *_Section 4.3_*;
+            Section 4.3, Paragraph 1; Section 4.3, Paragraph 2;
+            Section 4.3, Paragraph 3; Section 4.4, Paragraph 1;
+            Section 4.4, Paragraph 2; Section 4.4, Paragraph 3;
+            Section 5, Paragraph 2; Section 5, Paragraph 3; Section 5.1,
+            Paragraph 2; Section 5.1, Paragraph 3; Section 6, Paragraph
+            3.2.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
+            Section 8, Paragraph 1; Section 8.1, Paragraph 1;
+            Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
+            Section 9, Paragraph 1; Section 9.1, Paragraph 1;
+            Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
+            Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
+            Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
+            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
+            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
+            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
+            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
+            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
+            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
+            Section 13, Paragraph 5; Appendix A, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
             2.1.1; Section 9.2.2, Paragraph 5; Table 1; Section 12.2,
             Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
@@ -1115,26 +1164,27 @@ Index
             Paragraph 2.2.1; Section 2.3, Paragraph 2.3.1; Section 2.3,
             Paragraph 4.1.1; Section 2.3, Paragraph 4.2.1; Section 2.3,
             Paragraph 4.3.1; Section 2.3, Paragraph 4.4.1; Section 2.4,
-            Paragraph 1; Section 2.4, Paragraph 2; Section 4.2,
-            Paragraph 3; *_Section 4.3_*; Section 4.3, Paragraph 1;
-            Section 4.4, Paragraph 1; Section 4.4, Paragraph 2;
-            Section 4.4, Paragraph 3; Section 5, Paragraph 2; Section 5,
-            Paragraph 3; Section 5.1, Paragraph 2; Section 5.1,
-            Paragraph 3; Section 6, Paragraph 3.2.1; Section 6,
-            Paragraph 5; Section 7, Paragraph 4.2; Section 8, Paragraph
-            1; Section 8.1, Paragraph 1; Section 8.1, Paragraph 2;
-            Section 8.2, Paragraph 1; Section 9, Paragraph 1;
-            Section 9.1, Paragraph 1; Section 9.1, Paragraph 2;
-            Section 9.1, Paragraph 3; Section 9.2, Paragraph 1;
-            Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
-            Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
-            1; Section 9.2.2, Paragraph 3; Section 10, Paragraph 1;
-            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
-            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
-            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
-            Section 13, Paragraph 2; Section 13, Paragraph 3;
-            Section 13, Paragraph 4; Section 13, Paragraph 5;
-            Appendix A, Paragraph 1
+            Paragraph 1; Section 2.4, Paragraph 2; Section 2.5,
+            Paragraph 1; Section 2.5, Paragraph 2; Section 2.5,
+            Paragraph 3; Section 4.2, Paragraph 3; *_Section 4.3_*;
+            Section 4.3, Paragraph 1; Section 4.4, Paragraph 1;
+            Section 4.4, Paragraph 2; Section 4.4, Paragraph 3;
+            Section 5, Paragraph 2; Section 5, Paragraph 3; Section 5.1,
+            Paragraph 2; Section 5.1, Paragraph 3; Section 6, Paragraph
+            3.2.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
+            Section 8, Paragraph 1; Section 8.1, Paragraph 1;
+            Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
+            Section 9, Paragraph 1; Section 9.1, Paragraph 1;
+            Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
+            Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
+            Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
+            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
+            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
+            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
+            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
+            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
+            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
+            Section 13, Paragraph 5; Appendix A, Paragraph 1
 
       O
 
@@ -1147,11 +1197,12 @@ Index
 
          subscriber  Section 4.3, Paragraph 3; *_Section 4.4, Paragraph
             1_*; Section 4.4, Paragraph 2
-         subscription  *_Section 4.4_*; Section 6, Paragraph 2;
-            Section 6, Paragraph 4; Section 6, Paragraph 5; Section 8.1,
-            Paragraph 1; Section 9.1, Paragraph 1; Section 9.1,
-            Paragraph 3; Section 10.1, Paragraph 1; Section 10.1,
-            Paragraph 2; Section 11, Paragraph 2
+         subscription  Section 2.5, Paragraph 3; *_Section 4.4_*;
+            Section 6, Paragraph 2; Section 6, Paragraph 4; Section 6,
+            Paragraph 5; Section 8.1, Paragraph 1; Section 9.1,
+            Paragraph 1; Section 9.1, Paragraph 3; Section 10.1,
+            Paragraph 1; Section 10.1, Paragraph 2; Section 11,
+            Paragraph 2
 
 Author's Address
 
