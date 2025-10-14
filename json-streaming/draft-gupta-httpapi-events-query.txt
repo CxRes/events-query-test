@@ -625,13 +625,13 @@ Table of Contents
    representation that encapsulates event notifications.  The following
    examples illustrate subscription requests that negotiate a stream of
    event notifications to be transferred respectively using a composite
-   media-type (application/http) and a discrete media-type (application/
+   media type (application/http) and a discrete media type (application/
    json-seq):
 
    The first example shows a subscription request for what is
    effectively a stream of Single Notifications (Section 8) to be
    transferred using application/http ([HTTP/1.1], Section 10.2) as the
-   encapsulating media-type.  The events property in this example
+   encapsulating media type.  The events property in this example
    indicates an interest in receiving event notifications and its sub-
    properties describe the preferred form of notifications.  Since the
    notifications are transferred as a pipeline of HTTP messages, these
@@ -652,9 +652,9 @@ Table of Contents
 
    The second example shows a subscription request for a stream of JSON
    notifications to be transferred using application/json-seq
-   ([RFC7464]) as the encapsulating media-type.  The events property in
-   this example is being used communicate the preferred schema for the
-   requested event notifications.
+   ([RFC7464]) as the encapsulating media type.  The events property in
+   this example is being used to communicate the preferred schema for
+   the requested event notifications.
 
    QUERY /foo HTTP/1.1
    Host: example.org
@@ -670,10 +670,10 @@ Table of Contents
 9.2.  Response
 
    The response stream transmits multiple event notifications in an
-   encapsulating media type.  In the following, we shall illustrate
-   event notifications streamed in both a composite media-type
-   (application/http) and a discrete media-type (application/json-seq)
-   in response to the example requests (Section 9.1) in Section 9.1.
+   encapsulating media type.  The following illustrates event
+   notifications streamed in both a composite media type (application/
+   http) and a discrete media type (application/json-seq) in response to
+   the example requests (Section 9.1) in Section 9.1.
 
 9.2.1.  Headers
 
@@ -706,7 +706,7 @@ Table of Contents
    Subsequently, when event(s) occur, the server transmits a
    notification.
 
-   An event notification transferred in a application/http response
+   An event notification transferred in an application/http response
    stream is identical to the Single Notification Response
    (Section 8.2), except fields redundant with response headers
    (Section 9.2.1) are omitted.
