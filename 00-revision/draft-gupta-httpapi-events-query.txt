@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                           13 October 2025
+Internet-Draft                                           14 October 2025
 Intended status: Standards Track                                        
-Expires: 16 April 2026
+Expires: 17 April 2026
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 April 2026.
+   This Internet-Draft will expire on 17 April 2026.
 
 Copyright Notice
 
@@ -503,7 +503,7 @@ Table of Contents
 
 8.  Single Notification
 
-   The simplest event query is to ask for a notification for the next
+   The simplest Events Query is to request a notification for the next
    event(s) on a resource.  This, in effect, adds long-polling
    capability ([RFC6202], Section 2) to a resource.
 
@@ -515,8 +515,8 @@ Table of Contents
    method ([HTTP-QUERY], Section 3) as a subscription request for a
    single event notification.
 
-   A client can, as usual, negotiate the form of the event notification
-   using header fields.
+   Since the content of the response is an event notification, a client
+   can negotiate its form in the usual manner with header fields.
 
    QUERY /foo HTTP/1.1
    Host: example.org
@@ -530,8 +530,8 @@ Table of Contents
 
 8.2.  Response
 
-   When providing a single notification, the server MUST close the
-   connection immediately after transmitting the event notification.
+   When a single notification is requested, the server MUST close the
+   connection immediately after sending the event notification.
 
    HTTP/1.1 200 OK
    Host: example.org
