@@ -336,14 +336,14 @@ Table of Contents
 4.1.  Event
 
    An event is the instantaneous effect of the (normal or abnormal)
-   termination of invocation of an operation on an object of interest
-   [DESIGN-FRAMEWORK].  The entity invoking an operation is termed the
-   *invoker*.
+   termination of the invocation of an operation on an object of
+   interest [DESIGN-FRAMEWORK].  The entity invoking an operation is
+   termed the *invoker*.
 
    In the specific context of HTTP, the object of interest is data
    scoped to some resource.  When the operation is an HTTP method, the
    invoker is a user agent.  However, an operation need not be limited
-   an HTTP method, it might just as easily have been invoked using
+   to an HTTP method, it might just as easily have been invoked using
    another mechanism or protocol.  Events are then an extension of
    resource state (See [HTTP], Section 3.2) in the temporal dimension.
 
@@ -359,7 +359,7 @@ Table of Contents
    implementation details for the server.
 
    That an origin server has to assume the role of an observer in order
-   to generate event notifications is obvious.  An intermediary while
+   to generate event notifications is obvious.  An intermediary, while
    not observing the data scoped to a resource directly, still has the
    possibility to serve as an observer.  An intermediary can observe
    events transmitted by an origin server or another intermediary,
@@ -394,8 +394,8 @@ Table of Contents
    coincides with the recipient of event notifications
    ([DESIGN-FRAMEWORK] uses the term _requester_ or _broker_ to identify
    a requesting entity, with the _broker_ and _recipient_ together
-   forming the subscriber; for this specification the distinction is not
-   necessary).
+   forming the subscriber; for this specification, the distinction is
+   not necessary).
 
    The subscription in the form of a query affords the user agent the
    opportunity to engage in content negotiation for preferred form of
