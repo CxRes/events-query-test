@@ -843,9 +843,8 @@ Table of Contents
 11.  Implementation Status
 
    A toy server built in Express.js demonstrating the Events Query
-   Protocol is available at https://github.com/CxRes/query-express-demo
-   (https://github.com/CxRes/query-express-demo).  This demo is powered
-   by the following libraries:
+   Protocol is available at https://github.com/CxRes/events-query-
+   express-demo.  This demo is powered by the following libraries:
 
    *  Negotiate Events Field (https://github.com/CxRes/negotiate-events-
       field): To read the request Events header field (Section 5) and
