@@ -776,9 +776,9 @@ Table of Contents
    if it is a representation and not an event notification.  Such a
    mechanism is not defined in this specification.
 
-   Notifications are transmitted just as in the regular streaming
-   (Section 9.2) case described in Section 9.2.  See Appendix A for a
-   complete example of a response with representation and notifications.
+   Notifications are transmitted just as in the case of regular
+   streaming (Section 9.2).  See Appendix A for a complete example of a
+   response with representation and notifications.
 
 11.  Security Considerations
 
