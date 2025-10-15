@@ -78,6 +78,7 @@ informative:
   RFC3724:
   RFC3935:
   RFC6202:
+  RFC7464:
   RFC7838:
   RFC8890:
   RFC9112:
@@ -137,4 +138,3 @@ Events Query is a minimal protocol built on top of HTTP that allows user agents 
 {::include-nested appendix/example.md}
 
 {::include-nested appendix/acknowledgments.md}
-
