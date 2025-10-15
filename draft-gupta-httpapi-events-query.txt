@@ -109,9 +109,13 @@ Table of Contents
    14. References
      14.1.  Normative References
      14.2.  Informative References
-   Appendix A.  Example
-     A.1.  Request
-     A.2.  Response
+   Appendix A.  Examples
+     A.1.  Representation and Notifications
+       A.1.1.  Request
+       A.1.2.  Response
+     A.2.  Notifications Stream
+       A.2.1.  Request
+       A.2.2.  Response
    Acknowledgments
    Index
    Author's Address
@@ -619,13 +623,21 @@ Table of Contents
    fields cannot be used to negotiate the form of event notifications as
    in the case of Single Notification Request (Section 8.1).  Instead,
    header fields are useful for negotiating the representation that
-   encapsulates event notifications.
+   encapsulates event notifications.  The following examples illustrate
+   subscription requests that negotiate a stream of event notifications
+   to be transferred respectively using a composite media type
+   (application/http) and a discrete media type (application/json-seq):
 
-   The following example shows a subscription request for a stream of
-   event notifications transmitted using the application/http media
-   type.  The events property indicates interest in receiving event
-   notifications and preferences specified using sub-properties
-   identical to HTTP request headers.
+   The first example shows a subscription request for what is
+   effectively a stream of Single Notifications (Section 8) to be
+   transferred using application/http ([HTTP/1.1], Section 10.2) as the
+   encapsulating media type.  The events property in this example
+   indicates an interest in receiving event notifications and its sub-
+   properties describe the preferred form of notifications.  Since the
+   notifications are transferred as a pipeline of HTTP messages, these
+   sub-properties are identical to header fields (Section 8.1, Paragraph
+   2) used for specifying preconditions and content negotiation in a
+   Single Notification Request (Section 8.1).
 
    QUERY /foo HTTP/1.1
    Host: example.org
@@ -636,13 +648,32 @@ Table of Contents
    events:
      Accept: example/event-notification
 
-                   Figure 7: Notifications Stream Request
+              Figure 7: Request for HTTP Notifications Stream
+
+   The second example shows a subscription request for a stream of JSON
+   notifications to be transferred using application/json-seq
+   ([RFC7464]) as the encapsulating media type.  The events property in
+   this example is being used to communicate the preferred schema for
+   the requested event notifications.
+
+   QUERY /foo HTTP/1.1
+   Host: example.org
+   Accept: application/json-seq
+   Content-Type: example/events-query
+   Events: duration=0
+
+   events:
+     @context: activity+json
+
+              Figure 8: Request for JSON Notifications Stream
 
 9.2.  Response
 
    The response stream transmits multiple event notifications in an
-   encapsulating media type.  We shall use the application/http media
-   type ([HTTP/1.1], Section 10.2) for the purpose of illustration.
+   encapsulating media type.  The following illustrates event
+   notifications streamed in both a composite media type (application/
+   http) and a discrete media type (application/json-seq) in response to
+   the example requests (Section 9.1) in Section 9.1.
 
 9.2.1.  Headers
 
@@ -662,17 +693,22 @@ Table of Contents
    HTTP/1.1 200 OK
    Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
-   Content-Type: application/http
    Transfer-Encoding: chunked
    Incremental: ?1
    Events: duration=600
 
-              Figure 8: Notifications Stream Response Headers
+              Figure 9: Notifications Stream Response Headers
+
+      |  Since the Content-Type header field varies in response to
+      |  Figure 7 and Figure 8, it is omitted above.
 
 9.2.2.  Notifications
 
    Subsequently, when event(s) occur, the server transmits a
-   notification identical to the Single Notification Response
+   notification.
+
+   An event notification transferred in an application/http response
+   stream is identical to the Single Notification Response
    (Section 8.2), except fields that are redundant with the response
    headers (Section 9.2.1) are omitted.
 
@@ -684,11 +720,24 @@ Table of Contents
    event-id: 456                                    |
    type: update                                     |
 
-                       Figure 9: Update Notification
+                    Figure 10: HTTP Update Notification
+
+   The same event notification when transferred in a application/json-
+   seq response stream is as follows:
+
+   ␞{                                              | Notification
+     "published": "2025-01-02T10:11:12.345Z",       |
+     "event-id": 456,                               |
+     "type": "Update"                               |
+   }                                                |
+
+                    Figure 11: JSON Update Notification
 
    A server MUST end the response immediately after transmitting the
-   event notification for the deletion of a resource.  The notification
-   for a delete event might be as follows:
+   event notification for the deletion of a resource.
+
+   The notification for a delete event expressed as an HTTP message
+   might be as follows:
 
    HTTP/1.1 200 OK                                  | Notification
    Content-Type: example/event-notification         |
@@ -698,7 +747,17 @@ Table of Contents
    event-id: 789                                    |
    type: delete                                     |
 
-                       Figure 10: Delete Notification
+                    Figure 12: HTTP Delete Notification
+
+   The same notification for a delete event in JSON would be as follows:
+
+   ␞{                                              | Notification
+     "published": "2025-01-02T11:12:13.456Z",       |
+     "event-id": 789,                               |
+     "type": "delete"                               |
+   }                                                |
+
+                    Figure 13: JSON Delete Notification
 
    Otherwise, a server MUST end the response when the connection
    duration has exceeded the period set in the duration property of the
@@ -723,9 +782,12 @@ Table of Contents
    The following example shows a subscription request for the current
    representation along with the subsequent event notifications
    transmitted using the application/http media type.  The state
-   property indicates interest in receiving representation.  The
-   preferred form of representation is specified using sub-properties
-   identical to request headers in the state property.
+   property indicates interest in receiving representation and its sub-
+   properties describe the preferred form of notifications.  Since the
+   representation is being transferred in an HTTP message pipeline,
+   these sub-properties are identical to header fields used for
+   specifying preconditions and content negotiation in a GET request on
+   the said resource.
 
    QUERY /foo HTTP/1.1
    Host: example.org
@@ -737,7 +799,7 @@ Table of Contents
    events:
      Accept: example/event-notification
 
-            Figure 11: Representation and Notifications Request
+          Figure 14: HTTP Representation and Notifications Request
 
 10.2.  Response
 
@@ -757,7 +819,6 @@ Table of Contents
    HTTP/1.1 200 OK
    Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
-   Content-Type: application/http
    Transfer-Encoding: chunked
    Incremental: ?1
    Events: duration=600
@@ -768,7 +829,7 @@ Table of Contents
                                                     |
    Hello World!                                     |
 
-                     Figure 12: Representation Response
+          Figure 15: Representation Response before Notifications
 
    While this is default behaviour, there is no requirement that a
    representation is the first message or that representations are sent
@@ -777,8 +838,8 @@ Table of Contents
    mechanism is not defined in this specification.
 
    Notifications are transmitted just as in the case of regular
-   streaming (Section 9.2).  See Appendix A for a complete example of a
-   response with representation and notifications.
+   streaming (Section 9.2).  See Appendix A.1 for a complete example of
+   a response with representation and notifications.
 
 11.  Security Considerations
 
@@ -1006,6 +1067,10 @@ Table of Contents
               DOI 10.17487/RFC6202, April 2011,
               <https://www.rfc-editor.org/rfc/rfc6202>.
 
+   [RFC7464]  Williams, N., "JavaScript Object Notation (JSON) Text
+              Sequences", RFC 7464, DOI 10.17487/RFC7464, February 2015,
+              <https://www.rfc-editor.org/rfc/rfc7464>.
+
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/rfc/rfc7838>.
@@ -1027,13 +1092,18 @@ Table of Contents
    [WS]       "The WebSocket API", W3C NOTE websockets, W3C websockets,
               <https://www.w3.org/TR/websockets/>.
 
-Appendix A.  Example
+Appendix A.  Examples
+
+   Some examples used in this specification are consolidated below.
+   Chunks have been omitted for clarity.
+
+A.1.  Representation and Notifications
 
    The following example illustrates a complete request and response for
-   representation and notifications using Events Query.  Chunks have
-   been omitted for clarity.
+   representation and notifications transferred with the application/
+   http media-type as described in Section 10: Representation.
 
-A.1.  Request
+A.1.1.  Request
 
    QUERY /foo HTTP/1.1
    Host: example.org
@@ -1045,17 +1115,17 @@ A.1.  Request
    events:
      Accept: example/event-notification
 
-          Figure 13: Request for Representation and Notifications
+          Figure 16: Request for Representation and Notifications
 
-A.2.  Response
+A.1.2.  Response
 
    HTTP/1.1 200 OK
    Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
-   Content-Type: application/http
    Transfer-Encoding: chunked
    Incremental: ?1
    Events: duration=600
+   Content-Type: application/http
 
    HTTP/1.1 200 OK                                  | Representation
    Content-Type: text/plain                         |
@@ -1079,7 +1149,50 @@ A.2.  Response
    event-id: 789                                    |
    type: delete                                     |
 
-      Figure 14: Response Stream with Representation and Notifications
+         Figure 17: Response with Representation and Notifications
+
+A.2.  Notifications Stream
+
+   This following example illustrates complete request and response for
+   JSON formatted notifications transferred with the application/json-
+   seq media-type as described in Notifications Stream: Notifications
+   Stream.
+
+A.2.1.  Request
+
+   QUERY /foo HTTP/1.1
+   Host: example.org
+   Accept: application/json-seq
+   Content-Type: example/events-query
+   Events: duration=0
+
+   events:
+     @context: activity+json
+
+                 Figure 18: Request for JSON Notifications
+
+A.2.2.  Response
+
+   HTTP/1.1 200 OK
+   Date: Thu, 02 Jan 2025 10:10:10 GMT
+   Accept-Query: example/events-query
+   Transfer-Encoding: chunked
+   Incremental: ?1
+   Events: duration=600
+   Content-Type: application/json-seq
+
+   ␞{                                              | Notification
+     "published": "2025-01-02T10:11:12.345Z",       |
+     "event-id": 456,                               |
+     "type": "Update"                               |
+   }                                                |
+   ␞{                                              | Notification
+     "published": "2025-01-02T11:12:13.456Z",       |
+     "event-id": 789,                               |
+     "type": "delete"                               |
+   }                                                |
+
+                Figure 19: Response with JSON Notifications
 
 Acknowledgments
 
@@ -1098,7 +1211,7 @@ Index
             Paragraph 4.1.1; *_Section 6_*; Section 9.1, Paragraph 1;
             Section 10.1, Paragraph 1
          duration (property)  *_Section 5.1_*; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 5; Table 2
+            2.1.2.1.1; Section 9.2.2, Paragraph 11; Table 2
 
       E
 
@@ -1109,7 +1222,8 @@ Index
             Paragraph 1; Section 4.3, Paragraph 2; Section 4.3,
             Paragraph 3; Section 5, Paragraph 4; Section 7, Paragraph
             4.2; Section 8, Paragraph 1; Section 8.1, Paragraph 1;
-            Section 9.2.2, Paragraph 1; Section 9.2.2, Paragraph 3
+            Section 9.2.2, Paragraph 1; Section 9.2.2, Paragraph 7;
+            Section 9.2.2, Paragraph 9
          event notification  Section Abstract, Paragraph 1; Section 1,
             Paragraph 3; Section 1, Paragraph 4; Section 1, Paragraph 5;
             Section 1, Paragraph 8; Section 1, Paragraph 9; Section 2,
@@ -1133,17 +1247,20 @@ Index
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
             Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
-            Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
-            Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
-            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
-            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
-            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
-            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
-            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
-            Section 13, Paragraph 5; Appendix A, Paragraph 1
+            Section 9.1, Paragraph 5; Section 9.2, Paragraph 1;
+            Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
+            Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
+            1; Section 9.2.2, Paragraph 2; Section 9.2.2, Paragraph 4;
+            Section 9.2.2, Paragraph 6; Section 9.2.2, Paragraph 7;
+            Section 9.2.2, Paragraph 9; Section 10, Paragraph 1;
+            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
+            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
+            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
+            Section 13, Paragraph 2; Section 13, Paragraph 3;
+            Section 13, Paragraph 4; Section 13, Paragraph 5;
+            Appendix A.1, Paragraph 1; Appendix A.2, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
-            2.1.1; Section 9.2.2, Paragraph 5; Table 1; Section 12.2,
+            2.1.1; Section 9.2.2, Paragraph 11; Table 1; Section 12.2,
             Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
             Paragraph 2.1.1
 
@@ -1176,15 +1293,18 @@ Index
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
             Section 9.1, Paragraph 2; Section 9.1, Paragraph 3;
-            Section 9.2, Paragraph 1; Section 9.2.1, Paragraph 1;
-            Section 9.2.1, Paragraph 2.1.1; Section 9.2.1, Paragraph
-            2.1.2.1.1; Section 9.2.2, Paragraph 1; Section 9.2.2,
-            Paragraph 3; Section 10, Paragraph 1; Section 10.1,
-            Paragraph 2; Section 10.2, Paragraph 1; Section 10.2,
-            Paragraph 2; Section 10.2, Paragraph 5; Section 10.2,
-            Paragraph 6; Section 11, Paragraph 2; Section 13, Paragraph
-            2; Section 13, Paragraph 3; Section 13, Paragraph 4;
-            Section 13, Paragraph 5; Appendix A, Paragraph 1
+            Section 9.1, Paragraph 5; Section 9.2, Paragraph 1;
+            Section 9.2.1, Paragraph 1; Section 9.2.1, Paragraph 2.1.1;
+            Section 9.2.1, Paragraph 2.1.2.1.1; Section 9.2.2, Paragraph
+            1; Section 9.2.2, Paragraph 2; Section 9.2.2, Paragraph 4;
+            Section 9.2.2, Paragraph 6; Section 9.2.2, Paragraph 7;
+            Section 9.2.2, Paragraph 9; Section 10, Paragraph 1;
+            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
+            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
+            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
+            Section 13, Paragraph 2; Section 13, Paragraph 3;
+            Section 13, Paragraph 4; Section 13, Paragraph 5;
+            Appendix A.1, Paragraph 1; Appendix A.2, Paragraph 1
 
       O
 
@@ -1200,7 +1320,8 @@ Index
          subscription  Section 2.5, Paragraph 3; *_Section 4.4_*;
             Section 6, Paragraph 2; Section 6, Paragraph 4; Section 6,
             Paragraph 5; Section 8.1, Paragraph 1; Section 9.1,
-            Paragraph 1; Section 9.1, Paragraph 3; Section 10.1,
+            Paragraph 1; Section 9.1, Paragraph 2; Section 9.1,
+            Paragraph 3; Section 9.1, Paragraph 5; Section 10.1,
             Paragraph 1; Section 10.1, Paragraph 2; Section 11,
             Paragraph 2
 

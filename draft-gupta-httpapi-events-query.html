@@ -1289,13 +1289,29 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-example" class="internal xref">Example</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.1">
-                <p id="section-toc.1-1.15.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-request-4" class="internal xref">Request</a></p>
+                <p id="section-toc.1-1.15.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-representation-and-notifica" class="internal xref">Representation and Notifications</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.1.2.1">
+                    <p id="section-toc.1-1.15.2.1.2.1.1"><a href="#appendix-A.1.1" class="auto internal xref">A.1.1</a>.  <a href="#name-request-4" class="internal xref">Request</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.1.2.2">
+                    <p id="section-toc.1-1.15.2.1.2.2.1"><a href="#appendix-A.1.2" class="auto internal xref">A.1.2</a>.  <a href="#name-response-4" class="internal xref">Response</a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2">
-                <p id="section-toc.1-1.15.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-response-4" class="internal xref">Response</a></p>
+                <p id="section-toc.1-1.15.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-notifications-stream-2" class="internal xref">Notifications Stream</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2.2.1">
+                    <p id="section-toc.1-1.15.2.2.2.1.1"><a href="#appendix-A.2.1" class="auto internal xref">A.2.1</a>.  <a href="#name-request-5" class="internal xref">Request</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15.2.2.2.2">
+                    <p id="section-toc.1-1.15.2.2.2.2.1"><a href="#appendix-A.2.2" class="auto internal xref">A.2.2</a>.  <a href="#name-response-5" class="internal xref">Response</a></p>
+</li>
+                </ul>
 </li>
             </ul>
 </li>
@@ -1851,12 +1867,12 @@ type: update
 <p id="section-9.1-1">To request a stream of <span id="iref-notification-182" class="iref"></span><span id="iref-event-notification-183" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> from a resource in an Events Query, a client <span class="bcp14">MUST</span> express its interest in receiving the <span id="iref-notification-184" class="iref"></span><span id="iref-event-notification-185" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in a preferred form using a realization of the <span id="iref-subscription-186" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> <span id="iref-data-model-187" class="iref"></span><a href="#data-model" class="internal xref">data model</a> with the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-12#section-3" class="relref">Section 3</a></span>).<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 </div>
 <div id="stream-request-conneg">
-<p id="section-9.1-2">Since the response transmits <span id="iref-notification-188" class="iref"></span><span id="iref-event-notification-189" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> within an encapsulating representation (<a href="#stream-response" class="auto internal xref">Section 9.2</a>), it follows that header fields cannot be used to negotiate the form of <span id="iref-notification-190" class="iref"></span><span id="iref-event-notification-191" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> as in the case of <span><a href="#single-notification-request" class="internal xref">Single Notification Request</a> (<a href="#single-notification-request" class="auto internal xref">Section 8.1</a>)</span>. Instead, header fields are useful for negotiating the representation that encapsulates <span id="iref-notification-192" class="iref"></span><span id="iref-event-notification-193" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-9.1-2" class="pilcrow">¶</a></p>
+<p id="section-9.1-2">Since the response transmits <span id="iref-notification-188" class="iref"></span><span id="iref-event-notification-189" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> within an encapsulating representation (<a href="#stream-response" class="auto internal xref">Section 9.2</a>), it follows that header fields cannot be used to negotiate the form of <span id="iref-notification-190" class="iref"></span><span id="iref-event-notification-191" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> as in the case of <span><a href="#single-notification-request" class="internal xref">Single Notification Request</a> (<a href="#single-notification-request" class="auto internal xref">Section 8.1</a>)</span>. Instead, header fields are useful for negotiating the representation that encapsulates <span id="iref-notification-192" class="iref"></span><span id="iref-event-notification-193" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>. The following examples illustrate <span id="iref-subscription-194" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> requests that negotiate a stream of <span id="iref-notification-195" class="iref"></span><span id="iref-event-notification-196" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> to be transferred respectively using a composite media type (<code>application/http</code>) and a discrete media type (<code>application/json-seq</code>):<a href="#section-9.1-2" class="pilcrow">¶</a></p>
 </div>
-<div id="stream-request-example-description">
-<p id="section-9.1-3">The following example shows a <span id="iref-subscription-194" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request for a stream of <span id="iref-notification-195" class="iref"></span><span id="iref-event-notification-196" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> transmitted using the <code>application/http</code> media type. The <code>events</code> property indicates interest in receiving <span id="iref-notification-197" class="iref"></span><span id="iref-event-notification-198" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> and preferences specified using sub-properties identical to HTTP request headers.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
+<div id="stream-request-http">
+<p id="section-9.1-3">The first example shows a <span id="iref-subscription-197" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request for what is effectively a stream of <span><a href="#single-notification" class="internal xref">Single Notifications</a> (<a href="#single-notification" class="auto internal xref">Section 8</a>)</span> to be transferred using <code>application/http</code> (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-10.2" class="relref">Section 10.2</a></span>) as the encapsulating media type. The <code>events</code> property in this example indicates an interest in receiving <span id="iref-notification-198" class="iref"></span><span id="iref-event-notification-199" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> and its sub-properties describe the preferred form of <span id="iref-event-notification-200" class="iref"></span><span id="iref-notification-201" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Since the <span id="iref-event-notification-202" class="iref"></span><span id="iref-notification-203" class="iref"></span><a href="#notification" class="internal xref">notifications</a> are transferred as a pipeline of HTTP messages, these sub-properties are identical to <span><a href="#single-notification-request-conneg" class="internal xref">header fields</a> (<a href="#single-notification-request-conneg" class="auto internal xref">Section 8.1, Paragraph 2</a>)</span> used for specifying preconditions and content negotiation in a <span><a href="#single-notification-request" class="internal xref">Single Notification Request</a> (<a href="#single-notification-request" class="auto internal xref">Section 8.1</a>)</span>.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
 </div>
-<span id="name-notifications-stream-reques"></span><div id="stream-request-example">
+<span id="name-request-for-http-notificati"></span><div id="stream-request-http-example">
 <figure id="figure-7">
           <div class="lang-http-message sourcecode" id="section-9.1-4.1">
 <pre>
@@ -1871,7 +1887,28 @@ events:
 </pre>
 </div>
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
-<a href="#name-notifications-stream-reques" class="selfRef">Notifications Stream Request</a>
+<a href="#name-request-for-http-notificati" class="selfRef">Request for HTTP Notifications Stream</a>
+          </figcaption></figure>
+</div>
+<div id="stream-request-json">
+<p id="section-9.1-5">The second example shows a <span id="iref-subscription-204" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request for a stream of JSON <span id="iref-event-notification-205" class="iref"></span><span id="iref-notification-206" class="iref"></span><a href="#notification" class="internal xref">notifications</a> to be transferred using <code>application/json-seq</code> (<span>[<a href="#RFC7464" class="cite xref">RFC7464</a>]</span>) as the encapsulating media type. The <code>events</code> property in this example is being used to communicate the preferred schema for the requested <span id="iref-notification-207" class="iref"></span><span id="iref-event-notification-208" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-9.1-5" class="pilcrow">¶</a></p>
+</div>
+<span id="name-request-for-json-notificati"></span><div id="stream-request-json-example">
+<figure id="figure-8">
+          <div class="lang-http-message sourcecode" id="section-9.1-6.1">
+<pre>
+QUERY /foo HTTP/1.1
+Host: example.org
+Accept: application/json-seq
+Content-Type: example/events-query
+Events: duration=0
+
+events:
+  @context: activity+json
+</pre>
+</div>
+<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
+<a href="#name-request-for-json-notificati" class="selfRef">Request for JSON Notifications Stream</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1882,7 +1919,7 @@ events:
 <a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-response-2" class="section-name selfRef">Response</a>
         </h3>
 <div id="stream-response-encapsulation">
-<p id="section-9.2-1">The response stream transmits multiple <span id="iref-notification-199" class="iref"></span><span id="iref-event-notification-200" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in an encapsulating media type. We shall use the <code>application/http</code> media type (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-10.2" class="relref">Section 10.2</a></span>) for the purpose of illustration.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
+<p id="section-9.2-1">The response stream transmits multiple <span id="iref-notification-209" class="iref"></span><span id="iref-event-notification-210" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in an encapsulating media type. The following illustrates <span id="iref-notification-211" class="iref"></span><span id="iref-event-notification-212" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> streamed in both a composite media type (<code>application/http</code>) and a discrete media type (<code>application/json-seq</code>) in response to the example <span><a href="#stream-request" class="internal xref">requests</a> (<a href="#stream-request" class="auto internal xref">Section 9.1</a>)</span> in <a href="#stream-request" class="auto internal xref">Section 9.1</a>.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
 </div>
 <div id="stream-response-headers">
 <section id="section-9.2.1">
@@ -1890,16 +1927,16 @@ events:
 <a href="#section-9.2.1" class="section-number selfRef">9.2.1. </a><a href="#name-headers" class="section-name selfRef">Headers</a>
           </h4>
 <div id="stream-response-headers-list">
-<p id="section-9.2.1-1">A server able to provide a stream of <span id="iref-notification-201" class="iref"></span><span id="iref-event-notification-202" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> <span class="bcp14">MUST</span> immediately send headers, which include:<a href="#section-9.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.2.1-1">A server able to provide a stream of <span id="iref-notification-213" class="iref"></span><span id="iref-event-notification-214" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> <span class="bcp14">MUST</span> immediately send headers, which include:<a href="#section-9.2.1-1" class="pilcrow">¶</a></p>
 </div>
 <ul class="normal">
 <li id="section-9.2.1-2.1" class="normal">
 <div class="normal" id="stream-response-events-field">
-              <p id="section-9.2.1-2.1.1">The <span id="iref-events-header-field-203" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field, to communicate the properties of the <span id="iref-event-notification-204" class="iref"></span><span id="iref-notification-205" class="iref"></span><a href="#notification" class="internal xref">notifications</a> stream.<a href="#section-9.2.1-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-9.2.1-2.1.1">The <span id="iref-events-header-field-215" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field, to communicate the properties of the <span id="iref-event-notification-216" class="iref"></span><span id="iref-notification-217" class="iref"></span><a href="#notification" class="internal xref">notifications</a> stream.<a href="#section-9.2.1-2.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li id="section-9.2.1-2.1.2.1" class="normal">
 <div class="normal" id="stream-response-duration-property">
-                  <p id="section-9.2.1-2.1.2.1.1">The <span id="iref-duration-property-206" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property, set to the maximum duration for which the server intends to serve <span id="iref-notification-207" class="iref"></span><span id="iref-event-notification-208" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-9.2.1-2.1.2.1.1" class="pilcrow">¶</a></p>
+                  <p id="section-9.2.1-2.1.2.1.1">The <span id="iref-duration-property-218" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property, set to the maximum duration for which the server intends to serve <span id="iref-notification-219" class="iref"></span><span id="iref-event-notification-220" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-9.2.1-2.1.2.1.1" class="pilcrow">¶</a></p>
 </div>
               </li>
 </ul>
@@ -1911,24 +1948,26 @@ events:
 </div>
           </li>
 </ul>
-<span id="name-notifications-stream-respon"></span><div id="stream-response-header-example">
-<figure id="figure-8">
+<span id="name-notifications-stream-respon"></span><div id="stream-response-headers-example">
+<figure id="figure-9">
             <div class="lang-http-message sourcecode" id="section-9.2.1-3.1">
 <pre>
 HTTP/1.1 200 OK
 Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
-Content-Type: application/http
 Transfer-Encoding: chunked
 Incremental: ?1
 Events: duration=600
 
 </pre>
 </div>
-<figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
+<figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
 <a href="#name-notifications-stream-respon" class="selfRef">Notifications Stream Response Headers</a>
             </figcaption></figure>
 </div>
+<aside id="section-9.2.1-4">
+            <p id="section-9.2.1-4.1">Since the <code>Content-Type</code> header field varies in response to <a href="#stream-request-http-example" class="auto internal xref">Figure 7</a> and <a href="#stream-request-json-example" class="auto internal xref">Figure 8</a>, it is omitted above.<a href="#section-9.2.1-4.1" class="pilcrow">¶</a></p>
+</aside>
 </section>
 </div>
 <div id="stream-response-body">
@@ -1937,11 +1976,14 @@ Events: duration=600
 <a href="#section-9.2.2" class="section-number selfRef">9.2.2. </a><a href="#name-notifications" class="section-name selfRef">Notifications</a>
           </h4>
 <div id="stream-response-event">
-<p id="section-9.2.2-1">Subsequently, when <span id="iref-event-209" class="iref"></span><a href="#event" class="internal xref">event</a>(s) occur, the server transmits a <span id="iref-event-notification-210" class="iref"></span><span id="iref-notification-211" class="iref"></span><a href="#notification" class="internal xref">notification</a> identical to the <span><a href="#single-notification-response" class="internal xref">Single Notification Response</a> (<a href="#single-notification-response" class="auto internal xref">Section 8.2</a>)</span>, except fields that are redundant with the response headers (<a href="#stream-response-headers" class="auto internal xref">Section 9.2.1</a>) are omitted.<a href="#section-9.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-1">Subsequently, when <span id="iref-event-221" class="iref"></span><a href="#event" class="internal xref">event</a>(s) occur, the server transmits a <span id="iref-event-notification-222" class="iref"></span><span id="iref-notification-223" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-9.2.2-1" class="pilcrow">¶</a></p>
 </div>
-<span id="name-update-notification"></span><div id="stream-update-event">
-<figure id="figure-9">
-            <div class="lang-http-message sourcecode" id="section-9.2.2-2.1">
+<div id="stream-update-event-http">
+<p id="section-9.2.2-2">An <span id="iref-notification-224" class="iref"></span><span id="iref-event-notification-225" class="iref"></span><a href="#notification" class="internal xref">event notification</a> transferred in an <code>application/http</code> response stream is identical to the <span><a href="#single-notification-response" class="internal xref">Single Notification Response</a> (<a href="#single-notification-response" class="auto internal xref">Section 8.2</a>)</span>, except fields that are redundant with the response headers (<a href="#stream-response-headers" class="auto internal xref">Section 9.2.1</a>) are omitted.<a href="#section-9.2.2-2" class="pilcrow">¶</a></p>
+</div>
+<span id="name-http-update-notification"></span><div id="stream-update-notification-http-example">
+<figure id="figure-10">
+            <div class="lang-http-message sourcecode" id="section-9.2.2-3.1">
 <pre>
 HTTP/1.1 200 OK                                  | Notification
 Content-Type: example/event-notification         |
@@ -1952,16 +1994,37 @@ event-id: 456                                    |
 type: update                                     |
 </pre>
 </div>
-<figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
-<a href="#name-update-notification" class="selfRef">Update Notification</a>
+<figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
+<a href="#name-http-update-notification" class="selfRef">HTTP Update Notification</a>
+            </figcaption></figure>
+</div>
+<div id="stream-update-event-json">
+<p id="section-9.2.2-4">The same <span id="iref-notification-226" class="iref"></span><span id="iref-event-notification-227" class="iref"></span><a href="#notification" class="internal xref">event notification</a> when transferred in a <code>application/json-seq</code> response stream is as follows:<a href="#section-9.2.2-4" class="pilcrow">¶</a></p>
+</div>
+<span id="name-json-update-notification"></span><div id="stream-update-notification-json-example">
+<figure id="figure-11">
+            <div class="alignLeft art-text artwork" id="section-9.2.2-5.1">
+<pre>
+␞{                                              | Notification
+  "published": "2025-01-02T10:11:12.345Z",       |
+  "event-id": 456,                               |
+  "type": "Update"                               |
+}                                                |
+</pre>
+</div>
+<figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
+<a href="#name-json-update-notification" class="selfRef">JSON Update Notification</a>
             </figcaption></figure>
 </div>
 <div id="stream-response-terminal-event">
-<p id="section-9.2.2-3">A server <span class="bcp14">MUST</span> end the response immediately after transmitting the <span id="iref-notification-212" class="iref"></span><span id="iref-event-notification-213" class="iref"></span><a href="#notification" class="internal xref">event notification</a> for the deletion of a resource. The <span id="iref-event-notification-214" class="iref"></span><span id="iref-notification-215" class="iref"></span><a href="#notification" class="internal xref">notification</a> for a delete <span id="iref-event-216" class="iref"></span><a href="#event" class="internal xref">event</a> might be as follows:<a href="#section-9.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-6">A server <span class="bcp14">MUST</span> end the response immediately after transmitting the <span id="iref-notification-228" class="iref"></span><span id="iref-event-notification-229" class="iref"></span><a href="#notification" class="internal xref">event notification</a> for the deletion of a resource.<a href="#section-9.2.2-6" class="pilcrow">¶</a></p>
 </div>
-<span id="name-delete-notification"></span><div id="stream-delete-event">
-<figure id="figure-10">
-            <div class="lang-http-message sourcecode" id="section-9.2.2-4.1">
+<div id="stream-delete-event-http">
+<p id="section-9.2.2-7">The <span id="iref-event-notification-230" class="iref"></span><span id="iref-notification-231" class="iref"></span><a href="#notification" class="internal xref">notification</a> for a delete <span id="iref-event-232" class="iref"></span><a href="#event" class="internal xref">event</a> expressed as an HTTP message might be as follows:<a href="#section-9.2.2-7" class="pilcrow">¶</a></p>
+</div>
+<span id="name-http-delete-notification"></span><div id="stream-delete-event-http-example">
+<figure id="figure-12">
+            <div class="lang-http-message sourcecode" id="section-9.2.2-8.1">
 <pre>
 HTTP/1.1 200 OK                                  | Notification
 Content-Type: example/event-notification         |
@@ -1972,12 +2035,30 @@ event-id: 789                                    |
 type: delete                                     |
 </pre>
 </div>
-<figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
-<a href="#name-delete-notification" class="selfRef">Delete Notification</a>
+<figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
+<a href="#name-http-delete-notification" class="selfRef">HTTP Delete Notification</a>
+            </figcaption></figure>
+</div>
+<div id="stream-delete-event-json">
+<p id="section-9.2.2-9">The same <span id="iref-event-notification-233" class="iref"></span><span id="iref-notification-234" class="iref"></span><a href="#notification" class="internal xref">notification</a> for a delete <span id="iref-event-235" class="iref"></span><a href="#event" class="internal xref">event</a> in JSON would be as follows:<a href="#section-9.2.2-9" class="pilcrow">¶</a></p>
+</div>
+<span id="name-json-delete-notification"></span><div id="stream-delete-event-json-example">
+<figure id="figure-13">
+            <div class="alignLeft art-text artwork" id="section-9.2.2-10.1">
+<pre>
+␞{                                              | Notification
+  "published": "2025-01-02T11:12:13.456Z",       |
+  "event-id": 789,                               |
+  "type": "delete"                               |
+}                                                |
+</pre>
+</div>
+<figcaption><a href="#figure-13" class="selfRef">Figure 13</a>:
+<a href="#name-json-delete-notification" class="selfRef">JSON Delete Notification</a>
             </figcaption></figure>
 </div>
 <div id="stream-response-timeout">
-<p id="section-9.2.2-5">Otherwise, a server <span class="bcp14">MUST</span> end the response when the connection duration has exceeded the period set in the <span id="iref-duration-property-217" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property of the <span id="iref-events-header-field-218" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-9.2.2-5" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-11">Otherwise, a server <span class="bcp14">MUST</span> end the response when the connection duration has exceeded the period set in the <span id="iref-duration-property-236" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property of the <span id="iref-events-header-field-237" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-9.2.2-11" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
@@ -1991,7 +2072,7 @@ type: delete                                     |
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-representation" class="section-name selfRef">Representation</a>
       </h2>
 <div id="representation-description">
-<p id="section-10-1">Events Query enables a user agent to ask and receive the current representation and subsequent <span id="iref-notification-219" class="iref"></span><span id="iref-event-notification-220" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in a single request/response. When compared to using, say, Fetch <span>[<a href="#FETCH" class="cite xref">FETCH</a>]</span> and EventSource <span>[<a href="#SSE" class="cite xref">SSE</a>]</span> in conjunction, Events Query not only saves on an extra round trip, but relieves a user agent from the burden of synchronizing the representation with <span id="iref-notification-221" class="iref"></span><span id="iref-event-notification-222" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">Events Query enables a user agent to ask and receive the current representation and subsequent <span id="iref-notification-238" class="iref"></span><span id="iref-event-notification-239" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in a single request/response. When compared to using, say, Fetch <span>[<a href="#FETCH" class="cite xref">FETCH</a>]</span> and EventSource <span>[<a href="#SSE" class="cite xref">SSE</a>]</span> in conjunction, Events Query not only saves on an extra round trip, but relieves a user agent from the burden of synchronizing the representation with <span id="iref-notification-240" class="iref"></span><span id="iref-event-notification-241" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>.<a href="#section-10-1" class="pilcrow">¶</a></p>
 </div>
 <div id="representation-request">
 <section id="section-10.1">
@@ -1999,13 +2080,13 @@ type: delete                                     |
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-request-3" class="section-name selfRef">Request</a>
         </h3>
 <div id="representation-request-procedure">
-<p id="section-10.1-1">To request a representation of the resource in an Events Query, a client <span class="bcp14">MUST</span> express interest in receiving the representation in a preferred form using a realization of the <span id="iref-subscription-223" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> <span id="iref-data-model-224" class="iref"></span><a href="#data-model" class="internal xref">data model</a> (<a href="#data-model" class="auto internal xref">Section 6</a>) with the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-12#section-3" class="relref">Section 3</a></span>).<a href="#section-10.1-1" class="pilcrow">¶</a></p>
+<p id="section-10.1-1">To request a representation of the resource in an Events Query, a client <span class="bcp14">MUST</span> express interest in receiving the representation in a preferred form using a realization of the <span id="iref-subscription-242" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> <span id="iref-data-model-243" class="iref"></span><a href="#data-model" class="internal xref">data model</a> (<a href="#data-model" class="auto internal xref">Section 6</a>) with the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-12#section-3" class="relref">Section 3</a></span>).<a href="#section-10.1-1" class="pilcrow">¶</a></p>
 </div>
 <div id="representation-request-example-description">
-<p id="section-10.1-2">The following example shows a <span id="iref-subscription-225" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request for the current representation along with the subsequent <span id="iref-notification-226" class="iref"></span><span id="iref-event-notification-227" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> transmitted using the <code>application/http</code> media type. The <code>state</code> property indicates interest in receiving representation. The preferred form of representation is specified using sub-properties identical to request headers in the <code>state</code> property.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
+<p id="section-10.1-2">The following example shows a <span id="iref-subscription-244" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request for the current representation along with the subsequent <span id="iref-notification-245" class="iref"></span><span id="iref-event-notification-246" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> transmitted using the <code>application/http</code> media type. The <code>state</code> property indicates interest in receiving representation and its sub-properties describe the preferred form of <span id="iref-event-notification-247" class="iref"></span><span id="iref-notification-248" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Since the representation is being transferred in an HTTP message pipeline, these sub-properties are identical to header fields used for specifying preconditions and content negotiation in a GET request on the said resource.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
 </div>
-<span id="name-representation-and-notifica"></span><div id="representation-request-example">
-<figure id="figure-11">
+<span id="name-http-representation-and-not"></span><div id="representation-request-http-example">
+<figure id="figure-14">
           <div class="lang-http-message sourcecode" id="section-10.1-3.1">
 <pre>
 QUERY /foo HTTP/1.1
@@ -2019,8 +2100,8 @@ events:
   Accept: example/event-notification
 </pre>
 </div>
-<figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
-<a href="#name-representation-and-notifica" class="selfRef">Representation and Notifications Request</a>
+<figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
+<a href="#name-http-representation-and-not" class="selfRef">HTTP Representation and Notifications Request</a>
           </figcaption></figure>
 </div>
 </section>
@@ -2031,22 +2112,21 @@ events:
 <a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-response-3" class="section-name selfRef">Response</a>
         </h3>
 <div id="representation-not-available">
-<p id="section-10.2-1">A server unable to provide a representation <span class="bcp14">MUST NOT</span> serve <span id="iref-notification-228" class="iref"></span><span id="iref-event-notification-229" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>. This does not apply to a conditional request for representation that is not fulfilled.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-1">A server unable to provide a representation <span class="bcp14">MUST NOT</span> serve <span id="iref-notification-249" class="iref"></span><span id="iref-event-notification-250" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>. This does not apply to a conditional request for representation that is not fulfilled.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
 </div>
 <div id="representation-response-body">
-<p id="section-10.2-2">A server able to provide a stream with a representation and <span id="iref-notification-230" class="iref"></span><span id="iref-event-notification-231" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> transmits the representation immediately following the response headers (<a href="#stream-response-headers" class="auto internal xref">Section 9.2.1</a>). Otherwise, the response is the same as that described in <a href="#stream-response" class="auto internal xref">Section 9.2</a>.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
+<p id="section-10.2-2">A server able to provide a stream with a representation and <span id="iref-notification-251" class="iref"></span><span id="iref-event-notification-252" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> transmits the representation immediately following the response headers (<a href="#stream-response-headers" class="auto internal xref">Section 9.2.1</a>). Otherwise, the response is the same as that described in <a href="#stream-response" class="auto internal xref">Section 9.2</a>.<a href="#section-10.2-2" class="pilcrow">¶</a></p>
 </div>
 <div id="representation-response-encapsulation">
 <p id="section-10.2-3">Again, the <code>application/http</code> media type (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-10.2" class="relref">Section 10.2</a></span>) is used for the purpose of illustration. Chunks have been omitted for clarity.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
 </div>
-<span id="name-representation-response"></span><div id="representation-response-example">
-<figure id="figure-12">
+<span id="name-representation-response-bef"></span><div id="representation-response-before-notifications-http-example">
+<figure id="figure-15">
           <div class="lang-http-message sourcecode" id="section-10.2-4.1">
 <pre>
 HTTP/1.1 200 OK
 Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
-Content-Type: application/http
 Transfer-Encoding: chunked
 Incremental: ?1
 Events: duration=600
@@ -2058,15 +2138,15 @@ Content-Length: 14                               |
 Hello World!                                     |
 </pre>
 </div>
-<figcaption><a href="#figure-12" class="selfRef">Figure 12</a>:
-<a href="#name-representation-response" class="selfRef">Representation Response</a>
+<figcaption><a href="#figure-15" class="selfRef">Figure 15</a>:
+<a href="#name-representation-response-bef" class="selfRef">Representation Response before Notifications</a>
           </figcaption></figure>
 </div>
 <div id="representation-response-non-standard">
-<p id="section-10.2-5">While this is default behaviour, there is no requirement that a representation is the first message or that representations are sent only once. In such cases, the encapsulated message needs to indicate if it is a representation and not an <span id="iref-notification-232" class="iref"></span><span id="iref-event-notification-233" class="iref"></span><a href="#notification" class="internal xref">event notification</a>. Such a mechanism is not defined in this specification.<a href="#section-10.2-5" class="pilcrow">¶</a></p>
+<p id="section-10.2-5">While this is default behaviour, there is no requirement that a representation is the first message or that representations are sent only once. In such cases, the encapsulated message needs to indicate if it is a representation and not an <span id="iref-notification-253" class="iref"></span><span id="iref-event-notification-254" class="iref"></span><a href="#notification" class="internal xref">event notification</a>. Such a mechanism is not defined in this specification.<a href="#section-10.2-5" class="pilcrow">¶</a></p>
 </div>
 <div id="representation-response-notifications">
-<p id="section-10.2-6"><span id="iref-event-notification-234" class="iref"></span><span id="iref-notification-235" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> are transmitted just as in the case of <span><a href="#stream-response" class="internal xref">regular streaming</a> (<a href="#stream-response" class="auto internal xref">Section 9.2</a>)</span>. See <a href="#example" class="auto internal xref">Appendix A</a> for a complete example of a response with representation and <span id="iref-event-notification-236" class="iref"></span><span id="iref-notification-237" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-10.2-6" class="pilcrow">¶</a></p>
+<p id="section-10.2-6"><span id="iref-event-notification-255" class="iref"></span><span id="iref-notification-256" class="iref"></span><a href="#notification" class="internal xref">Notifications</a> are transmitted just as in the case of <span><a href="#stream-response" class="internal xref">regular streaming</a> (<a href="#stream-response" class="auto internal xref">Section 9.2</a>)</span>. See <a href="#example-representation" class="auto internal xref">Appendix A.1</a> for a complete example of a response with representation and <span id="iref-event-notification-257" class="iref"></span><span id="iref-notification-258" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-10.2-6" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
@@ -2081,7 +2161,7 @@ Hello World!                                     |
 <p id="section-11-1">Events Query is subject to the security considerations of the HTTP <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-12#section-2" class="relref">Section 2</a></span>) and more generally HTTP Semantics. Considerations relevant to the use of HTTP <code>QUERY</code> method are discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-12#section-4" class="relref">Section 4</a> of [<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>]</span>. HTTP Semantics and its use for transferring information over the Internet are discussed in <span><a href="https://rfc-editor.org/rfc/rfc9110#section-17" class="relref">Section 17</a> of [<a href="#HTTP" class="cite xref">HTTP</a>]</span>.<a href="#section-11-1" class="pilcrow">¶</a></p>
 </div>
 <div id="security-considerations-ddos">
-<p id="section-11-2">When serving <span id="iref-notification-238" class="iref"></span><span id="iref-event-notification-239" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>, servers are required to keep the response stream open for an extended period of time. Since the effort required to request <span id="iref-event-notification-240" class="iref"></span><span id="iref-notification-241" class="iref"></span><a href="#notification" class="internal xref">notifications</a> is tiny compared to the time, memory, and bandwidth consumed attempting to serve the <span id="iref-event-notification-242" class="iref"></span><span id="iref-notification-243" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, servers implementing Events Query have increased susceptibility to Denial-of-Service attacks. Servers ought to ignore, coalesce, or reject egregious <span id="iref-subscription-244" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> requests, such as repeated requests from the same origin within a short interval of time.<a href="#section-11-2" class="pilcrow">¶</a></p>
+<p id="section-11-2">When serving <span id="iref-notification-259" class="iref"></span><span id="iref-event-notification-260" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>, servers are required to keep the response stream open for an extended period of time. Since the effort required to request <span id="iref-event-notification-261" class="iref"></span><span id="iref-notification-262" class="iref"></span><a href="#notification" class="internal xref">notifications</a> is tiny compared to the time, memory, and bandwidth consumed attempting to serve the <span id="iref-event-notification-263" class="iref"></span><span id="iref-notification-264" class="iref"></span><a href="#notification" class="internal xref">notifications</a>, servers implementing Events Query have increased susceptibility to Denial-of-Service attacks. Servers ought to ignore, coalesce, or reject egregious <span id="iref-subscription-265" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> requests, such as repeated requests from the same origin within a short interval of time.<a href="#section-11-2" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
@@ -2118,7 +2198,7 @@ Hello World!                                     |
           <tbody>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <span id="iref-events-header-field-245" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a>
+                <span id="iref-events-header-field-266" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a>
 </td>
               <td class="text-left" rowspan="1" colspan="1">Permanent</td>
               <td class="text-left" rowspan="1" colspan="1">Dictionary</td>
@@ -2137,7 +2217,7 @@ Hello World!                                     |
 <a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-the-http-events-field-regis" class="section-name selfRef">The HTTP Events Field Registry</a>
         </h3>
 <div id="registry-registration-instruction">
-<p id="section-12.2-1">IANA is requested to create a new registry, "HTTP Events Field Registry", under the <a href="https://www.iana.org/assignments/http-parameters/">Hypertext Transfer Protocol (HTTP) Parameters</a> registry to register properties for use in the <span id="iref-events-header-field-246" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field. New registrations will use the Specification Required policy (<span>[<a href="#RFC8126" class="cite xref">RFC8126</a>], <a href="https://rfc-editor.org/rfc/rfc8126#section-4.6" class="relref">Section 4.6</a></span>).<a href="#section-12.2-1" class="pilcrow">¶</a></p>
+<p id="section-12.2-1">IANA is requested to create a new registry, "HTTP Events Field Registry", under the <a href="https://www.iana.org/assignments/http-parameters/">Hypertext Transfer Protocol (HTTP) Parameters</a> registry to register properties for use in the <span id="iref-events-header-field-267" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field. New registrations will use the Specification Required policy (<span>[<a href="#RFC8126" class="cite xref">RFC8126</a>], <a href="https://rfc-editor.org/rfc/rfc8126#section-4.6" class="relref">Section 4.6</a></span>).<a href="#section-12.2-1" class="pilcrow">¶</a></p>
 </div>
 <div id="events-field-registry-template">
 <section id="section-12.2.1">
@@ -2145,12 +2225,12 @@ Hello World!                                     |
 <a href="#section-12.2.1" class="section-number selfRef">12.2.1. </a><a href="#name-template" class="section-name selfRef">Template</a>
           </h4>
 <div id="events-field-registry-template-required-list">
-<p id="section-12.2.1-1">The registration of an <span id="iref-events-header-field-247" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> property <span class="bcp14">MUST</span> include the following fields:<a href="#section-12.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-12.2.1-1">The registration of an <span id="iref-events-header-field-268" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> property <span class="bcp14">MUST</span> include the following fields:<a href="#section-12.2.1-1" class="pilcrow">¶</a></p>
 </div>
 <ul class="normal">
 <li id="section-12.2.1-2.1" class="normal">
 <div class="normal" id="events-field-registry-template--property-name">
-              <p id="section-12.2.1-2.1.1">Property Name: A Dictionary (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.2" class="relref">Section 3.2</a></span>) key to be used in the <span id="iref-events-header-field-248" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-12.2.1-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-12.2.1-2.1.1">Property Name: A Dictionary (<span>[<a href="#HTTP-SF" class="cite xref">HTTP-SF</a>], <a href="https://rfc-editor.org/rfc/rfc9651#section-3.2" class="relref">Section 3.2</a></span>) key to be used in the <span id="iref-events-header-field-269" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-12.2.1-2.1.1" class="pilcrow">¶</a></p>
 </div>
             </li>
 <li id="section-12.2.1-2.2" class="normal">
@@ -2205,7 +2285,7 @@ Hello World!                                     |
             <tbody>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">
-                  <span id="iref-duration-property-249" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a>
+                  <span id="iref-duration-property-270" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a>
 </td>
                 <td class="text-left" rowspan="1" colspan="1">Integer or Decimal Item</td>
                 <td class="text-left" rowspan="1" colspan="1">
@@ -2227,10 +2307,10 @@ Hello World!                                     |
 <a href="#section-13" class="section-number selfRef">13. </a><a href="#name-end-user-considerations" class="section-name selfRef">End User Considerations</a>
       </h2>
 <p id="section-13-1"><span class="cref" id="End_User">If we, the IETF, claim that the Internet is for the end user <span>[<a href="#RFC8890" class="cite xref">RFC8890</a>]</span> and promote the end-to-end principle <span>[<a href="#RFC3724" class="cite xref">RFC3724</a>]</span>, every specification we produce ought to consider its impact on the Internet end user. For this reason, I propose that specifications must include a considerations section where authors assess the impact of their proposal on the Internet end user, aligned with the mission of IETF <span>[<a href="#RFC3935" class="cite xref">RFC3935</a>]</span>.</span><a href="#section-13-1" class="pilcrow">¶</a></p>
-<p id="section-13-2">End users of the HTTP protocol can be classified into two groups: publishers and consumers. Consumers have an incentive to subscribe to <span id="iref-notification-250" class="iref"></span><span id="iref-event-notification-251" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> from many resources and to hold on to a connection for as long as possible. Whereas publishers bear the cost of server infrastructure. Consumers also typically outnumber publishers, in many cases by multiple orders of magnitude. This creates an imbalance in the effort to subscribe versus effort to deliver; consumers can easily place a disproportionate burden on servers, reminiscent of a denial-of-service attack.<a href="#section-13-2" class="pilcrow">¶</a></p>
-<p id="section-13-3">At the outset, requiring that clients subscribe to <span id="iref-notification-252" class="iref"></span><span id="iref-event-notification-253" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> per resource serves as an effective filtering mechanism that limits the burden on servers. Compare this to the typical implementation of protocols such as WebSockets <span>[<a href="#WS" class="cite xref">WS</a>]</span>, where clients connect to dedicated endpoints to receive <span id="iref-event-notification-254" class="iref"></span><span id="iref-notification-255" class="iref"></span><a href="#notification" class="internal xref">notifications</a>; the server either has to broadcast <span id="iref-event-notification-256" class="iref"></span><span id="iref-notification-257" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for multiple resources or track resources of interest for each client to filter <span id="iref-notification-258" class="iref"></span><span id="iref-event-notification-259" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> accordingly.<a href="#section-13-3" class="pilcrow">¶</a></p>
-<p id="section-13-4">Events Query empowers servers to decide the content and the duration for which <span id="iref-notification-260" class="iref"></span><span id="iref-event-notification-261" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> are served on any given resource, as well as allowing servers to close the response stream at any time. Servers may also limit <span id="iref-notification-262" class="iref"></span><span id="iref-event-notification-263" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> and/or their content, except for authenticated consumers. Such authenticated consumers might, for example, be asked to share the cost burden with publishers in return for a higher quality of service.<a href="#section-13-4" class="pilcrow">¶</a></p>
-<p id="section-13-5">The use of HTTP Semantics also enables intermediation of <span id="iref-notification-264" class="iref"></span><span id="iref-event-notification-265" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>, unlike existing mechanisms built with protocols such as WebSockets <span>[<a href="#WS" class="cite xref">WS</a>]</span> or WebSub <span>[<a href="#WEBSUB" class="cite xref">WEBSUB</a>]</span>. Intermediaries can help with improving the latency and reliability of transmission of <span id="iref-notification-266" class="iref"></span><span id="iref-event-notification-267" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> as well as scaling of the <span id="iref-notification-268" class="iref"></span><span id="iref-event-notification-269" class="iref"></span><a href="#notification" class="internal xref">event notification</a> traffic to reach a significantly larger base of consumers. On the flip side, economies of scale will likely lead to greater consolidation of intermediary service providers (though not centralization) with the attendant risk of anti-consumer behaviour. In the opinion of the authors, policies designed to treat network traffic as a public utility might provide better outcomes for the end user.<a href="#section-13-5" class="pilcrow">¶</a></p>
+<p id="section-13-2">End users of the HTTP protocol can be classified into two groups: publishers and consumers. Consumers have an incentive to subscribe to <span id="iref-notification-271" class="iref"></span><span id="iref-event-notification-272" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> from many resources and to hold on to a connection for as long as possible. Whereas publishers bear the cost of server infrastructure. Consumers also typically outnumber publishers, in many cases by multiple orders of magnitude. This creates an imbalance in the effort to subscribe versus effort to deliver; consumers can easily place a disproportionate burden on servers, reminiscent of a denial-of-service attack.<a href="#section-13-2" class="pilcrow">¶</a></p>
+<p id="section-13-3">At the outset, requiring that clients subscribe to <span id="iref-notification-273" class="iref"></span><span id="iref-event-notification-274" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> per resource serves as an effective filtering mechanism that limits the burden on servers. Compare this to the typical implementation of protocols such as WebSockets <span>[<a href="#WS" class="cite xref">WS</a>]</span>, where clients connect to dedicated endpoints to receive <span id="iref-event-notification-275" class="iref"></span><span id="iref-notification-276" class="iref"></span><a href="#notification" class="internal xref">notifications</a>; the server either has to broadcast <span id="iref-event-notification-277" class="iref"></span><span id="iref-notification-278" class="iref"></span><a href="#notification" class="internal xref">notifications</a> for multiple resources or track resources of interest for each client to filter <span id="iref-notification-279" class="iref"></span><span id="iref-event-notification-280" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> accordingly.<a href="#section-13-3" class="pilcrow">¶</a></p>
+<p id="section-13-4">Events Query empowers servers to decide the content and the duration for which <span id="iref-notification-281" class="iref"></span><span id="iref-event-notification-282" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> are served on any given resource, as well as allowing servers to close the response stream at any time. Servers may also limit <span id="iref-notification-283" class="iref"></span><span id="iref-event-notification-284" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> and/or their content, except for authenticated consumers. Such authenticated consumers might, for example, be asked to share the cost burden with publishers in return for a higher quality of service.<a href="#section-13-4" class="pilcrow">¶</a></p>
+<p id="section-13-5">The use of HTTP Semantics also enables intermediation of <span id="iref-notification-285" class="iref"></span><span id="iref-event-notification-286" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>, unlike existing mechanisms built with protocols such as WebSockets <span>[<a href="#WS" class="cite xref">WS</a>]</span> or WebSub <span>[<a href="#WEBSUB" class="cite xref">WEBSUB</a>]</span>. Intermediaries can help with improving the latency and reliability of transmission of <span id="iref-notification-287" class="iref"></span><span id="iref-event-notification-288" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> as well as scaling of the <span id="iref-notification-289" class="iref"></span><span id="iref-event-notification-290" class="iref"></span><a href="#notification" class="internal xref">event notification</a> traffic to reach a significantly larger base of consumers. On the flip side, economies of scale will likely lead to greater consolidation of intermediary service providers (though not centralization) with the attendant risk of anti-consumer behaviour. In the opinion of the authors, policies designed to treat network traffic as a public utility might provide better outcomes for the end user.<a href="#section-13-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
@@ -2317,6 +2397,10 @@ Hello World!                                     |
         <dd>
 <span class="refAuthor">Loreto, S.</span>, <span class="refAuthor">Saint-Andre, P.</span>, <span class="refAuthor">Salsano, S.</span>, and <span class="refAuthor">G. Wilkins</span>, <span class="refTitle">"Known Issues and Best Practices for the Use of Long Polling and Streaming in Bidirectional HTTP"</span>, <span class="seriesInfo">RFC 6202</span>, <span class="seriesInfo">DOI 10.17487/RFC6202</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6202">https://www.rfc-editor.org/rfc/rfc6202</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC7464">[RFC7464]</dt>
+        <dd>
+<span class="refAuthor">Williams, N.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Text Sequences"</span>, <span class="seriesInfo">RFC 7464</span>, <span class="seriesInfo">DOI 10.17487/RFC7464</span>, <time datetime="2015-02" class="refDate">February 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7464">https://www.rfc-editor.org/rfc/rfc7464</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7838">[RFC7838]</dt>
         <dd>
 <span class="refAuthor">Nottingham, M.</span>, <span class="refAuthor">McManus, P.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Alternative Services"</span>, <span class="seriesInfo">RFC 7838</span>, <span class="seriesInfo">DOI 10.17487/RFC7838</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7838">https://www.rfc-editor.org/rfc/rfc7838</a>&gt;</span>. </dd>
@@ -2346,22 +2430,28 @@ Hello World!                                     |
 </div>
 </section>
 </div>
-<div id="example">
+<div id="examples">
 <section id="appendix-A">
-      <h2 id="name-example">
-<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example" class="section-name selfRef">Example</a>
+      <h2 id="name-examples">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
       </h2>
-<div id="example-description">
-<p id="appendix-A-1">The following example illustrates a complete request and response for representation and <span id="iref-event-notification-270" class="iref"></span><span id="iref-notification-271" class="iref"></span><a href="#notification" class="internal xref">notifications</a> using Events Query. Chunks have been omitted for clarity.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-</div>
-<div id="example-request-representation-and-notifications">
+<p id="appendix-A-1">Some examples used in this specification are consolidated below. Chunks have been omitted for clarity.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<div id="example-representation">
 <section id="appendix-A.1">
-        <h3 id="name-request-4">
-<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-request-4" class="section-name selfRef">Request</a>
+        <h3 id="name-representation-and-notifica">
+<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-representation-and-notifica" class="section-name selfRef">Representation and Notifications</a>
         </h3>
-<span id="name-request-for-representation-"></span><div id="notifications-stream-request-with-representation-example">
-<figure id="figure-13">
-          <div class="lang-http-message sourcecode" id="appendix-A.1-1.1">
+<div id="example-description">
+<p id="appendix-A.1-1">The following example illustrates a complete request and response for representation and <span id="iref-event-notification-291" class="iref"></span><span id="iref-notification-292" class="iref"></span><a href="#notification" class="internal xref">notifications</a> transferred with the <code>application/http</code> media-type as described in <a href="#representation" class="auto internal xref">Section 10</a>: <a href="#representation" class="internal xref">Representation</a>.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+</div>
+<div id="example-representation-request-http">
+<section id="appendix-A.1.1">
+          <h4 id="name-request-4">
+<a href="#appendix-A.1.1" class="section-number selfRef">A.1.1. </a><a href="#name-request-4" class="section-name selfRef">Request</a>
+          </h4>
+<span id="name-request-for-representation-"></span><div id="representation-request-http-complete-example">
+<figure id="figure-16">
+            <div class="lang-http-message sourcecode" id="appendix-A.1.1-1.1">
 <pre>
 QUERY /foo HTTP/1.1
 Host: example.org
@@ -2374,28 +2464,28 @@ events:
   Accept: example/event-notification
 </pre>
 </div>
-<figcaption><a href="#figure-13" class="selfRef">Figure 13</a>:
+<figcaption><a href="#figure-16" class="selfRef">Figure 16</a>:
 <a href="#name-request-for-representation-" class="selfRef">Request for Representation and Notifications</a>
-          </figcaption></figure>
+            </figcaption></figure>
 </div>
 </section>
 </div>
-<div id="example-response-representation-and-notifications">
-<section id="appendix-A.2">
-        <h3 id="name-response-4">
-<a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-response-4" class="section-name selfRef">Response</a>
-        </h3>
-<span id="name-response-stream-with-repres"></span><div id="notifications-stream-response-with-representation-example">
-<figure id="figure-14">
-          <div class="lang-http-message sourcecode" id="appendix-A.2-1.1">
+<div id="example-http-representation-response">
+<section id="appendix-A.1.2">
+          <h4 id="name-response-4">
+<a href="#appendix-A.1.2" class="section-number selfRef">A.1.2. </a><a href="#name-response-4" class="section-name selfRef">Response</a>
+          </h4>
+<span id="name-response-with-representatio"></span><div id="representation-response-http-complete-example">
+<figure id="figure-17">
+            <div class="lang-http-message sourcecode" id="appendix-A.1.2-1.1">
 <pre>
 HTTP/1.1 200 OK
 Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
-Content-Type: application/http
 Transfer-Encoding: chunked
 Incremental: ?1
 Events: duration=600
+Content-Type: application/http
 
 HTTP/1.1 200 OK                                  | Representation
 Content-Type: text/plain                         |
@@ -2420,9 +2510,79 @@ event-id: 789                                    |
 type: delete                                     |
 </pre>
 </div>
-<figcaption><a href="#figure-14" class="selfRef">Figure 14</a>:
-<a href="#name-response-stream-with-repres" class="selfRef">Response Stream with Representation and Notifications</a>
-          </figcaption></figure>
+<figcaption><a href="#figure-17" class="selfRef">Figure 17</a>:
+<a href="#name-response-with-representatio" class="selfRef">Response with Representation and Notifications</a>
+            </figcaption></figure>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="example-stream">
+<section id="appendix-A.2">
+        <h3 id="name-notifications-stream-2">
+<a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-notifications-stream-2" class="section-name selfRef">Notifications Stream</a>
+        </h3>
+<p id="appendix-A.2-1">This following example illustrates complete request and response for JSON formatted <span id="iref-event-notification-293" class="iref"></span><span id="iref-notification-294" class="iref"></span><a href="#notification" class="internal xref">notifications</a> transferred with the <code>application/json-seq</code> media-type as described in <a href="#stream" class="internal xref">Notifications Stream</a>: <a href="#stream" class="internal xref">Notifications Stream</a>.<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
+<div id="example-json-stream-request">
+<section id="appendix-A.2.1">
+          <h4 id="name-request-5">
+<a href="#appendix-A.2.1" class="section-number selfRef">A.2.1. </a><a href="#name-request-5" class="section-name selfRef">Request</a>
+          </h4>
+<span id="name-request-for-json-notificatio"></span><div id="stream-request-json-complete-example">
+<figure id="figure-18">
+            <div class="lang-http-message sourcecode" id="appendix-A.2.1-1.1">
+<pre>
+QUERY /foo HTTP/1.1
+Host: example.org
+Accept: application/json-seq
+Content-Type: example/events-query
+Events: duration=0
+
+events:
+  @context: activity+json
+</pre>
+</div>
+<figcaption><a href="#figure-18" class="selfRef">Figure 18</a>:
+<a href="#name-request-for-json-notificatio" class="selfRef">Request for JSON Notifications</a>
+            </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="example-json-stream-response">
+<section id="appendix-A.2.2">
+          <h4 id="name-response-5">
+<a href="#appendix-A.2.2" class="section-number selfRef">A.2.2. </a><a href="#name-response-5" class="section-name selfRef">Response</a>
+          </h4>
+<span id="name-response-with-json-notifica"></span><div id="stream-response-json-complete-example">
+<figure id="figure-19">
+            <div class="lang-http-message sourcecode" id="appendix-A.2.2-1.1">
+<pre>
+HTTP/1.1 200 OK
+Date: Thu, 02 Jan 2025 10:10:10 GMT
+Accept-Query: example/events-query
+Transfer-Encoding: chunked
+Incremental: ?1
+Events: duration=600
+Content-Type: application/json-seq
+
+␞{                                              | Notification
+  "published": "2025-01-02T10:11:12.345Z",       |
+  "event-id": 456,                               |
+  "type": "Update"                               |
+}                                                |
+␞{                                              | Notification
+  "published": "2025-01-02T11:12:13.456Z",       |
+  "event-id": 789,                               |
+  "type": "delete"                               |
+}                                                |
+</pre>
+</div>
+<figcaption><a href="#figure-19" class="selfRef">Figure 19</a>:
+<a href="#name-response-with-json-notifica" class="selfRef">Response with JSON Notifications</a>
+            </figcaption></figure>
+</div>
+</section>
 </div>
 </section>
 </div>
@@ -2473,7 +2633,7 @@ type: delete                                     |
                   <p id="appendix-C-2.1.2.1.1.4.1">
                     <strong><em><a href="#duration-property" class="auto internal xref">Section 5.1</a></em></strong>; 
 <a href="#section-9.2.1-2.1.2.1.1" class="auto internal xref">Section 9.2.1, Paragraph 2.1.2.1.1</a>; 
-<a href="#stream-response-timeout" class="auto internal xref">Section 9.2.2, Paragraph 5</a>; 
+<a href="#stream-response-timeout" class="auto internal xref">Section 9.2.2, Paragraph 11</a>; 
 <a href="#events-property-registration-list" class="auto internal xref">Table 2</a><a href="#appendix-C-2.1.2.1.1.4.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
@@ -2508,7 +2668,8 @@ type: delete                                     |
 <a href="#single-notification-description" class="auto internal xref">Section 8, Paragraph 1</a>; 
 <a href="#single-notification-request-content" class="auto internal xref">Section 8.1, Paragraph 1</a>; 
 <a href="#stream-response-event" class="auto internal xref">Section 9.2.2, Paragraph 1</a>; 
-<a href="#stream-response-terminal-event" class="auto internal xref">Section 9.2.2, Paragraph 3</a><a href="#appendix-C-2.2.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#stream-delete-event-http" class="auto internal xref">Section 9.2.2, Paragraph 7</a>; 
+<a href="#stream-delete-event-json" class="auto internal xref">Section 9.2.2, Paragraph 9</a><a href="#appendix-C-2.2.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
 <dt id="appendix-C-2.2.2.1.1.3">event notification</dt>
@@ -2561,13 +2722,18 @@ type: delete                                     |
 <a href="#stream-description" class="auto internal xref">Section 9, Paragraph 1</a>; 
 <a href="#stream-request-procedure" class="auto internal xref">Section 9.1, Paragraph 1</a>; 
 <a href="#stream-request-conneg" class="auto internal xref">Section 9.1, Paragraph 2</a>; 
-<a href="#stream-request-example-description" class="auto internal xref">Section 9.1, Paragraph 3</a>; 
+<a href="#stream-request-http" class="auto internal xref">Section 9.1, Paragraph 3</a>; 
+<a href="#stream-request-json" class="auto internal xref">Section 9.1, Paragraph 5</a>; 
 <a href="#stream-response-encapsulation" class="auto internal xref">Section 9.2, Paragraph 1</a>; 
 <a href="#stream-response-headers-list" class="auto internal xref">Section 9.2.1, Paragraph 1</a>; 
 <a href="#section-9.2.1-2.1.1" class="auto internal xref">Section 9.2.1, Paragraph 2.1.1</a>; 
 <a href="#section-9.2.1-2.1.2.1.1" class="auto internal xref">Section 9.2.1, Paragraph 2.1.2.1.1</a>; 
 <a href="#stream-response-event" class="auto internal xref">Section 9.2.2, Paragraph 1</a>; 
-<a href="#stream-response-terminal-event" class="auto internal xref">Section 9.2.2, Paragraph 3</a>; 
+<a href="#stream-update-event-http" class="auto internal xref">Section 9.2.2, Paragraph 2</a>; 
+<a href="#stream-update-event-json" class="auto internal xref">Section 9.2.2, Paragraph 4</a>; 
+<a href="#stream-response-terminal-event" class="auto internal xref">Section 9.2.2, Paragraph 6</a>; 
+<a href="#stream-delete-event-http" class="auto internal xref">Section 9.2.2, Paragraph 7</a>; 
+<a href="#stream-delete-event-json" class="auto internal xref">Section 9.2.2, Paragraph 9</a>; 
 <a href="#representation-description" class="auto internal xref">Section 10, Paragraph 1</a>; 
 <a href="#representation-request-example-description" class="auto internal xref">Section 10.1, Paragraph 2</a>; 
 <a href="#representation-not-available" class="auto internal xref">Section 10.2, Paragraph 1</a>; 
@@ -2579,7 +2745,8 @@ type: delete                                     |
 <a href="#section-13-3" class="auto internal xref">Section 13, Paragraph 3</a>; 
 <a href="#section-13-4" class="auto internal xref">Section 13, Paragraph 4</a>; 
 <a href="#section-13-5" class="auto internal xref">Section 13, Paragraph 5</a>; 
-<a href="#example-description" class="auto internal xref">Appendix A, Paragraph 1</a><a href="#appendix-C-2.2.2.1.1.4.1" class="pilcrow">¶</a></p>
+<a href="#example-description" class="auto internal xref">Appendix A.1, Paragraph 1</a>; 
+<a href="#appendix-A.2-1" class="auto internal xref">Appendix A.2, Paragraph 1</a><a href="#appendix-C-2.2.2.1.1.4.1" class="pilcrow">¶</a></p>
 </dd>
                 <dd class="break"></dd>
 <dt id="appendix-C-2.2.2.1.1.5">events (header field)</dt>
@@ -2587,7 +2754,7 @@ type: delete                                     |
                   <p id="appendix-C-2.2.2.1.1.6.1">
                     <strong><em><a href="#events-field" class="auto internal xref">Section 5</a></em></strong>; 
 <a href="#section-9.2.1-2.1.1" class="auto internal xref">Section 9.2.1, Paragraph 2.1.1</a>; 
-<a href="#stream-response-timeout" class="auto internal xref">Section 9.2.2, Paragraph 5</a>; 
+<a href="#stream-response-timeout" class="auto internal xref">Section 9.2.2, Paragraph 11</a>; 
 <a href="#field-registration-list" class="auto internal xref">Table 1</a>; 
 <a href="#registry-registration-instruction" class="auto internal xref">Section 12.2, Paragraph 1</a>; 
 <a href="#events-field-registry-template-required-list" class="auto internal xref">Section 12.2.1, Paragraph 1</a>; 
@@ -2674,13 +2841,18 @@ type: delete                                     |
 <a href="#stream-description" class="auto internal xref">Section 9, Paragraph 1</a>; 
 <a href="#stream-request-procedure" class="auto internal xref">Section 9.1, Paragraph 1</a>; 
 <a href="#stream-request-conneg" class="auto internal xref">Section 9.1, Paragraph 2</a>; 
-<a href="#stream-request-example-description" class="auto internal xref">Section 9.1, Paragraph 3</a>; 
+<a href="#stream-request-http" class="auto internal xref">Section 9.1, Paragraph 3</a>; 
+<a href="#stream-request-json" class="auto internal xref">Section 9.1, Paragraph 5</a>; 
 <a href="#stream-response-encapsulation" class="auto internal xref">Section 9.2, Paragraph 1</a>; 
 <a href="#stream-response-headers-list" class="auto internal xref">Section 9.2.1, Paragraph 1</a>; 
 <a href="#section-9.2.1-2.1.1" class="auto internal xref">Section 9.2.1, Paragraph 2.1.1</a>; 
 <a href="#section-9.2.1-2.1.2.1.1" class="auto internal xref">Section 9.2.1, Paragraph 2.1.2.1.1</a>; 
 <a href="#stream-response-event" class="auto internal xref">Section 9.2.2, Paragraph 1</a>; 
-<a href="#stream-response-terminal-event" class="auto internal xref">Section 9.2.2, Paragraph 3</a>; 
+<a href="#stream-update-event-http" class="auto internal xref">Section 9.2.2, Paragraph 2</a>; 
+<a href="#stream-update-event-json" class="auto internal xref">Section 9.2.2, Paragraph 4</a>; 
+<a href="#stream-response-terminal-event" class="auto internal xref">Section 9.2.2, Paragraph 6</a>; 
+<a href="#stream-delete-event-http" class="auto internal xref">Section 9.2.2, Paragraph 7</a>; 
+<a href="#stream-delete-event-json" class="auto internal xref">Section 9.2.2, Paragraph 9</a>; 
 <a href="#representation-description" class="auto internal xref">Section 10, Paragraph 1</a>; 
 <a href="#representation-request-example-description" class="auto internal xref">Section 10.1, Paragraph 2</a>; 
 <a href="#representation-not-available" class="auto internal xref">Section 10.2, Paragraph 1</a>; 
@@ -2692,7 +2864,8 @@ type: delete                                     |
 <a href="#section-13-3" class="auto internal xref">Section 13, Paragraph 3</a>; 
 <a href="#section-13-4" class="auto internal xref">Section 13, Paragraph 4</a>; 
 <a href="#section-13-5" class="auto internal xref">Section 13, Paragraph 5</a>; 
-<a href="#example-description" class="auto internal xref">Appendix A, Paragraph 1</a><a href="#appendix-C-2.4.2.1.1.2.1" class="pilcrow">¶</a></p>
+<a href="#example-description" class="auto internal xref">Appendix A.1, Paragraph 1</a>; 
+<a href="#appendix-A.2-1" class="auto internal xref">Appendix A.2, Paragraph 1</a><a href="#appendix-C-2.4.2.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
@@ -2753,7 +2926,9 @@ type: delete                                     |
 <a href="#data-model-example" class="auto internal xref">Section 6, Paragraph 5</a>; 
 <a href="#single-notification-request-content" class="auto internal xref">Section 8.1, Paragraph 1</a>; 
 <a href="#stream-request-procedure" class="auto internal xref">Section 9.1, Paragraph 1</a>; 
-<a href="#stream-request-example-description" class="auto internal xref">Section 9.1, Paragraph 3</a>; 
+<a href="#stream-request-conneg" class="auto internal xref">Section 9.1, Paragraph 2</a>; 
+<a href="#stream-request-http" class="auto internal xref">Section 9.1, Paragraph 3</a>; 
+<a href="#stream-request-json" class="auto internal xref">Section 9.1, Paragraph 5</a>; 
 <a href="#representation-request-procedure" class="auto internal xref">Section 10.1, Paragraph 1</a>; 
 <a href="#representation-request-example-description" class="auto internal xref">Section 10.1, Paragraph 2</a>; 
 <a href="#security-considerations-ddos" class="auto internal xref">Section 11, Paragraph 2</a><a href="#appendix-C-2.6.2.1.1.4.1" class="pilcrow">¶</a></p>
