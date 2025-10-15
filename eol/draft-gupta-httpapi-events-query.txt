@@ -999,6 +999,7 @@ A.2.  Response
                                                     |
    Event-ID: 456                                    |
    Type: Update                                     |
+
    HTTP/1.1 200 OK                                  | Notification
    Content-Type: example/event-notification         |
    Content-Length: 31                               |
