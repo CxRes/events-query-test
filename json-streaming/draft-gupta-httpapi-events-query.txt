@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                           14 October 2025
+Internet-Draft                                           15 October 2025
 Intended status: Standards Track                                        
-Expires: 17 April 2026
+Expires: 18 April 2026
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 April 2026.
+   This Internet-Draft will expire on 18 April 2026.
 
 Copyright Notice
 
@@ -157,11 +157,11 @@ Table of Contents
    and notifications from a resource in a single response, obviating any
    need for co-ordination and saving on unnecessary roundtrips.
 
-   With the help of a suitable composite media-type parser, Events Query
+   With the help of a suitable composite media type parser, Events Query
    responses can be consumed with just a few lines of code, as
    illustrated in the JavaScript example below:
 
-   const response = fetch("http://example.com/foo", {
+   const response = await fetch("http://example.com/foo", {
      method: "QUERY",
      headers: {
        "Content-Type": "example/events-query",
@@ -236,7 +236,7 @@ Table of Contents
    4.  to enable the transfer of event notifications using arbitrary
        formats that might be content-negotiated.  This allows
        implementers to serve notifications that are more expressive,
-       say, in comparison to existing HTTP based messaging protocols
+       say, in comparison to existing HTTP-based messaging protocols
        such as Server-Sent Events [SSE].
 
    5.  to specify transparent notification semantics that empowers
@@ -259,7 +259,7 @@ Table of Contents
        Streaming in Bidirectional HTTP [RFC6202].  This specification
        can thus be used to extend the capabilities of any existing or
        future resource to additionally serve event notifications over
-       HTTP.  This is to afford implementors the opportunity to scale
+       HTTP.  This is to afford implementers the opportunity to scale
        notifications with their data and application.
 
 2.3.  Scope
@@ -310,7 +310,7 @@ Table of Contents
    limiting the suitability of Events Query for web applications in the
    browser that require simultaneous event notifications from multiple
    resources on the same host.  This limitation is identical to that of
-   other HTTP streaming based protocols, such as Server-Sent Events
+   other HTTP-based streaming protocols, such as Server-Sent Events
    [SSE].  Implementations are strongly encouraged to adopt HTTP/2 (or
    later).  HTTP/1.1 servers might consider setting up a reverse proxy
    over HTTP/2 (or later) or implement mitigation strategies, such as,
@@ -431,7 +431,7 @@ Table of Contents
    A target resource might be capable of generating multiple
    notifications for the same event(s) that a subscriber can select from
    using content negotiation.  Hypertext notifications can not only
-   provide information of the resource events but also processing
+   provide information about the resource events but also processing
    instructions that help guide the recipient's future actions, for
    example, the possibility to determine the current representation from
    a previous representation.
@@ -457,27 +457,28 @@ Table of Contents
 5.  Events Header Field
 
    "Events" is a Dictionary structured header field ([HTTP-SF],
-   Section 3.2) to communicate the properties of a response to an Events
-   Query.
+   Section 3.2) to communicate the properties of a response stream to an
+   Events Query.
 
    In a request, the Events header field allows a client to indicate its
-   preferences for the properties of the response carrying event
+   preferences for the properties of the response stream carrying event
    notifications.  The Events header field is not meant for content
    negotiation.
 
    In a response, the Events header field allows a server to specify the
-   properties of a response carrying event notifications.
+   properties of a response stream carrying event notifications.
 
    The order of keys in the Events header field is insignificant.
    Senders SHOULD NOT generate keys not registered with the HTTP Event
-   Field Registry (An exception is made to allow for experimentation).
+   Field Registry (with the exception made to allow experimentation).
    Recipients MAY ignore keys that they are unaware of.
 
 5.1.  duration Property
 
    The "duration" property is an Integer ([HTTP-SF], Section 3.3.1) or
-   Decimal ([HTTP-SF], Section 3.3.2) valued key specified on the Events
-   header field to communicate the response duration in seconds.
+   Decimal ([HTTP-SF], Section 3.3.2) valued Dictionary key specified on
+   the Events header field to communicate the response duration in
+   seconds.
 
    In a request, the duration property indicates the duration for which
    a client wants to receive event notifications.  A server MAY ignore
@@ -507,7 +508,7 @@ Table of Contents
    *  interest in receiving event notifications from a resource in a
       preferred form.
 
-   Implementations can choose appropriate media-types to realize the
+   Implementations can choose appropriate media types to realize the
    subscription data model.  Implementations are free to extend the data
    model to include additional data.  A specific realization of the data
    model is outside the scope of this specification.
@@ -515,20 +516,20 @@ Table of Contents
    The following example shows the body of a subscription request
    wherein the state and events properties are used to specify request
    headers for representation and event notifications respectively in a
-   YAML like syntax.
+   YAML-like syntax.
 
    state:
      Accept: text/html
    events:
      Accept: example/event-notification
 
-          Figure 2: Events Query Data Model in a YAML like syntax
+          Figure 2: Events Query Data Model in a YAML-like syntax
 
 7.  Discovery
 
    A user agent can discover if a server enables Events Query on a
-   resource by examining support for query with a media-type that can
-   realize the Subscription Data Model.  A server MUST advertise media-
+   resource by examining support for query with a media type that can
+   realize the Subscription Data Model.  A server MUST advertise media
    types accepted for Events Query using the Accept-Query header field
    ([HTTP-QUERY], Section 3) in a response.
 
@@ -563,7 +564,7 @@ Table of Contents
 
    To be notified of the next event(s) on a resource using Events Query,
    a client can send an empty query.  A server MUST consider a request
-   with an empty query in an appropriate media-type made using the QUERY
+   with an empty query in an appropriate media type made using the QUERY
    method ([HTTP-QUERY], Section 3) as a subscription request for a
    single event notification.
 
@@ -591,9 +592,9 @@ Table of Contents
    Content-Type: example/event-notification
    Incremental: ?1
 
-   published: 2025-01-02T10:11:12.345Z              | Notification
-   event-ID: 456                                    |
-   type: Update                                     |
+   published: 2025-01-02T10:11:12.345Z
+   event-id: 456
+   type: update
 
                 Figure 6: Single Event Notification Response
 
@@ -606,27 +607,26 @@ Table of Contents
 
 9.  Notifications Stream
 
-   Events Query can also be used to request a stream ([RFC6202],
-   Section 3) of multiple event notifications.
+   Events Query can also be used to request a stream of multiple event
+   notifications ([RFC6202], Section 3).
 
 9.1.  Request
 
    To request a stream of event notifications from a resource in an
-   Events Query, a client MUST express their interest in receiving the
+   Events Query, a client MUST express its interest in receiving the
    event notifications in a preferred form using a realization of the
    subscription data model with the QUERY method ([HTTP-QUERY],
    Section 3).
 
    Since the response transmits event notifications within an
-   encapsulating representation (See Section 9.2), it follows that
-   header fields cannot be used to negotiate the form of event
-   notifications like in the case of a Single Notification Request
-   (Section 8.1).  Instead, header fields are useful for negotiating the
-   representation that encapsulates event notifications.  The following
-   examples illustrate subscription requests that negotiate a stream of
-   event notifications to be transferred respectively using a composite
-   media type (application/http) and a discrete media type (application/
-   json-seq):
+   encapsulating representation (Section 9.2), it follows that header
+   fields cannot be used to negotiate the form of event notifications as
+   in the case of Single Notification Request (Section 8.1).  Instead,
+   header fields are useful for negotiating the representation that
+   encapsulates event notifications.  The following examples illustrate
+   subscription requests that negotiate a stream of event notifications
+   to be transferred respectively using a composite media type
+   (application/http) and a discrete media type (application/json-seq):
 
    The first example shows a subscription request for what is
    effectively a stream of Single Notifications (Section 8) to be
@@ -636,7 +636,7 @@ Table of Contents
    properties describe the preferred form of notifications.  Since the
    notifications are transferred as a pipeline of HTTP messages, these
    sub-properties are identical to header fields (Section 8.1, Paragraph
-   2) used for content negotiation and specifying preconditions for a
+   2) used for specifying preconditions and content negotiation in a
    Single Notification Request (Section 8.1).
 
    QUERY /foo HTTP/1.1
@@ -677,20 +677,21 @@ Table of Contents
 
 9.2.1.  Headers
 
-   A server able to provide a stream of event notifications immediately
-   sends the headers which MUST include:
+   A server able to provide a stream of event notifications MUST
+   immediately send headers, which include:
 
-   *  The Events header field to communicate the properties of the
+   *  The Events header field, to communicate the properties of the
       notifications stream.
 
-      -  The duration property set to the maximum duration for which the
-         server intends to serve event notifications.
+      -  The duration property, set to the maximum duration for which
+         the server intends to serve event notifications.
 
    *  The Incremental header field ([INCREMENTAL-HTTP-MESSAGES],
       Section 3) set to ?1 to indicate that the response is to be
       immediately forwarded by intermediaries and not buffered.
 
    HTTP/1.1 200 OK
+   Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
    Transfer-Encoding: chunked
    Incremental: ?1
@@ -708,8 +709,8 @@ Table of Contents
 
    An event notification transferred in an application/http response
    stream is identical to the Single Notification Response
-   (Section 8.2), except fields redundant with response headers
-   (Section 9.2.1) are omitted.
+   (Section 8.2), except fields that are redundant with the response
+   headers (Section 9.2.1) are omitted.
 
    HTTP/1.1 200 OK                                  | Notification
    Content-Type: example/event-notification         |
@@ -733,7 +734,7 @@ Table of Contents
                     Figure 11: JSON Update Notification
 
    A server MUST end the response immediately after transmitting the
-   event notification upon the deletion of a resource.
+   event notification for the deletion of a resource.
 
    The notification for a delete event expressed as an HTTP message
    might be as follows:
@@ -760,11 +761,11 @@ Table of Contents
 
    Otherwise, a server MUST end the response when the connection
    duration has exceeded the period set in the duration property of the
-   Events header field.  A server MAY terminate the response earlier.
+   Events header field.
 
 10.  Representation
 
-   Events Query lets a user agent ask and receive the current
+   Events Query enables a user agent to ask and receive the current
    representation and subsequent event notifications in a single
    request/response.  When compared to using, say, Fetch [FETCH] and
    EventSource [SSE] in conjunction, Events Query not only saves on an
@@ -774,16 +775,19 @@ Table of Contents
 10.1.  Request
 
    To request a representation of the resource in an Events Query, a
-   client MUST express the interest in receiving the representation in a
+   client MUST express interest in receiving the representation in a
    preferred form using a realization of the subscription data model
    (Section 6) with the QUERY method ([HTTP-QUERY], Section 3).
 
    The following example shows a subscription request for the current
    representation along with the subsequent event notifications
-   transmitted using the application/http media-type.  The state
-   property indicates the interest in receiving representation.  The
-   preferred form of representation is specified using the request
-   headers in the state property.
+   transmitted using the application/http media type.  The state
+   property indicates interest in receiving representation and its sub-
+   properties describe the preferred form of notifications.  Since the
+   representation is being transferred in an HTTP message pipeline,
+   these sub-properties are identical to header fields used for
+   specifying preconditions and content negotiation in a GET request on
+   the said resource.
 
    QUERY /foo HTTP/1.1
    Host: example.org
@@ -808,11 +812,12 @@ Table of Contents
    response headers (Section 9.2.1).  Otherwise, the response is the
    same as that described in Section 9.2.
 
-   Again, we shall use the application/http media-type ([HTTP/1.1],
-   Section 10.2) for the purpose of illustration.  Chunks have been
-   omitted for clarity.
+   Again, the application/http media type ([HTTP/1.1], Section 10.2) is
+   used for the purpose of illustration.  Chunks have been omitted for
+   clarity.
 
    HTTP/1.1 200 OK
+   Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
    Transfer-Encoding: chunked
    Incremental: ?1
@@ -832,16 +837,16 @@ Table of Contents
    if it is a representation and not an event notification.  Such a
    mechanism is not defined in this specification.
 
-   Notifications are transmitted just as in the regular streaming case
-   described in Section 9.2.  See Appendix A.1 for a complete example of
-   a response with representation and notifications.
+   Notifications are transmitted just as in the regular streaming
+   (Section 9.2) case described in Section 9.2.  See Appendix A.1 for a
+   complete example of a response with representation and notifications.
 
 11.  Security Considerations
 
    Events Query is subject to the security considerations of the HTTP
    QUERY method ([HTTP-QUERY], Section 2) and more generally HTTP
    Semantics.  Considerations relevant to the use of HTTP QUERY method
-   are discussed in Section 4 of [HTTP-QUERY] and HTTP Semantics and its
+   are discussed in Section 4 of [HTTP-QUERY].  HTTP Semantics and its
    use for transferring information over the Internet are discussed in
    Section 17 of [HTTP].
 
@@ -950,11 +955,11 @@ Table of Contents
    resources of interest for each client to filter event notifications
    accordingly.
 
-   Events Query empowers servers to decide content and duration for
-   which event notifications are served on any given resource, as well
-   as allowing servers to close the response stream at any time.
+   Events Query empowers servers to decide the content and the duration
+   for which event notifications are served on any given resource, as
+   well as allowing servers to close the response stream at any time.
    Servers may also limit event notifications and/or their content,
-   except to authenticated consumers.  Such authenticated consumers
+   except for authenticated consumers.  Such authenticated consumers
    might, for example, be asked to share the cost burden with publishers
    in return for a higher quality of service.
 
@@ -1115,6 +1120,7 @@ A.1.1.  Request
 A.1.2.  Response
 
    HTTP/1.1 200 OK
+   Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
    Transfer-Encoding: chunked
    Incremental: ?1
@@ -1168,6 +1174,7 @@ A.2.1.  Request
 A.2.2.  Response
 
    HTTP/1.1 200 OK
+   Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
    Transfer-Encoding: chunked
    Incremental: ?1
@@ -1216,8 +1223,7 @@ Index
             Paragraph 3; Section 5, Paragraph 4; Section 7, Paragraph
             4.2; Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 9.2.2, Paragraph 1; Section 9.2.2, Paragraph 7;
-            Section 9.2.2, Paragraph 9; Section 13, Paragraph 4;
-            Section 13, Paragraph 5
+            Section 9.2.2, Paragraph 9
          event notification  Section Abstract, Paragraph 1; Section 1,
             Paragraph 3; Section 1, Paragraph 4; Section 1, Paragraph 5;
             Section 1, Paragraph 8; Section 1, Paragraph 9; Section 2,
