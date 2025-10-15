@@ -99,16 +99,17 @@ Table of Contents
    10. Representation
      10.1.  Request
      10.2.  Response
-   11. Security Considerations
-   12. IANA Considerations
-     12.1.  HTTP Field Registration
-     12.2.  The HTTP Events Field Registry
-       12.2.1.  Template
-       12.2.2.  Initial Registry Contents
-   13. End User Considerations
-   14. References
-     14.1.  Normative References
-     14.2.  Informative References
+   11. Implementation Status
+   12. Security Considerations
+   13. IANA Considerations
+     13.1.  HTTP Field Registration
+     13.2.  The HTTP Events Field Registry
+       13.2.1.  Template
+       13.2.2.  Initial Registry Contents
+   14. End User Considerations
+   15. References
+     15.1.  Normative References
+     15.2.  Informative References
    Appendix A.  Examples
      A.1.  Representation and Notifications
        A.1.1.  Request
@@ -839,7 +840,13 @@ Table of Contents
    streaming (Section 9.2).  See Appendix A.1 for a complete example of
    a response with representation and notifications.
 
-11.  Security Considerations
+11.  Implementation Status
+
+   The demonstration and libraries are Free and Open Source Software,
+   released under the Mozilla Public License, v. 2.0.  Please contact
+   the author for more information about these programs.
+
+12.  Security Considerations
 
    Events Query is subject to the security considerations of the HTTP
    QUERY method ([HTTP-QUERY], Section 2) and more generally HTTP
@@ -858,12 +865,12 @@ Table of Contents
    repeated requests from the same origin within a short interval of
    time.
 
-12.  IANA Considerations
+13.  IANA Considerations
 
    The change controller for the following registrations is: "IETF
    (iesg@ietf.org) - Internet Engineering Task Force".
 
-12.1.  HTTP Field Registration
+13.1.  HTTP Field Registration
 
    IANA is requested to add the following entry in the "Hypertext
    Transfer Protocol (HTTP) Field Name Registry
@@ -878,7 +885,7 @@ Table of Contents
 
               Table 1: List of HTTP Field Name registrations
 
-12.2.  The HTTP Events Field Registry
+13.2.  The HTTP Events Field Registry
 
    IANA is requested to create a new registry, "HTTP Events Field
    Registry", under the Hypertext Transfer Protocol (HTTP) Parameters
@@ -887,7 +894,7 @@ Table of Contents
    registrations will use the Specification Required policy ([RFC8126],
    Section 4.6).
 
-12.2.1.  Template
+13.2.1.  Template
 
    The registration of an Events property MUST include the following
    fields:
@@ -910,7 +917,7 @@ Table of Contents
 
    *  Comments: Additional information to be included in the template.
 
-12.2.2.  Initial Registry Contents
+13.2.2.  Initial Registry Contents
 
    The initial contents of the HTTP Events Field Registry are:
 
@@ -923,7 +930,7 @@ Table of Contents
               Table 2: List of HTTP Events Field property name
                                registrations
 
-13.  End User Considerations
+14.  End User Considerations
 
 
    // If we, the IETF, claim that the Internet is for the end user
@@ -973,9 +980,9 @@ Table of Contents
    authors, policies designed to treat network traffic as a public
    utility might provide better outcomes for the end user.
 
-14.  References
+15.  References
 
-14.1.  Normative References
+15.1.  Normative References
 
    [HTTP]     Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "HTTP Semantics", STD 97, RFC 9110,
@@ -1014,7 +1021,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-14.2.  Informative References
+15.2.  Informative References
 
    [COMET]    Russell, A., "Comet: Low Latency Data for the Browser",
               Infrequently Noted, March 2006,
@@ -1254,13 +1261,13 @@ Index
             Section 10.1, Paragraph 1; Section 10.1, Paragraph 2;
             Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
             Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
-            Section 11, Paragraph 2; Section 13, Paragraph 2;
-            Section 13, Paragraph 3; Section 13, Paragraph 4;
-            Section 13, Paragraph 5; Appendix A.1, Paragraph 1;
+            Section 12, Paragraph 2; Section 14, Paragraph 2;
+            Section 14, Paragraph 3; Section 14, Paragraph 4;
+            Section 14, Paragraph 5; Appendix A.1, Paragraph 1;
             Appendix A.2, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
-            2.1.1; Section 9.2.2, Paragraph 11; Table 1; Section 12.2,
-            Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
+            2.1.1; Section 9.2.2, Paragraph 11; Table 1; Section 13.2,
+            Paragraph 1; Section 13.2.1, Paragraph 1; Section 13.2.1,
             Paragraph 2.1.1
 
       I
@@ -1301,9 +1308,9 @@ Index
             Section 10.1, Paragraph 1; Section 10.1, Paragraph 2;
             Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
             Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
-            Section 11, Paragraph 2; Section 13, Paragraph 2;
-            Section 13, Paragraph 3; Section 13, Paragraph 4;
-            Section 13, Paragraph 5; Appendix A.1, Paragraph 1;
+            Section 12, Paragraph 2; Section 14, Paragraph 2;
+            Section 14, Paragraph 3; Section 14, Paragraph 4;
+            Section 14, Paragraph 5; Appendix A.1, Paragraph 1;
             Appendix A.2, Paragraph 1
 
       O
@@ -1322,7 +1329,7 @@ Index
             Paragraph 5; Section 8.1, Paragraph 1; Section 9.1,
             Paragraph 1; Section 9.1, Paragraph 2; Section 9.1,
             Paragraph 3; Section 9.1, Paragraph 5; Section 10.1,
-            Paragraph 1; Section 10.1, Paragraph 2; Section 11,
+            Paragraph 1; Section 10.1, Paragraph 2; Section 12,
             Paragraph 2
 
 Author's Address
