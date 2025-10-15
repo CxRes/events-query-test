@@ -502,10 +502,10 @@ Table of Contents
    A realization of the data model allows a client to specify in a
    subscription request:
 
-   *  interest in receiving a representation of a resource in a
-      preferred form.
+   *  an interest in receiving a stream of event notifications from a
+      resource in a preferred form.
 
-   *  interest in receiving event notifications from a resource in a
+   *  an interest in receiving a representation of a resource in a
       preferred form.
 
    Implementations can choose appropriate media types to realize the
@@ -562,14 +562,13 @@ Table of Contents
 
 8.1.  Request
 
-   To be notified of the next event(s) on a resource using Events Query,
-   a client can send an empty query.  A server MUST consider a request
-   with an empty query in an appropriate media type made using the QUERY
-   method ([HTTP-QUERY], Section 3) as a subscription request for a
-   single event notification.
+   To receive a single notification, a client makes a QUERY request
+   ([HTTP-QUERY], Section 3) using a realization of the subscription
+   data model that MUST NOT include an interest in receiving a stream of
+   event notifications.
 
    Since the content of the response is an event notification, a client
-   can negotiate its form in the usual manner with header fields.
+   can negotiate its form with header fields in the usual manner.
 
    QUERY /foo HTTP/1.1
    Host: example.org
@@ -612,11 +611,10 @@ Table of Contents
 
 9.1.  Request
 
-   To request a stream of event notifications from a resource in an
-   Events Query, a client MUST express its interest in receiving the
-   event notifications in a preferred form using a realization of the
-   subscription data model with the QUERY method ([HTTP-QUERY],
-   Section 3).
+   To receive multiple notifications, a client makes a QUERY request
+   ([HTTP-QUERY], Section 3) using a realization of the subscription
+   data model that MUST include an interest in receiving a stream of
+   event notifications in a preferred form.
 
    Since the response transmits event notifications within an
    encapsulating representation (Section 9.2), it follows that header
@@ -774,10 +772,10 @@ Table of Contents
 
 10.1.  Request
 
-   To request a representation of the resource in an Events Query, a
-   client MUST express interest in receiving the representation in a
-   preferred form using a realization of the subscription data model
-   (Section 6) with the QUERY method ([HTTP-QUERY], Section 3).
+   To receive a representation of the resource alongside notifications,
+   a client makes a QUERY request ([HTTP-QUERY], Section 3) using a
+   realization of the subscription data model that MUST also include an
+   interest in receiving the representation in a preferred form.
 
    The following example shows a subscription request for the current
    representation along with the subsequent event notifications
@@ -1208,8 +1206,8 @@ Index
       D
 
          data model  Section 2.3, Paragraph 2.3.1; Section 2.3,
-            Paragraph 4.1.1; *_Section 6_*; Section 9.1, Paragraph 1;
-            Section 10.1, Paragraph 1
+            Paragraph 4.1.1; *_Section 6_*; Section 8.1, Paragraph 1;
+            Section 9.1, Paragraph 1; Section 10.1, Paragraph 1
          duration (property)  *_Section 5.1_*; Section 9.2.1, Paragraph
             2.1.2.1.1; Section 9.2.2, Paragraph 11; Table 2
 
@@ -1242,7 +1240,7 @@ Index
             Section 4.4, Paragraph 2; Section 4.4, Paragraph 3;
             Section 5, Paragraph 2; Section 5, Paragraph 3; Section 5.1,
             Paragraph 2; Section 5.1, Paragraph 3; Section 6, Paragraph
-            3.2.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
+            3.1.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
@@ -1253,12 +1251,13 @@ Index
             1; Section 9.2.2, Paragraph 2; Section 9.2.2, Paragraph 4;
             Section 9.2.2, Paragraph 6; Section 9.2.2, Paragraph 7;
             Section 9.2.2, Paragraph 9; Section 10, Paragraph 1;
-            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
-            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
-            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
-            Section 13, Paragraph 2; Section 13, Paragraph 3;
-            Section 13, Paragraph 4; Section 13, Paragraph 5;
-            Appendix A.1, Paragraph 1; Appendix A.2, Paragraph 1
+            Section 10.1, Paragraph 1; Section 10.1, Paragraph 2;
+            Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
+            Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
+            Section 11, Paragraph 2; Section 13, Paragraph 2;
+            Section 13, Paragraph 3; Section 13, Paragraph 4;
+            Section 13, Paragraph 5; Appendix A.1, Paragraph 1;
+            Appendix A.2, Paragraph 1
          events (header field)  *_Section 5_*; Section 9.2.1, Paragraph
             2.1.1; Section 9.2.2, Paragraph 11; Table 1; Section 12.2,
             Paragraph 1; Section 12.2.1, Paragraph 1; Section 12.2.1,
@@ -1288,7 +1287,7 @@ Index
             Section 4.4, Paragraph 2; Section 4.4, Paragraph 3;
             Section 5, Paragraph 2; Section 5, Paragraph 3; Section 5.1,
             Paragraph 2; Section 5.1, Paragraph 3; Section 6, Paragraph
-            3.2.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
+            3.1.1; Section 6, Paragraph 5; Section 7, Paragraph 4.2;
             Section 8, Paragraph 1; Section 8.1, Paragraph 1;
             Section 8.1, Paragraph 2; Section 8.2, Paragraph 1;
             Section 9, Paragraph 1; Section 9.1, Paragraph 1;
@@ -1299,12 +1298,13 @@ Index
             1; Section 9.2.2, Paragraph 2; Section 9.2.2, Paragraph 4;
             Section 9.2.2, Paragraph 6; Section 9.2.2, Paragraph 7;
             Section 9.2.2, Paragraph 9; Section 10, Paragraph 1;
-            Section 10.1, Paragraph 2; Section 10.2, Paragraph 1;
-            Section 10.2, Paragraph 2; Section 10.2, Paragraph 5;
-            Section 10.2, Paragraph 6; Section 11, Paragraph 2;
-            Section 13, Paragraph 2; Section 13, Paragraph 3;
-            Section 13, Paragraph 4; Section 13, Paragraph 5;
-            Appendix A.1, Paragraph 1; Appendix A.2, Paragraph 1
+            Section 10.1, Paragraph 1; Section 10.1, Paragraph 2;
+            Section 10.2, Paragraph 1; Section 10.2, Paragraph 2;
+            Section 10.2, Paragraph 5; Section 10.2, Paragraph 6;
+            Section 11, Paragraph 2; Section 13, Paragraph 2;
+            Section 13, Paragraph 3; Section 13, Paragraph 4;
+            Section 13, Paragraph 5; Appendix A.1, Paragraph 1;
+            Appendix A.2, Paragraph 1
 
       O
 
