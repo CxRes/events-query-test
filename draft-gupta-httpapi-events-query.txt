@@ -588,9 +588,9 @@ Table of Contents
    Content-Type: example/event-notification
    Incremental: ?1
 
-   published: 2025-01-02T10:11:12.345Z              | Notification
-   event-id: 456                                    |
-   type: update                                     |
+   published: 2025-01-02T10:11:12.345Z
+   event-id: 456
+   type: update
 
                 Figure 6: Single Event Notification Response
 
@@ -694,7 +694,7 @@ Table of Contents
    Content-Type: example/event-notification         |
    Content-Length: 31                               |
                                                     |
-   published: 2025-01-02T10:11:12.345Z              |
+   published: 2025-01-02T11:12:13.456Z              |
    event-id: 789                                    |
    type: delete                                     |
 
@@ -761,6 +761,7 @@ Table of Contents
    Transfer-Encoding: chunked
    Incremental: ?1
    Events: duration=600
+
    HTTP/1.1 200 OK                                  | Representation
    Content-Type: text/plain                         |
    Content-Length: 14                               |
@@ -1055,6 +1056,7 @@ A.2.  Response
    Transfer-Encoding: chunked
    Incremental: ?1
    Events: duration=600
+
    HTTP/1.1 200 OK                                  | Representation
    Content-Type: text/plain                         |
    Content-Length: 14                               |
@@ -1073,7 +1075,7 @@ A.2.  Response
    Content-Type: example/event-notification         |
    Content-Length: 31                               |
                                                     |
-   published: 2025-01-02T10:11:12.345Z              |
+   published: 2025-01-02T11:12:13.456Z              |
    event-id: 789                                    |
    type: delete                                     |
 

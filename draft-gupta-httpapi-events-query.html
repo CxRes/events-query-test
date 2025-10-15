@@ -1730,6 +1730,7 @@ events:
 <pre>
 HEAD /foo HTTP/1.1
 Host: example.org
+
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
@@ -1813,9 +1814,9 @@ Accept-Query: example/events-query
 Content-Type: example/event-notification
 Incremental: ?1
 
-published: 2025-01-02T10:11:12.345Z              | Notification
-event-id: 456                                    |
-type: update                                     |
+published: 2025-01-02T10:11:12.345Z
+event-id: 456
+type: update
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
@@ -1967,7 +1968,7 @@ HTTP/1.1 200 OK                                  | Notification
 Content-Type: example/event-notification         |
 Content-Length: 31                               |
                                                  |
-published: 2025-01-02T10:11:12.345Z              |
+published: 2025-01-02T11:12:13.456Z              |
 event-id: 789                                    |
 type: delete                                     |
 </pre>
@@ -2050,6 +2051,7 @@ Content-Type: application/http
 Transfer-Encoding: chunked
 Incremental: ?1
 Events: duration=600
+
 HTTP/1.1 200 OK                                  | Representation
 Content-Type: text/plain                         |
 Content-Length: 14                               |
@@ -2395,6 +2397,7 @@ Content-Type: application/http
 Transfer-Encoding: chunked
 Incremental: ?1
 Events: duration=600
+
 HTTP/1.1 200 OK                                  | Representation
 Content-Type: text/plain                         |
 Content-Length: 14                               |
@@ -2413,7 +2416,7 @@ HTTP/1.1 200 OK                                  | Notification
 Content-Type: example/event-notification         |
 Content-Length: 31                               |
                                                  |
-published: 2025-01-02T10:11:12.345Z              |
+published: 2025-01-02T11:12:13.456Z              |
 event-id: 789                                    |
 type: delete                                     |
 </pre>
