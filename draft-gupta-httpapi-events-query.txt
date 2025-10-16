@@ -3,9 +3,9 @@
 
 
 Building Blocks for HTTP APIs                                   R. Gupta
-Internet-Draft                                           15 October 2025
+Internet-Draft                                           16 October 2025
 Intended status: Standards Track                                        
-Expires: 18 April 2026
+Expires: 19 April 2026
 
 
                            HTTP Events Query
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 April 2026.
+   This Internet-Draft will expire on 19 April 2026.
 
 Copyright Notice
 
@@ -139,16 +139,17 @@ Table of Contents
    messaging systems over alternate protocols such as WebSocket [WS] and
    WebSub [WEBSUB].  Not only does this approach require additional
    layers of code, involving multiple Web APIs and/or userland libraries
-   such as socket.io (https://socket.io/), it demands extra co-
-   ordination effort to synchronize representation and notifications
-   across multiple protocols.  The dual-protocol approach thus compounds
-   the development and maintenance overhead.  Furthermore, deployment at
+   such as socket.io (https://socket.io/), it demands extra coordination
+   effort to synchronize representation and notifications across
+   multiple protocols.  The dual-protocol approach thus compounds the
+   development and maintenance overhead.  Furthermore, deployment at
    scale is challenging with the notifications traffic now opaque to
    network intermediaries.
 
-   Events Query is a minimal protocol built on top of [HTTP] that allows
-   applications to request event notifications directly from a resource
-   of interest using the QUERY method ([HTTP-QUERY], Section 3).
+   Events Query is a minimal protocol built on top of the Hypertext
+   Transfer Protocol [HTTP] that allows applications to request event
+   notifications directly from a resource of interest using the QUERY
+   method ([HTTP-QUERY], Section 3).
 
    The objective of this specification is to make the request and
    receipt of event notifications extremely convenient for consumers.
@@ -156,7 +157,7 @@ Table of Contents
    functionality in their web applications without the need to switch to
    another protocol.  Further, Events Query can deliver representation
    and notifications from a resource in a single response, obviating any
-   need for co-ordination and saving on unnecessary roundtrips.
+   need for coordination and saving on unnecessary round trips.
 
    With the help of a suitable composite media type parser, Events Query
    responses can be consumed with just a few lines of code, as
@@ -165,8 +166,8 @@ Table of Contents
    const response = await fetch("http://example.com/foo", {
      method: "QUERY",
      headers: {
-       "Content-Type": "example/events-query",
-       Accept: "application/http"
+       Accept: "application/http",
+       "Content-Type": "example/events-query"
      },
      body: JSON.stringify({
        state: { Accept: "text/plain" },
@@ -174,18 +175,18 @@ Table of Contents
      })
    });
 
+   // split the response into an iterable of representation and notifications
    const splitResponse = splitHTTPResponseStream(response);
-   // splits the response into an iterable of representation and notifications
 
+   // read the representation
    const {done, value: representation} = await splitResponse.next();
    if (!done) {
      // do something with the representation
-     // API identical to fetch Response
    }
 
+   // iterate over notifications
    for await (const notification of splitResponse) {
      // do something with a notification
-     // API identical to fetch Response
    }
 
                     Figure 1: Events Query fetch example
@@ -225,12 +226,12 @@ Table of Contents
    2.  to send updates directly from a resource of interest, obviating
        the need for additional resources to be specifically dedicated as
        notification endpoints.  In contrast to existing approaches, this
-       frees up the client from the burden of co-ordinating the response
+       frees up the client from the burden of coordinating the response
        from the resource of interest with notifications from an
        endpoint.
 
    3.  to deliver the representation and notifications in response to a
-       single request, minimizing round-trips between clients and
+       single request, minimizing round trips between clients and
        servers.  It also eliminates the need to synchronize the delivery
        of the representation and notifications.
 
@@ -346,7 +347,7 @@ Table of Contents
    textual content forces developers to opt for alternative protocols
    such as WebSockets [WS], despite the increased complexity.  The
    EventSource API does not even allow for headers to be sent with
-   requests.  This has led to a proliferation of after-market hacks
+   requests.  This has led to a proliferation of aftermarket hacks
    // such as this (https://www.npmjs.com/package/event-source-plus),
    // this (https://www.npmjs.com/package/@microsoft/fetch-event-
    // source), this (https://www.npmjs.com/package/fetch-event-stream),
@@ -540,6 +541,7 @@ Table of Contents
                         Figure 3: Discovery Request
 
    HTTP/1.1 200 OK
+   Date: Thu, 02 Jan 2025 10:00:00 GMT
    Accept: text/html
    Accept-Query: "example/events-query"
 
@@ -558,7 +560,7 @@ Table of Contents
 8.  Single Notification
 
    The simplest Events Query is to request a notification for the next
-   event(s) on a resource.  This, in effect, adds long-polling
+   event(s) on a resource.  This, in effect, adds long polling
    capability ([RFC6202], Section 2) to a resource.
 
 8.1.  Request
@@ -573,8 +575,8 @@ Table of Contents
 
    QUERY /foo HTTP/1.1
    Host: example.org
-   Content-Type: example/events-query
    Accept: example/event-notification
+   Content-Type: example/events-query
    Events: duration=0
 
    ---
@@ -587,7 +589,7 @@ Table of Contents
    connection immediately after sending the event notification.
 
    HTTP/1.1 200 OK
-   Host: example.org
+   Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
    Content-Type: example/event-notification
    Incremental: ?1
@@ -627,9 +629,9 @@ Table of Contents
    to be transferred respectively using a composite media type
    (application/http) and a discrete media type (application/json-seq):
 
-   The first example shows a subscription request for what is
-   effectively a stream of Single Notifications (Section 8) to be
-   transferred using application/http ([HTTP/1.1], Section 10.2) as the
+   The first example shows a subscription request for effectively a
+   stream of discrete Single Notifications (Section 8) to be transferred
+   using application/http ([HTTP/1.1], Section 10.2) as the
    encapsulating media type.  The events property in this example
    indicates an interest in receiving event notifications and its sub-
    properties describe the preferred form of notifications.  Since the
@@ -692,14 +694,14 @@ Table of Contents
    HTTP/1.1 200 OK
    Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
-   Transfer-Encoding: chunked
-   Incremental: ?1
    Events: duration=600
+   Incremental: ?1
+   Transfer-Encoding: chunked
 
               Figure 9: Notifications Stream Response Headers
 
-      |  Since the Content-Type header field varies in response to
-      |  Figure 7 and Figure 8, it is omitted above.
+      |  Since the Content-Type header field varies in response to the
+      |  requests in Figure 7 and Figure 8, it has been omitted here.
 
 9.2.2.  Notifications
 
@@ -708,12 +710,12 @@ Table of Contents
 
    An event notification transferred in an application/http response
    stream is identical to the Single Notification Response
-   (Section 8.2), except fields that are redundant with the response
+   (Section 8.2), except fields which are redundant with the response
    headers (Section 9.2.1) are omitted.
 
    HTTP/1.1 200 OK                                  | Notification
-   Content-Type: example/event-notification         |
    Content-Length: 31                               |
+   Content-Type: example/event-notification         |
                                                     |
    published: 2025-01-02T10:11:12.345Z              |
    event-id: 456                                    |
@@ -721,7 +723,7 @@ Table of Contents
 
                     Figure 10: HTTP Update Notification
 
-   The same event notification when transferred in a application/json-
+   The same event notification when transferred in an application/json-
    seq response stream is as follows:
 
    ␞{                                              | Notification
@@ -733,14 +735,14 @@ Table of Contents
                     Figure 11: JSON Update Notification
 
    A server MUST end the response immediately after transmitting the
-   event notification for the deletion of a resource.
+   event notification that signals the deletion of a resource.
 
    The notification for a delete event expressed as an HTTP message
    might be as follows:
 
    HTTP/1.1 200 OK                                  | Notification
-   Content-Type: example/event-notification         |
    Content-Length: 31                               |
+   Content-Type: example/event-notification         |
                                                     |
    published: 2025-01-02T11:12:13.456Z              |
    event-id: 789                                    |
@@ -759,7 +761,7 @@ Table of Contents
                     Figure 13: JSON Delete Notification
 
    Otherwise, a server MUST end the response when the connection
-   duration has exceeded the period set in the duration property of the
+   duration exceeds the period set in the duration property of the
    Events header field.
 
 10.  Representation
@@ -818,13 +820,13 @@ Table of Contents
    HTTP/1.1 200 OK
    Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
-   Transfer-Encoding: chunked
-   Incremental: ?1
    Events: duration=600
+   Incremental: ?1
+   Transfer-Encoding: chunked
 
    HTTP/1.1 200 OK                                  | Representation
-   Content-Type: text/plain                         |
    Content-Length: 14                               |
+   Content-Type: text/plain                         |
                                                     |
    Hello World!                                     |
 
@@ -1142,28 +1144,28 @@ A.1.2.  Response
    HTTP/1.1 200 OK
    Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
-   Transfer-Encoding: chunked
-   Incremental: ?1
    Events: duration=600
+   Incremental: ?1
+   Transfer-Encoding: chunked
    Content-Type: application/http
 
    HTTP/1.1 200 OK                                  | Representation
-   Content-Type: text/plain                         |
    Content-Length: 14                               |
+   Content-Type: text/plain                         |
                                                     |
    Hello World!                                     |
 
    HTTP/1.1 200 OK                                  | Notification
-   Content-Type: example/event-notification         |
    Content-Length: 31                               |
+   Content-Type: example/event-notification         |
                                                     |
    published: 2025-01-02T10:11:12.345Z              |
    event-id: 456                                    |
    type: update                                     |
 
    HTTP/1.1 200 OK                                  | Notification
-   Content-Type: example/event-notification         |
    Content-Length: 31                               |
+   Content-Type: example/event-notification         |
                                                     |
    published: 2025-01-02T11:12:13.456Z              |
    event-id: 789                                    |
@@ -1196,9 +1198,9 @@ A.2.2.  Response
    HTTP/1.1 200 OK
    Date: Thu, 02 Jan 2025 10:10:10 GMT
    Accept-Query: example/events-query
-   Transfer-Encoding: chunked
-   Incremental: ?1
    Events: duration=600
+   Incremental: ?1
+   Transfer-Encoding: chunked
    Content-Type: application/json-seq
 
    ␞{                                              | Notification

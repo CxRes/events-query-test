@@ -1050,7 +1050,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Gupta</td>
-<td class="center">Expires 18 April 2026</td>
+<td class="center">Expires 19 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-gupta-httpapi-events-query-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-10-15" class="published">15 October 2025</time>
+<time datetime="2025-10-16" class="published">16 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-04-18">18 April 2026</time></dd>
+<dd class="expires"><time datetime="2026-04-19">19 April 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1117,7 +1117,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1343,13 +1343,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-1-2">But web applications have evolved over time to provide increasingly dynamic and interactive experiences, requiring near-instantaneous updates. HTTP does not automatically inform clients of changes to a resource. Developers have employed various techniques, such as Comet <span>[<a href="#COMET" class="cite xref">COMET</a>]</span> and Server-Sent Events <span>[<a href="#SSE" class="cite xref">SSE</a>]</span> to work around this constraint, but these can be suboptimal for many applications.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </div>
 <div id="intro-alternate-protocols">
-<p id="section-1-3">For this reason, web programmers often prefer implementing custom messaging systems over alternate protocols such as WebSocket <span>[<a href="#WS" class="cite xref">WS</a>]</span> and WebSub <span>[<a href="#WEBSUB" class="cite xref">WEBSUB</a>]</span>. Not only does this approach require additional layers of code, involving multiple Web APIs and/or userland libraries such as <a href="https://socket.io/">socket.io</a>, it demands extra co-ordination effort to synchronize representation and <span id="iref-event-notification-5" class="iref"></span><span id="iref-notification-6" class="iref"></span><a href="#notification" class="internal xref">notifications</a> across multiple protocols. The dual-protocol approach thus compounds the development and maintenance overhead. Furthermore, deployment at scale is challenging with the <span id="iref-event-notification-7" class="iref"></span><span id="iref-notification-8" class="iref"></span><a href="#notification" class="internal xref">notifications</a> traffic now opaque to network intermediaries.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">For this reason, web programmers often prefer implementing custom messaging systems over alternate protocols such as WebSocket <span>[<a href="#WS" class="cite xref">WS</a>]</span> and WebSub <span>[<a href="#WEBSUB" class="cite xref">WEBSUB</a>]</span>. Not only does this approach require additional layers of code, involving multiple Web APIs and/or userland libraries such as <a href="https://socket.io/">socket.io</a>, it demands extra coordination effort to synchronize representation and <span id="iref-event-notification-5" class="iref"></span><span id="iref-notification-6" class="iref"></span><a href="#notification" class="internal xref">notifications</a> across multiple protocols. The dual-protocol approach thus compounds the development and maintenance overhead. Furthermore, deployment at scale is challenging with the <span id="iref-event-notification-7" class="iref"></span><span id="iref-notification-8" class="iref"></span><a href="#notification" class="internal xref">notifications</a> traffic now opaque to network intermediaries.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </div>
 <div id="intro-events-query">
-<p id="section-1-4">Events Query is a minimal protocol built on top of <span>[<a href="#HTTP" class="cite xref">HTTP</a>]</span> that allows applications to request <span id="iref-notification-9" class="iref"></span><span id="iref-event-notification-10" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> directly from a resource of interest using the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-12#section-3" class="relref">Section 3</a></span>).<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-4">Events Query is a minimal protocol built on top of the Hypertext Transfer Protocol <span>[<a href="#HTTP" class="cite xref">HTTP</a>]</span> that allows applications to request <span id="iref-notification-9" class="iref"></span><span id="iref-event-notification-10" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> directly from a resource of interest using the <code>QUERY</code> method (<span>[<a href="#HTTP-QUERY" class="cite xref">HTTP-QUERY</a>], <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-safe-method-w-body-12#section-3" class="relref">Section 3</a></span>).<a href="#section-1-4" class="pilcrow">¶</a></p>
 </div>
 <div id="intro-convenience">
-<p id="section-1-5">The objective of this specification is to make the request and receipt of <span id="iref-notification-11" class="iref"></span><span id="iref-event-notification-12" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> extremely convenient for consumers. Events Query allows programmers to incorporate real-time functionality in their web applications without the need to switch to another protocol. Further, Events Query can deliver representation and <span id="iref-event-notification-13" class="iref"></span><span id="iref-notification-14" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from a resource in a single response, obviating any need for co-ordination and saving on unnecessary roundtrips.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-5">The objective of this specification is to make the request and receipt of <span id="iref-notification-11" class="iref"></span><span id="iref-event-notification-12" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> extremely convenient for consumers. Events Query allows programmers to incorporate real-time functionality in their web applications without the need to switch to another protocol. Further, Events Query can deliver representation and <span id="iref-event-notification-13" class="iref"></span><span id="iref-notification-14" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from a resource in a single response, obviating any need for coordination and saving on unnecessary round trips.<a href="#section-1-5" class="pilcrow">¶</a></p>
 </div>
 <div id="intro-fetch-example">
 <p id="section-1-6" class="keepWithNext">With the help of a suitable composite media type parser, Events Query responses can be consumed with just a few lines of code, as illustrated in the JavaScript example below:<a href="#section-1-6" class="pilcrow">¶</a></p>
@@ -1361,8 +1361,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 const response = await fetch("http://example.com/foo", {
   method: "QUERY",
   headers: {
-    "Content-Type": "example/events-query",
-    Accept: "application/http"
+    Accept: "application/http",
+    "Content-Type": "example/events-query"
   },
   body: JSON.stringify({
     state: { Accept: "text/plain" },
@@ -1370,18 +1370,18 @@ const response = await fetch("http://example.com/foo", {
   })
 });
 
+// split the response into an iterable of representation and notifications
 const splitResponse = splitHTTPResponseStream(response);
-// splits the response into an iterable of representation and notifications
 
+// read the representation
 const {done, value: representation} = await splitResponse.next();
 if (!done) {
   // do something with the representation
-  // API identical to fetch Response
 }
 
+// iterate over notifications
 for await (const notification of splitResponse) {
   // do something with a notification
-  // API identical to fetch Response
 }
 </pre>
 </div>
@@ -1421,12 +1421,12 @@ for await (const notification of splitResponse) {
           </li>
 <li id="section-2.1-2.2">
 <div id="goal--unified-source-of-truth">
-            <p id="section-2.1-2.2.1">to send updates directly from a resource of interest, obviating the need for additional resources to be specifically dedicated as <span id="iref-event-notification-36" class="iref"></span><span id="iref-notification-37" class="iref"></span><a href="#notification" class="internal xref">notification</a> endpoints. In contrast to existing approaches, this frees up the client from the burden of co-ordinating the response from the resource of interest with <span id="iref-event-notification-38" class="iref"></span><span id="iref-notification-39" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from an endpoint.<a href="#section-2.1-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-2.1-2.2.1">to send updates directly from a resource of interest, obviating the need for additional resources to be specifically dedicated as <span id="iref-event-notification-36" class="iref"></span><span id="iref-notification-37" class="iref"></span><a href="#notification" class="internal xref">notification</a> endpoints. In contrast to existing approaches, this frees up the client from the burden of coordinating the response from the resource of interest with <span id="iref-event-notification-38" class="iref"></span><span id="iref-notification-39" class="iref"></span><a href="#notification" class="internal xref">notifications</a> from an endpoint.<a href="#section-2.1-2.2.1" class="pilcrow">¶</a></p>
 </div>
           </li>
 <li id="section-2.1-2.3">
 <div id="goal--unified-request">
-            <p id="section-2.1-2.3.1">to deliver the representation and <span id="iref-event-notification-40" class="iref"></span><span id="iref-notification-41" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in response to a single request, minimizing round-trips between clients and servers. It also eliminates the need to synchronize the delivery of the representation and <span id="iref-event-notification-42" class="iref"></span><span id="iref-notification-43" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-2.1-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-2.1-2.3.1">to deliver the representation and <span id="iref-event-notification-40" class="iref"></span><span id="iref-notification-41" class="iref"></span><a href="#notification" class="internal xref">notifications</a> in response to a single request, minimizing round trips between clients and servers. It also eliminates the need to synchronize the delivery of the representation and <span id="iref-event-notification-42" class="iref"></span><span id="iref-notification-43" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-2.1-2.3.1" class="pilcrow">¶</a></p>
 </div>
           </li>
 <li id="section-2.1-2.4">
@@ -1545,7 +1545,7 @@ for await (const notification of splitResponse) {
 <a href="#section-2.5" class="section-number selfRef">2.5. </a><a href="#name-comparison-with-server-sent" class="section-name selfRef">Comparison with Server-Sent Events</a>
         </h3>
 <p id="section-2.5-1">At the time of writing, Server-Sent Events (SSE) is the de facto mechanism for transferring <span id="iref-notification-86" class="iref"></span><span id="iref-event-notification-87" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> over HTTP, standardized through the EventSource API <span>[<a href="#SSE" class="cite xref">SSE</a>]</span> as part of HTML Living Standard by the WHATWG.<span class="cref" id="EventSource_Obsolecense">As of October 2022, HTML Living Standard maintainer Anne van Kesteren has <a href="https://github.com/whatwg/html/issues/8297#issuecomment-1291658863">stated</a> that WHATWG does not intend to extend EventSource, with reasons for the decision cited in a subsequent <a href="https://github.com/whatwg/html/issues/8297#issuecomment-1291658863">comment</a>.</span><a href="#section-2.5-1" class="pilcrow">¶</a></p>
-<p id="section-2.5-2">Server-Sent Events defines the <code>text/event-stream</code> media type to transmit <span id="iref-notification-88" class="iref"></span><span id="iref-event-notification-89" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in response to a GET request. This approach is fundamentally inconsistent with terminology defined in HTTP Semantics (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-3.2" class="relref">Section 3.2</a></span>), transferring a sequence of asynchronous messages instead of a representation "that is intended to reflect a past, current, or desired state of a given resource". Practically, the <code>text/event-stream</code> media type being limited to only textual content forces developers to opt for alternative protocols such as WebSockets <span>[<a href="#WS" class="cite xref">WS</a>]</span>, despite the increased complexity. The EventSource API does not even allow for headers to be sent with requests. This has led to a proliferation of after-market hacks<span class="cref" id="hacks">such as <a href="https://www.npmjs.com/package/event-source-plus">this</a>, <a href="https://www.npmjs.com/package/@microsoft/fetch-event-source">this</a>, <a href="https://www.npmjs.com/package/fetch-event-stream">this</a>, <a href="https://www.npmjs.com/package/extended-eventsource">this</a>, <a href="https://www.npmjs.com/package/ngx-sse-client">this</a> and <a href="https://www.npmjs.com/package/sse.js">this</a></span> that extend Server-Sent Events with support for custom headers, such as for credentials, or use the POST method to communicate additional configuration in the request body.<a href="#section-2.5-2" class="pilcrow">¶</a></p>
+<p id="section-2.5-2">Server-Sent Events defines the <code>text/event-stream</code> media type to transmit <span id="iref-notification-88" class="iref"></span><span id="iref-event-notification-89" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> in response to a GET request. This approach is fundamentally inconsistent with terminology defined in HTTP Semantics (<span>[<a href="#HTTP" class="cite xref">HTTP</a>], <a href="https://rfc-editor.org/rfc/rfc9110#section-3.2" class="relref">Section 3.2</a></span>), transferring a sequence of asynchronous messages instead of a representation "that is intended to reflect a past, current, or desired state of a given resource". Practically, the <code>text/event-stream</code> media type being limited to only textual content forces developers to opt for alternative protocols such as WebSockets <span>[<a href="#WS" class="cite xref">WS</a>]</span>, despite the increased complexity. The EventSource API does not even allow for headers to be sent with requests. This has led to a proliferation of aftermarket hacks<span class="cref" id="hacks">such as <a href="https://www.npmjs.com/package/event-source-plus">this</a>, <a href="https://www.npmjs.com/package/@microsoft/fetch-event-source">this</a>, <a href="https://www.npmjs.com/package/fetch-event-stream">this</a>, <a href="https://www.npmjs.com/package/extended-eventsource">this</a>, <a href="https://www.npmjs.com/package/ngx-sse-client">this</a> and <a href="https://www.npmjs.com/package/sse.js">this</a></span> that extend Server-Sent Events with support for custom headers, such as for credentials, or use the POST method to communicate additional configuration in the request body.<a href="#section-2.5-2" class="pilcrow">¶</a></p>
 <p id="section-2.5-3">Events Query takes a principled approach to <span id="iref-notification-90" class="iref"></span><span id="iref-event-notification-91" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>, as established in <a href="#terminology" class="auto internal xref">Section 4</a>. In particular, the definition of an <span id="iref-notification-92" class="iref"></span><span id="iref-event-notification-93" class="iref"></span><a href="#notification" class="internal xref">event notification</a> as a "representation" of <span id="iref-event-94" class="iref"></span><a href="#event" class="internal xref">event</a>(s) (<a href="#notification" class="auto internal xref">Section 4.3</a>) admits the use of arbitrary media types for <span id="iref-notification-95" class="iref"></span><span id="iref-event-notification-96" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>. Clients can use content negotiation as well as preconditions in a <span id="iref-subscription-97" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request. Further, Events Query not only lets clients receive both the representation and <span id="iref-event-notification-98" class="iref"></span><span id="iref-notification-99" class="iref"></span><a href="#notification" class="internal xref">notifications</a> over the same protocol, viz. HTTP, but these can be encapsulated within a single HTTP response. Clients do not need to, say, authenticate multiple times, possibly with different mechanisms, to obtain data from the same resource or co-ordinate and synchronize multiple response streams carrying a representation and <span id="iref-event-notification-100" class="iref"></span><span id="iref-notification-101" class="iref"></span><a href="#notification" class="internal xref">notifications</a>.<a href="#section-2.5-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1761,6 +1761,7 @@ Host: example.org
         <div class="lang-http-message sourcecode" id="section-7-3.1">
 <pre>
 HTTP/1.1 200 OK
+Date: Thu, 02 Jan 2025 10:00:00 GMT
 Accept: text/html
 Accept-Query: "example/events-query"
 </pre>
@@ -1783,7 +1784,7 @@ Accept-Query: "example/events-query"
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-single-notification" class="section-name selfRef">Single Notification</a>
       </h2>
 <div id="single-notification-description">
-<p id="section-8-1">The simplest Events Query is to request a <span id="iref-event-notification-167" class="iref"></span><span id="iref-notification-168" class="iref"></span><a href="#notification" class="internal xref">notification</a> for the next <span id="iref-event-169" class="iref"></span><a href="#event" class="internal xref">event</a>(s) on a resource. This, in effect, adds long-polling capability (<span>[<a href="#RFC6202" class="cite xref">RFC6202</a>], <a href="https://rfc-editor.org/rfc/rfc6202#section-2" class="relref">Section 2</a></span>) to a resource.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">The simplest Events Query is to request a <span id="iref-event-notification-167" class="iref"></span><span id="iref-notification-168" class="iref"></span><a href="#notification" class="internal xref">notification</a> for the next <span id="iref-event-169" class="iref"></span><a href="#event" class="internal xref">event</a>(s) on a resource. This, in effect, adds long polling capability (<span>[<a href="#RFC6202" class="cite xref">RFC6202</a>], <a href="https://rfc-editor.org/rfc/rfc6202#section-2" class="relref">Section 2</a></span>) to a resource.<a href="#section-8-1" class="pilcrow">¶</a></p>
 </div>
 <div id="single-notification-request">
 <section id="section-8.1">
@@ -1802,8 +1803,8 @@ Accept-Query: "example/events-query"
 <pre>
 QUERY /foo HTTP/1.1
 Host: example.org
-Content-Type: example/events-query
 Accept: example/event-notification
+Content-Type: example/events-query
 Events: duration=0
 
 ‑‑‑
@@ -1828,7 +1829,7 @@ Events: duration=0
           <div class="lang-http-message sourcecode" id="section-8.2-2.1">
 <pre>
 HTTP/1.1 200 OK
-Host: example.org
+Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
 Content-Type: example/event-notification
 Incremental: ?1
@@ -1873,7 +1874,7 @@ type: update
 <p id="section-9.1-2">Since the response transmits <span id="iref-notification-191" class="iref"></span><span id="iref-event-notification-192" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> within an encapsulating representation (<a href="#stream-response" class="auto internal xref">Section 9.2</a>), it follows that header fields cannot be used to negotiate the form of <span id="iref-notification-193" class="iref"></span><span id="iref-event-notification-194" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> as in the case of <span><a href="#single-notification-request" class="internal xref">Single Notification Request</a> (<a href="#single-notification-request" class="auto internal xref">Section 8.1</a>)</span>. Instead, header fields are useful for negotiating the representation that encapsulates <span id="iref-notification-195" class="iref"></span><span id="iref-event-notification-196" class="iref"></span><a href="#notification" class="internal xref">event notifications</a>. The following examples illustrate <span id="iref-subscription-197" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> requests that negotiate a stream of <span id="iref-notification-198" class="iref"></span><span id="iref-event-notification-199" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> to be transferred respectively using a composite media type (<code>application/http</code>) and a discrete media type (<code>application/json-seq</code>):<a href="#section-9.1-2" class="pilcrow">¶</a></p>
 </div>
 <div id="stream-request-http">
-<p id="section-9.1-3">The first example shows a <span id="iref-subscription-200" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request for what is effectively a stream of <span><a href="#single-notification" class="internal xref">Single Notifications</a> (<a href="#single-notification" class="auto internal xref">Section 8</a>)</span> to be transferred using <code>application/http</code> (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-10.2" class="relref">Section 10.2</a></span>) as the encapsulating media type. The <code>events</code> property in this example indicates an interest in receiving <span id="iref-notification-201" class="iref"></span><span id="iref-event-notification-202" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> and its sub-properties describe the preferred form of <span id="iref-event-notification-203" class="iref"></span><span id="iref-notification-204" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Since the <span id="iref-event-notification-205" class="iref"></span><span id="iref-notification-206" class="iref"></span><a href="#notification" class="internal xref">notifications</a> are transferred as a pipeline of HTTP messages, these sub-properties are identical to <span><a href="#single-notification-request-conneg" class="internal xref">header fields</a> (<a href="#single-notification-request-conneg" class="auto internal xref">Section 8.1, Paragraph 2</a>)</span> used for specifying preconditions and content negotiation in a <span><a href="#single-notification-request" class="internal xref">Single Notification Request</a> (<a href="#single-notification-request" class="auto internal xref">Section 8.1</a>)</span>.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
+<p id="section-9.1-3">The first example shows a <span id="iref-subscription-200" class="iref"></span><a href="#subscription" class="internal xref">subscription</a> request for effectively a stream of discrete <span><a href="#single-notification" class="internal xref">Single Notifications</a> (<a href="#single-notification" class="auto internal xref">Section 8</a>)</span> to be transferred using <code>application/http</code> (<span>[<a href="#RFC9112" class="cite xref">HTTP/1.1</a>], <a href="https://rfc-editor.org/rfc/rfc9112#section-10.2" class="relref">Section 10.2</a></span>) as the encapsulating media type. The <code>events</code> property in this example indicates an interest in receiving <span id="iref-notification-201" class="iref"></span><span id="iref-event-notification-202" class="iref"></span><a href="#notification" class="internal xref">event notifications</a> and its sub-properties describe the preferred form of <span id="iref-event-notification-203" class="iref"></span><span id="iref-notification-204" class="iref"></span><a href="#notification" class="internal xref">notifications</a>. Since the <span id="iref-event-notification-205" class="iref"></span><span id="iref-notification-206" class="iref"></span><a href="#notification" class="internal xref">notifications</a> are transferred as a pipeline of HTTP messages, these sub-properties are identical to <span><a href="#single-notification-request-conneg" class="internal xref">header fields</a> (<a href="#single-notification-request-conneg" class="auto internal xref">Section 8.1, Paragraph 2</a>)</span> used for specifying preconditions and content negotiation in a <span><a href="#single-notification-request" class="internal xref">Single Notification Request</a> (<a href="#single-notification-request" class="auto internal xref">Section 8.1</a>)</span>.<a href="#section-9.1-3" class="pilcrow">¶</a></p>
 </div>
 <span id="name-request-for-http-notificati"></span><div id="stream-request-http-example">
 <figure id="figure-7">
@@ -1958,9 +1959,9 @@ events:
 HTTP/1.1 200 OK
 Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
-Transfer-Encoding: chunked
-Incremental: ?1
 Events: duration=600
+Incremental: ?1
+Transfer-Encoding: chunked
 
 </pre>
 </div>
@@ -1969,7 +1970,7 @@ Events: duration=600
             </figcaption></figure>
 </div>
 <aside id="section-9.2.1-4">
-            <p id="section-9.2.1-4.1">Since the <code>Content-Type</code> header field varies in response to <a href="#stream-request-http-example" class="auto internal xref">Figure 7</a> and <a href="#stream-request-json-example" class="auto internal xref">Figure 8</a>, it is omitted above.<a href="#section-9.2.1-4.1" class="pilcrow">¶</a></p>
+            <p id="section-9.2.1-4.1">Since the <code>Content-Type</code> header field varies in response to the requests in <a href="#stream-request-http-example" class="auto internal xref">Figure 7</a> and <a href="#stream-request-json-example" class="auto internal xref">Figure 8</a>, it has been omitted here.<a href="#section-9.2.1-4.1" class="pilcrow">¶</a></p>
 </aside>
 </section>
 </div>
@@ -1982,15 +1983,15 @@ Events: duration=600
 <p id="section-9.2.2-1">Subsequently, when <span id="iref-event-224" class="iref"></span><a href="#event" class="internal xref">event</a>(s) occur, the server transmits a <span id="iref-event-notification-225" class="iref"></span><span id="iref-notification-226" class="iref"></span><a href="#notification" class="internal xref">notification</a>.<a href="#section-9.2.2-1" class="pilcrow">¶</a></p>
 </div>
 <div id="stream-update-event-http">
-<p id="section-9.2.2-2">An <span id="iref-notification-227" class="iref"></span><span id="iref-event-notification-228" class="iref"></span><a href="#notification" class="internal xref">event notification</a> transferred in an <code>application/http</code> response stream is identical to the <span><a href="#single-notification-response" class="internal xref">Single Notification Response</a> (<a href="#single-notification-response" class="auto internal xref">Section 8.2</a>)</span>, except fields that are redundant with the response headers (<a href="#stream-response-headers" class="auto internal xref">Section 9.2.1</a>) are omitted.<a href="#section-9.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-2">An <span id="iref-notification-227" class="iref"></span><span id="iref-event-notification-228" class="iref"></span><a href="#notification" class="internal xref">event notification</a> transferred in an <code>application/http</code> response stream is identical to the <span><a href="#single-notification-response" class="internal xref">Single Notification Response</a> (<a href="#single-notification-response" class="auto internal xref">Section 8.2</a>)</span>, except fields which are redundant with the response headers (<a href="#stream-response-headers" class="auto internal xref">Section 9.2.1</a>) are omitted.<a href="#section-9.2.2-2" class="pilcrow">¶</a></p>
 </div>
 <span id="name-http-update-notification"></span><div id="stream-update-notification-http-example">
 <figure id="figure-10">
             <div class="lang-http-message sourcecode" id="section-9.2.2-3.1">
 <pre>
 HTTP/1.1 200 OK                                  | Notification
-Content-Type: example/event-notification         |
 Content-Length: 31                               |
+Content-Type: example/event-notification         |
                                                  |
 published: 2025-01-02T10:11:12.345Z              |
 event-id: 456                                    |
@@ -2002,7 +2003,7 @@ type: update                                     |
             </figcaption></figure>
 </div>
 <div id="stream-update-event-json">
-<p id="section-9.2.2-4">The same <span id="iref-notification-229" class="iref"></span><span id="iref-event-notification-230" class="iref"></span><a href="#notification" class="internal xref">event notification</a> when transferred in a <code>application/json-seq</code> response stream is as follows:<a href="#section-9.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-4">The same <span id="iref-notification-229" class="iref"></span><span id="iref-event-notification-230" class="iref"></span><a href="#notification" class="internal xref">event notification</a> when transferred in an <code>application/json-seq</code> response stream is as follows:<a href="#section-9.2.2-4" class="pilcrow">¶</a></p>
 </div>
 <span id="name-json-update-notification"></span><div id="stream-update-notification-json-example">
 <figure id="figure-11">
@@ -2020,7 +2021,7 @@ type: update                                     |
             </figcaption></figure>
 </div>
 <div id="stream-response-terminal-event">
-<p id="section-9.2.2-6">A server <span class="bcp14">MUST</span> end the response immediately after transmitting the <span id="iref-notification-231" class="iref"></span><span id="iref-event-notification-232" class="iref"></span><a href="#notification" class="internal xref">event notification</a> for the deletion of a resource.<a href="#section-9.2.2-6" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-6">A server <span class="bcp14">MUST</span> end the response immediately after transmitting the <span id="iref-notification-231" class="iref"></span><span id="iref-event-notification-232" class="iref"></span><a href="#notification" class="internal xref">event notification</a> that signals the deletion of a resource.<a href="#section-9.2.2-6" class="pilcrow">¶</a></p>
 </div>
 <div id="stream-delete-event-http">
 <p id="section-9.2.2-7">The <span id="iref-event-notification-233" class="iref"></span><span id="iref-notification-234" class="iref"></span><a href="#notification" class="internal xref">notification</a> for a delete <span id="iref-event-235" class="iref"></span><a href="#event" class="internal xref">event</a> expressed as an HTTP message might be as follows:<a href="#section-9.2.2-7" class="pilcrow">¶</a></p>
@@ -2030,8 +2031,8 @@ type: update                                     |
             <div class="lang-http-message sourcecode" id="section-9.2.2-8.1">
 <pre>
 HTTP/1.1 200 OK                                  | Notification
-Content-Type: example/event-notification         |
 Content-Length: 31                               |
+Content-Type: example/event-notification         |
                                                  |
 published: 2025-01-02T11:12:13.456Z              |
 event-id: 789                                    |
@@ -2061,7 +2062,7 @@ type: delete                                     |
             </figcaption></figure>
 </div>
 <div id="stream-response-timeout">
-<p id="section-9.2.2-11">Otherwise, a server <span class="bcp14">MUST</span> end the response when the connection duration has exceeded the period set in the <span id="iref-duration-property-239" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property of the <span id="iref-events-header-field-240" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-9.2.2-11" class="pilcrow">¶</a></p>
+<p id="section-9.2.2-11">Otherwise, a server <span class="bcp14">MUST</span> end the response when the connection duration exceeds the period set in the <span id="iref-duration-property-239" class="iref"></span><a href="#duration-property" class="internal xref"><code>duration</code></a> property of the <span id="iref-events-header-field-240" class="iref"></span><a href="#events-field" class="internal xref"><code>Events</code></a> header field.<a href="#section-9.2.2-11" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
@@ -2130,13 +2131,13 @@ events:
 HTTP/1.1 200 OK
 Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
-Transfer-Encoding: chunked
-Incremental: ?1
 Events: duration=600
+Incremental: ?1
+Transfer-Encoding: chunked
 
 HTTP/1.1 200 OK                                  | Representation
-Content-Type: text/plain                         |
 Content-Length: 14                               |
+Content-Type: text/plain                         |
                                                  |
 Hello World!                                     |
 </pre>
@@ -2505,28 +2506,28 @@ events:
 HTTP/1.1 200 OK
 Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
-Transfer-Encoding: chunked
-Incremental: ?1
 Events: duration=600
+Incremental: ?1
+Transfer-Encoding: chunked
 Content-Type: application/http
 
 HTTP/1.1 200 OK                                  | Representation
-Content-Type: text/plain                         |
 Content-Length: 14                               |
+Content-Type: text/plain                         |
                                                  |
 Hello World!                                     |
 
 HTTP/1.1 200 OK                                  | Notification
-Content-Type: example/event-notification         |
 Content-Length: 31                               |
+Content-Type: example/event-notification         |
                                                  |
 published: 2025-01-02T10:11:12.345Z              |
 event-id: 456                                    |
 type: update                                     |
 
 HTTP/1.1 200 OK                                  | Notification
-Content-Type: example/event-notification         |
 Content-Length: 31                               |
+Content-Type: example/event-notification         |
                                                  |
 published: 2025-01-02T11:12:13.456Z              |
 event-id: 789                                    |
@@ -2584,9 +2585,9 @@ events:
 HTTP/1.1 200 OK
 Date: Thu, 02 Jan 2025 10:10:10 GMT
 Accept-Query: example/events-query
-Transfer-Encoding: chunked
-Incremental: ?1
 Events: duration=600
+Incremental: ?1
+Transfer-Encoding: chunked
 Content-Type: application/json-seq
 
 ␞{                                              | Notification
