@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-14T01:24:47.913222+00:00",
+  "timestamp": "2025-10-16T01:26:12.573648+00:00",
   "repo": "CxRes/events-query-test",
   "labels": [
     {
@@ -50,5 +50,118 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOOYx9fM6tlcgV",
+      "title": "00 revision",
+      "url": "https://github.com/CxRes/events-query-test/pull/1",
+      "state": "MERGED",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-10-14T04:57:56Z",
+      "updatedAt": "2025-10-14T07:45:10Z",
+      "baseRepository": "CxRes/events-query-test",
+      "baseRefName": "main",
+      "baseRefOid": "c7d99eb5383cc20559c456e18634d27e79937ff3",
+      "headRepository": "CxRes/events-query-test",
+      "headRefName": "00-revision",
+      "headRefOid": "1a3d40372dbcae6493b2fcf82c25198f28df3207",
+      "closedAt": "2025-10-14T05:07:10Z",
+      "mergedAt": "2025-10-14T05:07:10Z",
+      "mergedBy": "CxRes",
+      "mergeCommit": {
+        "oid": "adcfe0ed29c2a3611ffe367919f738929c64f0b5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOOYx9fM6tmsgl",
+      "title": "SSE comparison",
+      "url": "https://github.com/CxRes/events-query-test/pull/2",
+      "state": "MERGED",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-10-14T07:35:41Z",
+      "updatedAt": "2025-10-14T07:38:15Z",
+      "baseRepository": "CxRes/events-query-test",
+      "baseRefName": "main",
+      "baseRefOid": "773a368b45f84e24d5e48b9f4f7c1da4a3ea9774",
+      "headRepository": "CxRes/events-query-test",
+      "headRefName": "sse-comparison",
+      "headRefOid": "45058f770f7b7972cc2b5ab9613c616ff1247e59",
+      "closedAt": "2025-10-14T07:38:14Z",
+      "mergedAt": "2025-10-14T07:38:14Z",
+      "mergedBy": "CxRes",
+      "mergeCommit": {
+        "oid": "e2cd3de6e77cfc0ac000860c5a11383be8346d68"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOOYx9fM6tznC9",
+      "title": "Add JSON Streaming Examples",
+      "url": "https://github.com/CxRes/events-query-test/pull/3",
+      "state": "MERGED",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Added JSON streaming to illustrate that notifications might be transmitted in an arbitrary encapsulating format.",
+      "createdAt": "2025-10-15T06:35:04Z",
+      "updatedAt": "2025-10-15T06:36:46Z",
+      "baseRepository": "CxRes/events-query-test",
+      "baseRefName": "main",
+      "baseRefOid": "8c8e53aca8feabbbe6952efc7548aa889bd56ef1",
+      "headRepository": "CxRes/events-query-test",
+      "headRefName": "json-streaming",
+      "headRefOid": "d3b1e1b19354414e8c118fb3af7775a2bf53f794",
+      "closedAt": "2025-10-15T06:36:46Z",
+      "mergedAt": "2025-10-15T06:36:46Z",
+      "mergedBy": "CxRes",
+      "mergeCommit": {
+        "oid": "6cc260f28d8d2221bf63449347b6b64cc4370c37"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOOYx9fM6t3W4F",
+      "title": "feat!: Long-polling only requires missing interest",
+      "url": "https://github.com/CxRes/events-query-test/pull/4",
+      "state": "MERGED",
+      "author": "CxRes",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Updated subscription data model and events query proceduresbased on implementation experience. Long-polling only requires the exclusion of the abstract equivalent of the \"events\" property, not an empty query.",
+      "createdAt": "2025-10-15T11:44:42Z",
+      "updatedAt": "2025-10-15T11:47:47Z",
+      "baseRepository": "CxRes/events-query-test",
+      "baseRefName": "main",
+      "baseRefOid": "6cc260f28d8d2221bf63449347b6b64cc4370c37",
+      "headRepository": "CxRes/events-query-test",
+      "headRefName": "update-adm",
+      "headRefOid": "7e3fc3d3a9ce211c38ca895d36c120ca875b31de",
+      "closedAt": "2025-10-15T11:47:47Z",
+      "mergedAt": "2025-10-15T11:47:47Z",
+      "mergedBy": "CxRes",
+      "mergeCommit": {
+        "oid": "b57cd41db864394ec613b992fe0b20409ac311ef"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
